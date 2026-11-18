@@ -1,0 +1,78 @@
+---
+title: "Brand and domains"
+description: "Read your website into a Claritia brand book for forms, booking pages and emails, set the voice Tia writes in, and give your forms and booking pages your own address."
+sidebar:
+  label: "Brand and domains"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+Your brand makes every form, booking page and email look like you. Your link domain gives them your own web address.
+
+## Your brand book
+
+Claritia reads your website and turns it into a brand book: your logo, colors by role, type, buttons, corners, imagery, voice and rules. Forms, booking pages and Tia all use it.
+
+<Steps>
+
+1. **Open Brand**
+
+   Go to **Settings**, then **Brand**. You can also open **Email**, then **Brand**.
+
+1. **Read your site**
+
+   Type your website and click **Read this site**. Claritia writes the brand book in a minute or so.
+
+1. **Check it**
+
+   Look over the colors, type, buttons, imagery, voice and rules. If your site changes, read it again.
+
+</Steps>
+
+To use a different site as the brand, click **Use another site**. Deleting a brand sends the forms and booking pages that wear it back to Claritia's own look.
+
+If you set your website during sign-up, your brand is already there.
+
+### The voice Tia writes in
+
+On **Email**, then **Brand**, the **Voice** box holds the short brief Tia writes every email and workflow from. Change it by hand to fit how your team talks. It saves when you leave the box.
+
+## Your link domain
+
+Forms and booking pages live on Claritia's address by default. **Settings**, then **Link domain**, gives them your own.
+
+| Option | Looks like | Plan |
+| - | - | - |
+| **Your subdomain** | `acme.tryclaritia.com` | Shown when your workspace has one |
+| **Custom domain** | `forms.acme.com` | Business |
+
+### Add a custom domain
+
+<Steps>
+
+1. **Add the domain**
+
+   On **Link domain**, type the address, like `forms.acme.com`, and click **Add domain**. Only owners can add one.
+
+1. **Add the CNAME record**
+
+   Claritia shows one **CNAME** record with its name and value. Copy them into your domain's DNS settings.
+
+1. **Wait for Live**
+
+   The domain shows **Waiting** until the record is in place, then **Live**. Click **Check now** to check at once. **Not pointing** means the record isn't right yet.
+
+</Steps>
+
+Once it's live, new links use your domain. Links on Claritia's address keep working. If you remove the domain, links on it stop working, and links on Claritia's address still work.
+
+<Aside type="note">
+With your own address, you can give a form's link a readable ending, like `demo-request`. See [Share and embed](/forms/share-and-embed/).
+</Aside>
+
+## Next steps
+
+<CardGrid>
+  <LinkCard title="Themes and design" href="/forms/design/" description="Put your brand on a form." />
+  <LinkCard title="Your sending domain" href="/email/sending-domain/" description="Send emails from your domain." />
+</CardGrid>

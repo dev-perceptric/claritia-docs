@@ -1,0 +1,64 @@
+---
+title: "Security and privacy"
+description: "How you sign in to Claritia, how keys and connected accounts are kept safe, how forms keep out spam and ask for consent, and how to export or delete your data."
+sidebar:
+  label: "Security and privacy"
+---
+
+import { Aside, CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+This page explains how Claritia keeps your account and your leads' data safe, and what you control.
+
+## Signing in
+
+- You sign in with Google, Microsoft or a link sent to your email. There's no password to forget or leak.
+- An email sign-in link only works in the browser that asked for it. If you open it somewhere else, type the 6-digit code from the same email instead.
+- Claritia limits how many sign-in emails one address or network can ask for in an hour.
+- A bot check runs in the background on the sign-in screen. Most people never see it.
+- The sign-in screen tags the way you signed in last on that computer as **Last used**.
+
+To sign out, go to **Settings**, then **Profile**, and click **Sign out**.
+
+## Connected accounts and keys
+
+- Calendar and tool connections are stored sealed. Each tool's card in **Integrations** shows the access it gives.
+- You can disconnect any calendar in **Availability** and any tool in **Settings**, then **Integrations**.
+- API keys are stored as a hash. A new key shows once, so copy it then. Revoke a key in **Settings**, then **API keys**, and anything using it stops at once.
+- Payments go straight to your own Stripe, PayPal or Square account. Claritia never holds the money.
+
+## Your forms
+
+- Spam checks run on every fill: a bot check, a hidden box only bots fill, a speed check, an hourly cap, throwaway email blocking and a list of sites allowed to show the form. See [Form settings](/forms/form-settings/#spam-and-security).
+- The consent box can show for EU and UK visitors, for everyone, or for no one. Leads who don't agree never get marketing emails.
+- People who leave a form early never have their answers saved. Claritia only records the question they were on.
+- Webhooks only go to public `https://` addresses and are signed, so your system can check they came from Claritia.
+
+## Your emails
+
+- Every email is checked as it leaves for consent, unsubscribes and bounces.
+- Each marketing email has an unsubscribe link, and a footer with your address is added when an email has none.
+- Spam complaints stop sending to that address at once. Sending pauses if complaints pass 0.2%.
+
+## Keep, export and delete
+
+| What | Where |
+| - | - |
+| How long a form keeps answers | The form's **Settings**, then **Data**, then **Keep submissions** |
+| Export a form's answers | **Export CSV** on **Submissions**, or **Export every submission** in **Data** |
+| Delete one answer | Open it in **Submissions** and click **Delete** |
+| Delete all of a form's answers | **Delete every submission** in **Data** |
+
+## Your own emails from Claritia
+
+**Settings**, then **Profile**, has your sign-in and the **Getting-started tips** switch. Turn it off to stop the short tip emails new workspaces get.
+
+<Aside type="note">
+Questions about security or privacy? Write to [hello@tryclaritia.com](mailto:hello@tryclaritia.com). The privacy policy and terms are linked at the foot of [tryclaritia.com](https://tryclaritia.com).
+</Aside>
+
+## Next steps
+
+<CardGrid>
+  <LinkCard title="Members, roles and seats" href="/workspace/members-and-seats/" description="Who can do what." />
+  <LinkCard title="API and webhooks" href="/developers/api/" description="Keys for your own code." />
+</CardGrid>

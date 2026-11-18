@@ -1,0 +1,99 @@
+---
+title: "Meeting types"
+description: "Make the meetings people can book in Claritia: length, location, host, limits, booking questions, what they see after booking, and payment."
+sidebar:
+  label: "Meeting types"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+A meeting type is something people can book, like a 30-minute intro call. It sets how long the meeting is, where it happens, who hosts it and when it can be booked. Forms book meeting types, and so do booking pages and links.
+
+## Make a meeting type
+
+<Steps>
+
+1. **Open Meeting types**
+
+   In the sidebar, under **Meetings**, click **Meeting types**. Then click **New meeting type**. You can also use **Create**, then **Meeting type**.
+
+1. **Pick a template or start blank**
+
+   Templates include **Quick chat**, **Intro call**, **Discovery call**, **Product demo**, **Talk to sales**, **Onboarding kickoff**, **Support call**, **Phone screen**, **Free consultation**, **Strategy session**, **Office hours** and **Workshop**. Each comes filled in, and you can change everything. Or click **Start blank**.
+
+1. **Fill in the panel**
+
+   The panel on the right opens with the name at the top. Click a section to open it. Each closed section shows a one-line summary.
+
+1. **Save**
+
+   Click **Save changes** at the bottom. **Preview** opens the booking page as a guest sees it.
+
+</Steps>
+
+## The sections
+
+| Section | What you set |
+| - | - |
+| **Duration** | How long the meeting runs. Add more than one length to let the guest pick. |
+| **Location** | Google Meet, Microsoft Teams, Zoom, Webex, Whereby, a phone call, in person or your own link |
+| **Availability** | Your working hours, or a named schedule like "Demo hours" |
+| **Host** | **Individual** for one host, or **Dynamic** for a group of people and rules. See [Team meetings](/meetings/team-meetings/). |
+| **Limits and buffers** | The earliest and furthest a guest can book, the most meetings a day, and a break before or after each meeting |
+| **Booking questions** | Extra questions the guest answers when they book |
+| **Notifications** | The confirmation email is always on. Turn the **No-show follow-up** on or off. **Reminders** opens the Reminders workflow. |
+| **On successful booking** | **Show a message**, or **Redirect to a page** |
+| **Payment** | **Take payment** for a paid meeting. See [Paid meetings](/meetings/paid-meetings/). |
+
+You can also add a **Description** (what it's for and what to bring), **What we'll cover** lines for the booking page, and **Before the call** lines for the screen guests see after booking.
+
+### Location choices
+
+- **Google Meet** and **Microsoft Teams** links come from your Google or Microsoft calendar.
+- **Zoom** needs Zoom connected in **Availability**. See [Connect your calendar](/get-started/connect-your-calendar/).
+- **Webex** and **Whereby** need those tools connected in **Settings**, then **Integrations**.
+- **Phone** can be the guest's number or your number.
+- **In person** takes an address.
+- **Custom link** takes any meeting link you like.
+
+## All settings
+
+Anything the panel doesn't show is under **All settings** in the meeting's menu. It opens a full editor with a live booking page beside it. Here you can also pick the meeting's kind:
+
+| Kind | Who's in the meeting | Plan |
+| - | - | - |
+| **One-on-one** | One host and one guest | Every plan |
+| **Group** | One host and many guests, up to a seat limit | Starter and up |
+| **Round robin** | One person from a team, chosen in turn | Pro and up |
+| **Collective** | Everyone on the team, when all are free | Pro and up |
+| **Account owner first** | The guest's owner in your CRM, then the team | Business |
+| **Paired round robin** | One person from each of two teams | Business |
+
+## Manage a meeting type
+
+Each card on the Meeting types page shows the length, the video tool, **Individual** or **Dynamic**, and **Used by**: the forms that book it. Its menu holds:
+
+- **Copy link** and **Open booking page**
+- **New single-use link**: a link that books once. See [Booking page, links and polls](/meetings/booking-page-and-links/).
+- **Copy times for an email**: paste your next open times into an email
+- **Embed on a website**: the calendar for your site
+- **Use in a form**
+- **Turn off** or **Turn on**
+- **Duplicate**, **All settings** and **Delete**
+
+Deleting a meeting type stops its booking link. Meetings already booked stay.
+
+<Aside type="note">
+Saving a meeting type also updates every live form that books it, so new rules reach those forms at once.
+</Aside>
+
+## Plan limits
+
+Free includes 1 active meeting type. Starter, Pro and Business have no limit. See [Plans and billing](/workspace/plans-and-billing/).
+
+## Next steps
+
+<CardGrid>
+  <LinkCard title="Availability and teams" href="/meetings/availability-and-teams/" description="Working hours, days off and teams." />
+  <LinkCard title="Team meetings" href="/meetings/team-meetings/" description="Round robin, Collective and Dynamic." />
+</CardGrid>

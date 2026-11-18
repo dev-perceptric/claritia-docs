@@ -1,0 +1,115 @@
+---
+title: "Connect your AI app (MCP)"
+description: "Use Claritia from Claude, ChatGPT, Claude Code, Cursor or any MCP client: connect the Claritia MCP server, then build forms, read answers, test routing and draft emails in plain words."
+sidebar:
+  label: "Connect your AI app"
+---
+
+import { Aside, CardGrid, LinkCard, Steps, TabItem, Tabs } from '@astrojs/starlight/components';
+
+Claritia has an MCP server, so AI apps can work with your forms, routing and emails. Ask in plain words, like "Make a demo request form and publish it" or "Where would a lead from acme.com go?", and the app calls Claritia for you.
+
+The server address is:
+
+```text
+https://app.tryclaritia.com/api/mcp
+```
+
+## Connect
+
+<Tabs>
+  <TabItem label="Claude or ChatGPT">
+
+<Steps>
+
+1. **Add a connector**
+
+   In your AI app's settings, add a custom connector with the server address above.
+
+1. **Click Connect**
+
+   The app opens Claritia's approve page. It shows the app's name and the site it returns to.
+
+1. **Approve**
+
+   Sign in to Claritia if asked, and approve. No key to paste.
+
+</Steps>
+
+Claritia makes an API key named after the app. Revoke it in **Settings**, then **API keys**, to sign the app out.
+
+  </TabItem>
+  <TabItem label="Claude Code">
+
+Make a key in **Settings**, then **API keys**. The new key's panel shows this command, ready to copy:
+
+```bash
+claude mcp add --transport http claritia https://app.tryclaritia.com/api/mcp --header "Authorization: Bearer clr_..."
+```
+
+  </TabItem>
+  <TabItem label="Cursor and others">
+
+Make a key in **Settings**, then **API keys**, then add the server to your client's MCP settings. For Cursor, in `.cursor/mcp.json`:
+
+```json
+{ "mcpServers": { "claritia": { "url": "https://app.tryclaritia.com/api/mcp", "headers": { "Authorization": "Bearer clr_..." } } } }
+```
+
+  </TabItem>
+</Tabs>
+
+## What it can do
+
+### Forms
+
+| Tool | What it does |
+| - | - |
+| `list_forms` | Your forms with their state: draft, live or paused |
+| `get_form` | A form's draft, and whether it differs from the live version |
+| `create_form` | Makes a draft form, blank or from a starting point |
+| `edit_form`, `set_form_page` | Change a form's draft |
+| `get_answers` | A form's latest answers, newest first, with spam and tests left out |
+| `publish_form` | Makes the draft live and returns the embed code. Needs an owner's key. |
+
+### Routing
+
+| Tool | What it does |
+| - | - |
+| `get_router` | Your routing rules, teams and fallback |
+| `route_explain` | Why a person's latest lead went where it did, in plain sentences |
+| `route_test` | Where a lead would go, by email, without changing anything |
+| `route_suggest` | Saves new rules as a draft. A person reviews and publishes it in Claritia. |
+
+### Emails
+
+| Tool | What it does |
+| - | - |
+| `list_emails` | Your one-time emails with their state and results |
+| `list_audiences` | Everyone, your lists with their size, and your topics |
+| `create_email` | Tia writes a new email in your brand and voice, saved as a draft |
+| `change_email` | Tia changes a draft, like its words, a button or the subject |
+| `send_test` | Sends the email to the person who made the key, marked as a test |
+| `schedule_campaign` | Sends a draft now or later, to everyone or one list. Needs an owner's key. Over 500 people, a person confirms it in the app. |
+| `email_results` | What one email led to: opens, clicks, meetings booked and forms filled |
+
+Every tool call acts as the person who made the key. Routing changes from an AI app always stay a draft until a person publishes them in Claritia.
+
+<Aside type="note">
+To stop an AI app at once, revoke its key in **Settings**, then **API keys**.
+</Aside>
+
+## Make a form before you have an account
+
+Without a key, the server lets anyone make one form from their AI app. Ask for a form, and it goes live at once, with a link to share and a link to claim it.
+
+- Open the claim link to sign in, or sign up, and the form moves into your new workspace.
+- An unclaimed form closes after 14 days. Claiming it opens it again.
+- Unclaimed forms carry the Claritia badge and can't ask for passwords, card or bank details.
+
+## Next steps
+
+<CardGrid>
+  <LinkCard title="API and webhooks" href="/developers/api/" description="Call Claritia from your own code." />
+  <LinkCard title="Form Studio and Tia" href="/forms/form-studio/" description="Do the same in the app." />
+</CardGrid>

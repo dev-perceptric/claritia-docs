@@ -1,0 +1,73 @@
+---
+title: "Paid meetings and payments"
+description: "Charge guests when they book a Claritia meeting, or take a payment in a form, through your own Stripe account. PayPal and Square work for paid meetings too."
+sidebar:
+  label: "Paid meetings"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+You can charge for a meeting, like a paid strategy session, or take a payment inside a form. Guests pay your own account. Claritia never holds the money.
+
+## Connect Stripe
+
+<Steps>
+
+1. **Open Integrations**
+
+   Go to **Settings**, then **Integrations**. Find the **Stripe** card. You can type "Stripe" in the search box or pick **Payments** in the category menu.
+
+1. **Connect your account**
+
+   Click **Connect**. Stripe opens. Sign in, or make a new Stripe account, and approve Claritia.
+
+1. **Finish on Stripe if asked**
+
+   If Stripe still needs details before you can take payments, the card shows **Finish on Stripe**. Click **Continue on Stripe** to complete them. Once done, the card says **Connected**.
+
+</Steps>
+
+## Make a meeting paid
+
+<Steps>
+
+1. **Open the meeting type**
+
+   Go to **Meeting types** and click the card.
+
+1. **Turn on payment**
+
+   Open **Payment** and turn on **Take payment**.
+
+1. **Set the price**
+
+   Type the **Amount** and pick the **Currency**. Click **Save changes**.
+
+</Steps>
+
+Guests now pay when they book. The meeting shows **Waiting on payment** until the payment goes through, then turns booked.
+
+### Pay with PayPal or Square
+
+Paid meetings can also take PayPal or Square. Connect the tool in **Settings**, then **Integrations**. Then open the meeting's **All settings** and pick it under **Paid with**.
+
+## Refunds
+
+When you cancel a paid meeting from its page, click **Cancel and refund**. The guest gets their money back. If the refund doesn't go through, Claritia tells you, and you can refund it in Stripe.
+
+## Take a payment in a form
+
+Add a **Payment** question to any form. It can charge a fixed amount, or the result of a **Calculation** question, like a price worked out from the answers. The form charges through your connected Stripe account. A payment that a rule hides is never charged.
+
+You can also add a payment page from **Add page** in Form Studio. See [Questions, pages and logic](/forms/questions-and-logic/).
+
+<Aside type="note">
+Paid meetings and Stripe payments in forms are on Starter and up. Stripe's own fees come out of each payment.
+</Aside>
+
+## Next steps
+
+<CardGrid>
+  <LinkCard title="Meeting types" href="/meetings/meeting-types/" description="Every other meeting setting." />
+  <LinkCard title="Integrations" href="/integrations/" description="Every tool you can connect." />
+</CardGrid>

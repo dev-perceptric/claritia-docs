@@ -1,0 +1,95 @@
+---
+title: "Availability and teams"
+description: "Set your working hours, named schedules, date-specific hours and days off, connect calendars, and manage teams, daily caps and who's away in Claritia."
+sidebar:
+  label: "Availability and teams"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+**Availability** holds everyone's hours, calendars and time away. Forms and booking pages both read it, so a lead only sees times when the host is free. Open it from the sidebar, under **Meetings**. The switch at the top picks **You** or **Team**.
+
+## Your hours
+
+With **You** picked, the page has three columns side by side.
+
+| Column | What it holds |
+| - | - |
+| **Schedules** | Your **Working hours**, which are the default, and any named schedules a meeting type can use |
+| **The week** | Each day as a row, with a switch to turn it on, its times, and a way to add more times |
+| **Calendars** | Your connected accounts, which ones are checked for conflicts, and where new bookings go |
+
+Changes to a week save on their own a moment after you stop typing.
+
+### Named schedules
+
+Click **New schedule** to make a second set of hours, like "Demo hours". Then pick it in a meeting type's **Availability** section. If you delete a schedule, the meeting types that used it go back to your working hours.
+
+### Date-specific hours and days off
+
+- **Date-specific hours** change your times on one date, such as a late start.
+- **Days off** block whole days. Those days leave every booking page, and team meetings skip you.
+
+<Aside type="tip">
+Working hours start as Monday to Friday, 9:00 to 17:00. Check them, and your time zone, before you share your first meeting.
+</Aside>
+
+## The team view
+
+Pick **Team** to see everyone in one table:
+
+| Column | What it shows |
+| - | - |
+| **Person** | Each teammate |
+| **Teams** | The teams they're in |
+| **Calendar** | Whether their calendar is connected, or needs **Reconnect** |
+| **Hours** | Their working hours |
+| **Today** | Meetings booked today, against their daily cap |
+| **Away** | Whether they're away, and until when |
+
+### Mark someone away
+
+Turn on **Away** for a person and pick the day they're back. While they're away, team meetings pass them over. Turn it off to bring them back today.
+
+### Daily caps
+
+Set a cap on the meetings a person takes each day. Once they reach it, the team's turns skip them until tomorrow. A person's cap and away status are the same in every team.
+
+## Teams
+
+A team is a group of people who share meetings, like "Sales, North America". Teams power round robin and Collective meetings.
+
+<Steps>
+
+1. **Pick a team**
+
+   Use the team menu above the table. The table filters to its members first, then everyone else with **Add**.
+
+1. **Add people**
+
+   Click **Add** next to a person to put them on the team.
+
+1. **Set how the team shares**
+
+   Under **How the team shares**, pick round robin, weighted round robin or load balanced. The table shows who is **Next in line**.
+
+1. **Check what uses it**
+
+   **Used by** lists the meetings and forms that send leads to the team.
+
+</Steps>
+
+You can also make a team right from a form's rules with **New team**. See [On submission](/forms/on-submission/).
+
+You can't delete a team while a meeting or form still sends to it. Change those first.
+
+<Aside type="note">
+Round robin with weights, away days and daily and weekly limits for each person are on Pro and Business.
+</Aside>
+
+## Next steps
+
+<CardGrid>
+  <LinkCard title="Team meetings" href="/meetings/team-meetings/" description="How turns are taken, and Dynamic meetings." />
+  <LinkCard title="Connect your calendar" href="/get-started/connect-your-calendar/" description="Google Calendar, Outlook and Zoom." />
+</CardGrid>

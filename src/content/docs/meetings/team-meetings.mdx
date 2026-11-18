@@ -1,0 +1,91 @@
+---
+title: "Team meetings and round robin"
+description: "Share meetings across a team in Claritia with round robin, weights, Collective meetings and Dynamic meetings that pick a person by the guest's answers."
+sidebar:
+  label: "Team meetings"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+A team meeting lets more than one person take bookings. Claritia picks who hosts each one, fairly, and keeps a note of why.
+
+## Individual or Dynamic
+
+Each meeting type's **Host** section has two choices:
+
+| Host | How it works |
+| - | - |
+| **Individual** | One host. Everyone who books this meeting books with that person. |
+| **Dynamic** | A group of people and rules. Each rule picks one person or a team that takes turns. **Otherwise** catches everyone else. |
+
+## Set up a Dynamic meeting
+
+<Steps>
+
+1. **Open the meeting type**
+
+   Go to **Meeting types**, click the card, and open the **Host** section. Pick **Dynamic**.
+
+1. **Add a rule**
+
+   A rule is one or more conditions on the guest's answers, like "Company size is at least 50". Then pick who gets those guests: one person, or a team.
+
+1. **Set Otherwise**
+
+   Under **Otherwise**, pick who gets everyone the rules don't catch.
+
+1. **Save changes**
+
+   Every live form that books this meeting picks up the new rules at once.
+
+</Steps>
+
+When someone opens a Dynamic meeting's own booking link, Claritia first asks the questions its rules test. Then it shows the times of the person or team their answers pick. A link that already names the host skips the questions.
+
+<Aside type="note">
+When a form books a Dynamic meeting, the form's answers feed the same rules, so the guest isn't asked twice. See [On submission](/forms/on-submission/).
+</Aside>
+
+## How a team takes turns
+
+Teams live in **Availability**, under **Team**. Each team shares meetings in one of three ways:
+
+| Way | Who gets the next meeting |
+| - | - |
+| **Round robin** | The person who is most due, so everyone gets about the same number |
+| **Weighted round robin** | Like round robin, but people with a bigger weight get more |
+| **Load balanced** | The person with the fewest meetings this week |
+
+Whatever the way, people who are away, outside their hours or at their daily cap are skipped. If a lead already has an owner, they book with that owner first.
+
+## Collective meetings
+
+A **Collective** meeting needs everyone on the team. The guest only sees times when every member is free, and every member is in the meeting. In a form's rules, pick a team with **Collective**. In a meeting type's **All settings**, pick the **Collective** kind.
+
+## More kinds in All settings
+
+The full editor of a meeting type (its menu, then **All settings**) has more ways to share:
+
+- **Round robin**: set each person's weight from 1 to 10, and a priority for ties. A **flexible** round robin shows every free host's times. A **strict** one only shows the next host's times.
+- **Account owner first**: a guest who already has an owner in your CRM books with them. Everyone else goes to the team.
+- **Paired round robin**: one person from each of two teams joins the meeting.
+- **Reschedule**: choose whether a moved meeting keeps the same host or can go to anyone in the pool.
+
+## See why someone got a lead
+
+Open a meeting from **Upcoming**. **Why this person** shows the rule that matched and why that person was picked. See [Upcoming meetings](/meetings/upcoming/).
+
+## Plans
+
+| Feature | Plan |
+| - | - |
+| Group meetings with a guest limit | Starter and up |
+| Round robin with weights and priority, Collective meetings, team pools | Pro and up |
+| Account owner first, paired round robin | Business |
+
+## Next steps
+
+<CardGrid>
+  <LinkCard title="Availability and teams" href="/meetings/availability-and-teams/" description="Make teams and set caps." />
+  <LinkCard title="On submission" href="/forms/on-submission/" description="Route form leads to these meetings." />
+</CardGrid>

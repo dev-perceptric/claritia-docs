@@ -1,0 +1,86 @@
+---
+title: "The email editor and canvas"
+description: "Write a workflow email in its step, then design it on the email canvas: blocks, sections, pictures, Tia, versions and comments. Save emails as templates to reuse."
+sidebar:
+  label: "Email editor and templates"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+Each email step in a workflow is one email. You can edit it in two places, and both change the same email.
+
+## Edit in the step's panel
+
+Click an email step on the workflow canvas. The panel shows:
+
+- **From**: your team, or the lead's owner
+- **Subject** and **Preview text**, with **Insert data** for the person's details
+- The email itself, as it will look
+
+Click the email's words to type in place. Bold, italic, links and **Insert data** sit in the small bar above. **Rewrite with Tia** writes the email again in your brand's voice.
+
+A footer with your address and an unsubscribe link is added for you when an email has none.
+
+## Design on the canvas
+
+Click **Open full editor** to open the email on the canvas. Every email in the workflow sits there side by side, and you can pan and zoom around them. Click **Back to workflow** when you're done. Your changes are already in the workflow.
+
+<Steps>
+
+1. **Pick a part**
+
+   Click inside an email to pick a block, like a heading or a button. The **Element** and **Layout** panel on the right shows its settings: font, color, size, spacing, corners and more.
+
+1. **Type in place**
+
+   Double-click, or press Enter, to type in the picked part.
+
+1. **Add blocks**
+
+   Click **+** or press A to open the add panel. Add a heading, text, image, button, divider, spacer, columns, social links, a signature, a video and more. Drag blocks and sections within an email or between emails.
+
+1. **Resize pictures**
+
+   Drag a picture's corners to make it bigger or smaller.
+
+1. **Copy and paste**
+
+   ⌘C, ⌘X and ⌘V work across emails. One undo history covers the whole canvas.
+
+</Steps>
+
+### Tia on the canvas
+
+Click **Ask Tia** at the top left. Tia's chat opens in a panel on the left. Pick a part and click **Add to chat** (or press ⌘L) to tell Tia what to change. Tia keeps her changes to what you added. You can also ask for several new emails in one prompt, like "Write a 3-email welcome series for new students", and they land side by side.
+
+### Versions and comments
+
+- **Versions**: each email keeps its earlier versions. Open the version menu above an email to preview one, then click **Restore version** to bring it back.
+- **Comments**: press C or click **Comment** to leave a note on an email or on one part of it. Teammates can reply, and you can resolve a comment when it's done.
+
+### Test it
+
+Send a test to yourself from the email's menu. It goes through the real sending path, marked as a test.
+
+## Publish the workflow
+
+Edits to an email don't reach people until you publish its workflow. **Publish** shows every email once, with its picture, subject and sender and what changed. An email edited since the last publish shows **Changed since publish**.
+
+## Email templates
+
+**Email**, then **Templates**, holds emails you write once and reuse in workflows. Click **Create**, or use **Create**, then **Email template**, in the sidebar. Name it, design it on the canvas, and pick it later with **Use a template**.
+
+## Your brand's voice
+
+**Email**, then **Brand**, holds your brand book: your logo, colors, type, buttons and voice. Tia writes every email from the **Voice** brief, and you can change that brief by hand. See [Brand and domains](/workspace/brand-and-domains/).
+
+<Aside type="note">
+Emails send from Claritia's address until you set up your own domain. See [Your sending domain](/email/sending-domain/).
+</Aside>
+
+## Next steps
+
+<CardGrid>
+  <LinkCard title="Meeting emails and reminders" href="/email/meeting-emails/" description="Change the emails every meeting sends." />
+  <LinkCard title="Audiences" href="/email/audiences/" description="The people your emails go to." />
+</CardGrid>

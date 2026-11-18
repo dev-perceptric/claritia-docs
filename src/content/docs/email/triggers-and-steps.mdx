@@ -1,0 +1,86 @@
+---
+title: "Triggers and steps"
+description: "Every trigger that starts a Claritia workflow and every step it can run: emails, delays, waits, branches, A/B splits, routing, Slack, texts, WhatsApp, Teams, Discord, analytics and webhooks."
+sidebar:
+  label: "Triggers and steps"
+---
+
+import { Aside, CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+A workflow starts with one trigger, then runs its steps from top to bottom. Click the first card on the canvas to set the trigger. Click **+** between cards to add a step.
+
+## Triggers
+
+| Trigger | Starts when |
+| - | - |
+| **Form submitted** | Someone sends one of the forms you pick, or any form |
+| **Meeting activity** | A meeting is booked, moved, canceled, held or marked no-show. You can limit it to some meeting types. |
+| **Form, no booking** | Someone sends a form but doesn't book a meeting |
+| **Lead routed** | A lead is assigned to a person, or left unassigned |
+| **Link clicked** | Someone clicks a link in one of your emails |
+| **Added to list** | Someone joins a list in **Audiences** |
+
+## Steps
+
+### Email
+
+| Step | What it does |
+| - | - |
+| **Send email** | Sends one email. See [The email editor](/email/email-editor/). |
+
+In the step's panel, set **From** to **From your team** or **From their owner**, then the subject and preview text. Click the email's words to type in place. **Rewrite with Tia** writes it again. **Open full editor** opens it on the canvas for the full design.
+
+### Time
+
+| Step | What it does |
+| - | - |
+| **Delay** | Waits a set time in days and hours. Pick **Before the meeting** to wait until that long before the person's next meeting. |
+| **Wait for event** | Waits until they book a meeting, click an email or send a form, for at most a number of days. Then it takes one path if it happened and another if it didn't. |
+
+A reminder that would arrive more than 30 minutes late is skipped, so a meeting booked for today never gets a "see you tomorrow" email. If a meeting moves, the wait follows the new time. If it's canceled, the run ends.
+
+### Logic
+
+| Step | What it does |
+| - | - |
+| **If/else branch** | Takes one path or another based on a condition, such as a field or a status |
+| **A/B split** | Splits people between two paths. Set the share that goes to **Path A**. |
+| **End** | Ends the workflow here for that person |
+
+### Lead
+
+| Step | What it does |
+| - | - |
+| **Route lead** | Assigns the lead to the right person, using your team's turns |
+
+### Outside tools
+
+| Step | What it does | What it needs |
+| - | - | - |
+| **Slack message** | Sends a Slack message to a teammate, such as the lead's owner | Slack set up for your workspace |
+| **Text message** | Texts their phone, with consent. Can send an email instead when the text can't go. | Twilio, connected in **Integrations** |
+| **WhatsApp** | Sends a WhatsApp template message | Twilio, connected in **Integrations** |
+| **Teams or Discord** | Posts in a Microsoft Teams channel or Discord | Teams or Discord, connected in **Integrations** |
+| **Analytics event** | Sends an event, like "Meeting Booked", to your analytics tool | Segment, PostHog, Mixpanel or Amplitude, connected in **Integrations** |
+| **Webhook** | Sends the person's data to an address you choose | An `https://` address |
+
+## Insert data
+
+Emails, texts and messages can include the person's details, like their first name, company or job title. Click **Insert data** and pick a field. Meeting emails can also include the meeting time, the meeting link and the reschedule link.
+
+Each field has a fallback, so a blank value never leaves a gap. For example, "Hi there" shows when a first name is missing.
+
+## Test before you publish
+
+Open the **Test** tab in the panel. Search for a person by name or email and pick them. Claritia shows what each step would do for that person, like which path they take or what the email says. Nothing is sent.
+
+<Aside type="tip">
+**Run history** in the editor's header shows everyone who went through a live workflow. If a step failed for a person, you can try it again from there.
+</Aside>
+
+## Next steps
+
+<CardGrid>
+  <LinkCard title="The email editor" href="/email/email-editor/" description="Design each email on the canvas." />
+  <LinkCard title="Meeting emails and reminders" href="/email/meeting-emails/" description="The emails every meeting sends." />
+</CardGrid>

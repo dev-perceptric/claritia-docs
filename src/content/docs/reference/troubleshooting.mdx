@@ -1,0 +1,96 @@
+---
+title: "Troubleshooting"
+description: "Fixes for common Claritia problems: sign-in links, forms that won't publish or don't show on your site, missing times on the calendar, emails that don't arrive and leads that don't reach your CRM."
+sidebar:
+  label: "Troubleshooting"
+  order: 3
+---
+
+import { Aside } from '@astrojs/starlight/components';
+
+Find your problem below. If none of these help, write to [hello@tryclaritia.com](mailto:hello@tryclaritia.com).
+
+## Signing in
+
+**The sign-in link says it opened in a different browser.**
+Sign-in links only work in the browser that asked for them. Go back to the sign-in page, click **Continue with email**, and type the 6-digit code from the email on the **Check your inbox** screen.
+
+**The link says it expired or was already used.**
+Some email scanners open links before you do. Ask for a new email and use the code in it.
+
+**It says there are too many sign-in emails.**
+Claritia limits sign-in emails per address each hour. Wait a while, then try again, or sign in with Google or Microsoft.
+
+**I can't see my team's workspace.**
+Sign in with the exact email your invite went to. If you're in more than one workspace, switch from the workspace name at the top of the sidebar.
+
+## Forms
+
+**The Publish button is off, or shows a number.**
+The form check found problems. Click the button to see the list, then click each one to jump to it. Common ones are a rule that reads a deleted question, a meeting that was deleted, or **Email the team** with no address.
+
+**My changes don't show on the live form.**
+Click **Publish changes**. Until you do, the form says **Changes not live**.
+
+**The form doesn't show on my site.**
+- Check that the form is published and not paused.
+- For a popup, slider, popover or side tab, the code goes in your site's footer code. Look at the steps under the code in the **Share** tab.
+- On Webflow, publish the site. The form shows on the published site.
+- If the form's **Spam and security** settings list allowed sites, add your site there.
+
+**A real lead went to Spam.**
+Open **Submissions**, then **Spam**, and click the lead. Its line says why it was caught. Click **Not spam** to let it in. If many real leads get caught, loosen the matching setting in the form's **Spam and security**.
+
+**I don't see the Left early list.**
+**Left early** is on Business. Other plans show **Upgrade to see**.
+
+## Meetings
+
+**No times show on my booking page or form.**
+- Check your working hours in **Availability**. A day with its switch off has no times.
+- Check **Days off** and whether you're marked **Away**.
+- Check the meeting type's **Limits and buffers**. A long notice or a short booking window can hide every time.
+- If your calendar shows **Reconnect**, sign in again. Until you do, your times leave every booking page.
+
+**Bookings don't show on my calendar.**
+In **Availability**, under **Calendars**, check which calendar is picked under **Add new bookings to**.
+
+**My busy events don't block times.**
+Turn on **Check for conflicts** for that calendar. To read it again right away, click **Read now** in its menu.
+
+**A team meeting always goes to the same person.**
+Check the team in **Availability**, under **Team**. Others may be away, at their daily cap, outside their hours, or missing a connected calendar. Open a booked meeting and read **Why this person** to see the reason.
+
+**I can't save a meeting type.**
+Free allows 1 active meeting type, and team kinds need a paid plan. Turn off a meeting type you don't use, or upgrade.
+
+## Emails
+
+**Emails come from Claritia's address.**
+Add your own domain in **Settings**, then **Domains**, and set your sender in **Settings**, then **Sender**. See [Your sending domain](/email/sending-domain/).
+
+**My domain records say Wrong or Waiting.**
+Check each record for typos and for a duplicate SPF record. DNS changes can take up to a day. Click **Check now** to check again.
+
+**Someone didn't get an email.**
+Find them in **Email**, then **Audiences**, and check their **Email status**. A **Bounced**, **Unsubscribed**, **Marked as spam** or **No consent** status stops marketing emails. Then check the workflow's **Run history**.
+
+**A workflow isn't sending.**
+Check that it's published and not paused. Look at **Enroll**: a person set to enter **Once** won't enter again. If you've reached your plan's workflow emails, emails wait for the next month.
+
+**Guests get two reminders.**
+If you built your own reminder workflow, pause the **Reminders** workflow in the **Meetings** folder, or remove the reminder emails from yours.
+
+## Integrations
+
+**Leads don't reach my CRM.**
+- Open the form's **Sync** tab. Check that the CRM is turned on for this form, and look for leads with **Send again**.
+- Check that the CRM still shows **Connected** in **Settings**, then **Integrations**. If it shows an error, connect it again.
+- Spam fills and fills past your plan's monthly limit aren't sent.
+
+**My webhook shows Failing.**
+Open it in **Settings**, then **Webhooks**, and read the last error. Your address must answer with a 2xx status within 15 seconds and must not redirect. Fix it, then click **Send again** on the failed sends.
+
+<Aside type="tip">
+Many problems come from a draft that was never published. When something looks off, check for **Changes not live** first.
+</Aside>

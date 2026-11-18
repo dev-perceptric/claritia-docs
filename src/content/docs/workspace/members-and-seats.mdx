@@ -1,0 +1,73 @@
+---
+title: "Members, roles and seats"
+description: "Invite teammates to your Claritia workspace, understand the owner and member roles, and learn which teammates count as paid seats."
+sidebar:
+  label: "Members, roles and seats"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+Everyone on your team can work in the same Claritia workspace. You only pay for the people leads can book a meeting with.
+
+## Invite a teammate
+
+<Steps>
+
+1. **Open Members**
+
+   Go to **Settings**, then **Members**.
+
+1. **Click Invite**
+
+   Type your teammate's email, like `name@company.com`, and click **Invite**.
+
+1. **They sign in**
+
+   Your teammate gets an email with a link. They sign in with that same email and land in your workspace.
+
+</Steps>
+
+Invited people show as **Invited** until they join. To cancel an invite, click the bin next to it. Inviting the same email again sends the email again.
+
+You can also invite people during the guided setup, or type several emails with commas between them.
+
+## Roles
+
+Claritia has two roles.
+
+| Role | What they can do |
+| - | - |
+| **Owner** | Everything, including inviting and removing people, renaming the workspace, changing the plan and billing, adding email domains and your own link domain, and managing meeting webhooks |
+| **Member** | Build forms, meetings and workflows, read answers, and connect their own calendar |
+
+The person who made the workspace is its owner. To remove a member, click the bin next to their name and confirm.
+
+<Aside type="note">
+Some actions made with an API key also need an owner's key, like publishing a form or scheduling a send to a list. See [API and webhooks](/developers/api/).
+</Aside>
+
+## Seats
+
+A seat is a teammate people can book a meeting with. Teammates who only build forms, edit workflows or read results are free. So you only pay for the people who take calls.
+
+Claritia counts seats from your active meeting types: everyone who hosts at least one. If you turn off a meeting type or take someone off its hosts, they stop counting.
+
+| Plan | Seats |
+| - | - |
+| Free | 1 |
+| Starter, Pro and Business | As many as you need, paid per seat |
+
+Your current number of seats shows in **Settings**, then **Billing**, under **This month**.
+
+## Several workspaces
+
+If you belong to more than one workspace, switch between them from the workspace name at the top of the sidebar. Claritia remembers your pick on that computer.
+
+To rename your workspace, go to **Settings**, then **General**, and click **Rename**. Only owners can rename it.
+
+## Next steps
+
+<CardGrid>
+  <LinkCard title="Plans and billing" href="/workspace/plans-and-billing/" description="Prices per seat and what each plan adds." />
+  <LinkCard title="Security and privacy" href="/workspace/security-and-privacy/" description="Sign-in, keys and your data." />
+</CardGrid>

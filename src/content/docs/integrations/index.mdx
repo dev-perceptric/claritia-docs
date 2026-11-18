@@ -1,0 +1,86 @@
+---
+title: "Integrations"
+description: "Every tool you can connect to Claritia in Settings, Integrations: CRMs, email lists, sheets, tasks, documents, chat, form and meeting tools, payments, analytics and automation apps."
+sidebar:
+  label: "Overview"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+Claritia connects to the tools your team already uses. Most connect with one click and a sign-in. Open **Settings**, then **Integrations**.
+
+## Connect a tool
+
+<Steps>
+
+1. **Find it**
+
+   Type in the search box, or pick a category from the menu next to it.
+
+1. **Click Connect**
+
+   Most tools open their own sign-in page. Approve Claritia there, and you come back with the card marked **Connected**. A few tools need one detail, like a signing secret or database details. Those open a short form.
+
+1. **Use it**
+
+   Once connected, a CRM or other tool shows in a form's **Sync** tab and in workflow steps. See [Send leads to your tools](/integrations/send-leads/).
+
+</Steps>
+
+Click anywhere else on a card to read what the tool does in Claritia, the access it gives, and where it's used. To stop using a tool, open it and click **Disconnect**. Forms stop sending leads to it.
+
+## What you can connect
+
+| Category | Tools |
+| - | - |
+| **CRMs** | HubSpot, Salesforce, Omniscient, Pipedrive, Attio, Close, Zoho CRM, Dynamics 365, GoHighLevel, Freshsales, Copper, Keap, monday CRM |
+| **Email lists** | Mailchimp, Klaviyo, ActiveCampaign, Brevo, Kit, MailerLite |
+| **Sheets and databases** | Google Sheets, Airtable, Excel Online, Notion, PostgreSQL, MySQL |
+| **Tasks and tickets** | Linear, Trello, ClickUp, monday.com, SmartSuite, Zendesk, Freshdesk, Intercom |
+| **Documents and files** | Google Docs, DocuSign, PandaDoc, Google Drive, OneDrive, Dropbox, Box, Amazon S3 |
+| **Messages and texts** | Microsoft Teams, Discord, Twilio |
+| **Forms** | Typeform, Tally, Webflow forms |
+| **Meetings** | Calendly, Cal.com, Webex, Whereby |
+| **Payments** | Stripe, PayPal, Square |
+| **Analytics and ads** | Segment, PostHog, Mixpanel, Amplitude, Meta Conversions API, Google Ads |
+| **Automation** | Zapier, Make |
+
+Your calendars and Zoom connect in **Meetings**, then **Availability**. See [Connect your calendar](/get-started/connect-your-calendar/).
+
+## Bring in fills and bookings from other tools
+
+If you keep using another form or scheduling tool, Claritia can take in what it collects:
+
+- **Typeform**, **Tally** and **Webflow forms**: fills come into Claritia, so the same routing, alerts and workflows run on them.
+- **Calendly** and **Cal.com**: bookings come in and link to the form fill they followed.
+
+When you connect one of these, Claritia gives you a webhook address to paste in that tool.
+
+To move a form into Claritia for good, use **Import a form** on the Forms page instead. See [Templates](/forms/templates/#import-a-form-you-already-have).
+
+## Zapier and Make
+
+Zapier and Make connect from their own side. In Zapier or Make, add the Claritia app and sign in. Claritia makes an API key named after the app. Disconnecting it in Claritia revokes the key and removes the app's hooks. See [API and webhooks](/developers/api/).
+
+## Tracking tags
+
+Google Analytics 4, Google Tag Manager, Meta Pixel and Google Ads conversion tags are set per form, in the form's **Settings**, then **Tracking**. See [Form settings](/forms/form-settings/#tracking).
+
+## Which plans include what
+
+| Feature | Plan |
+| - | - |
+| Webhooks, CSV export, tracking tags, Google Forms import, website embeds | Every plan |
+| HubSpot, Omniscient and the other CRMs, email lists, sheets, tasks, documents, Teams and Discord, analytics, Twilio texts, Webex, Whereby, PayPal, Square, and fills from Typeform, Tally, Webflow, Calendly and Cal.com | Starter and up |
+| Salesforce | Business |
+
+<Aside type="note">
+Connecting needs no API keys in the usual case. A pasted key is only a fallback for the few tools that can't sign in.
+</Aside>
+
+## Next steps
+
+<CardGrid>
+  <LinkCard title="Send leads to your tools" href="/integrations/send-leads/" description="Set up a form's Sync tab." />
+  <LinkCard title="Webhooks" href="/integrations/webhooks/" description="Send forms and meetings to your own address." />
+</CardGrid>

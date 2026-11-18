@@ -1,0 +1,116 @@
+---
+title: "On submission: book the right meeting"
+description: "Choose what happens when someone sends your form: a thank-you, a redirect, or a booking page. Route each lead by their answers to the right meeting and person, and set what every send does."
+sidebar:
+  label: "On submission"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+In Claritia, the form picks the meeting and the meeting picks the person. You set the first part here, in the form's **Ending**. The second part lives on the meeting type. See [Team meetings](/meetings/team-meetings/).
+
+## Pick the ending
+
+In Form Studio, click **Ending** at the bottom of the **Pages** list. The panel on the right opens with **Ending type**:
+
+| Ending type | What happens |
+| - | - |
+| **Thank-you page** | The thank-you message takes the form's place |
+| **Redirect** | People go to the page address you type, like `https://yourcompany.com/thanks` |
+| **Booking page** | A calendar shows under the thank-you message, so they can book on the spot |
+
+The thank-you page and booking page can drop a little confetti when they show. Turn on **Show confetti** to use it.
+
+## Book a meeting from the form
+
+<Steps>
+
+1. **Make a meeting type first**
+
+   If you have none, the Ending shows **No meeting types yet** with **Open Meetings**. Make one there, then come back. See [Meeting types](/meetings/meeting-types/).
+
+1. **Set the Ending type to Booking page**
+
+   Under **Book with**, pick **Individual** or **Team meeting**.
+
+1. **Pick the meeting**
+
+   With **Individual**, everyone books the one meeting you pick. If that meeting is Dynamic, its rules show in one line, and **Edit meeting** opens it.
+
+1. **Publish**
+
+   Click **Publish changes**. The calendar now shows at the end of the live form, with the person's name and email already filled in.
+
+</Steps>
+
+## Route by answers with a Team meeting
+
+Pick **Team meeting** to send different leads to different meetings or people. You add named rules, and they run in order. The first rule that matches wins. **Otherwise** sits last and catches everyone else.
+
+Each rule reads like a sentence:
+
+- **When** a question, a test and a value, such as "Team size is at least 50". Add more with **+ and** (all must match) or **+ or** (any can match).
+- **Book** the meeting to book.
+- **With** who they book with:
+
+| With | Who hosts |
+| - | - |
+| **Meeting hosts** | The meeting's own host, or its own Dynamic rules |
+| A team, with its distribution | One person on the team, chosen in turn, such as "Sales (Round robin)" |
+| A team, **Collective** | Everyone on the team attends, at a time when all are free |
+| One person | That teammate |
+| **New team** | Makes a new team, named in place, that you fill with people |
+
+When you pick a team, it opens under the rule. **First** is always **Account owner**, so a lead who already has an owner books with them. Then set the **Distribution** (Round robin, Weighted round robin or Load balanced) and the team's members. Changes save to the team itself, so every form that uses it follows.
+
+Move rules up or down to change their order, and delete the ones you don't need.
+
+### Rules on past fills
+
+Besides answers, a rule can test what a person did before:
+
+- **Has sent this form before**
+- **Has a meeting booked**
+- **Booked in the last N days**
+
+Spam and test sends never count as past fills.
+
+### Preview as a lead
+
+With a Team meeting, **Preview as** shows a chip for each rule and **Otherwise** over the canvas. Click a chip to run a sample lead that meets that rule through every rule, just like a real lead. The booking page then shows the meeting that lead would really get. If an earlier rule catches them first, a line says so.
+
+<Aside type="caution">
+If an earlier rule always catches a rule's leads, that rule can never run. Its card says so, and the form check shows a warning.
+</Aside>
+
+## If no one is free
+
+When a Team meeting or a Dynamic meeting finds no open times, pick what the lead sees:
+
+- **Show the thank-you**: the thank-you message, with no calendar.
+- **Email times later**: Claritia emails the lead open times a day later.
+
+## What every send does
+
+The **Notification** section runs on every send, whatever it books:
+
+| Item | What it does |
+| - | - |
+| **Email the team** | Emails your team about each new submission |
+| **Post to Slack** | Posts each new submission in your team's Slack channel |
+| **Send to a tool** | Sends the lead to a connected CRM or a webhook. See [Send leads to your tools](/integrations/send-leads/) |
+| **Follow-up** | Starts a workflow on this form, either when they send it or when they don't book |
+| **Add to a list** | Adds each person to a list in **Email**, then **Audiences** |
+
+**Email the team** and **Post to Slack** are the same team alert you'll find in the form's **Settings**. Changing it in one place changes it in both.
+
+<Aside type="note">
+Routing by answers to a meeting and a person is on Pro and Business. Account owner first and pairing one person from each of two teams are on Business. See [Plans and billing](/workspace/plans-and-billing/).
+</Aside>
+
+## Next steps
+
+<CardGrid>
+  <LinkCard title="Team meetings" href="/meetings/team-meetings/" description="Round robin, Collective and Dynamic meetings." />
+  <LinkCard title="Availability and teams" href="/meetings/availability-and-teams/" description="Hours, caps and who's away." />
+</CardGrid>
