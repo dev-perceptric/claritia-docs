@@ -1,0 +1,106 @@
+---
+title: "Email and workflow errors"
+description: "Claritia email and workflow error messages and fixes: workflow checks, publishing, sending domains, sender settings, skipped emails, audiences and imports, templates, topics and Tia."
+sidebar:
+  label: "Email and workflows"
+  order: 4
+---
+
+import { Aside, CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+## Workflows
+
+| Message | What it means | Fix |
+| - | - | - |
+| **Name the workflow** | The workflow has no name. | Type a name. |
+| **Up to 100 workflows** | The workspace has 100. | Delete ones you don't use. |
+| **Up to 50 steps** | A workflow has 50 steps. | Split it in two. |
+| **Up to 50 folders** / **Name the folder** | Workflow folder limits. | Use fewer folders, or name it. |
+| `Give {{first_name}} a fallback, like {{first_name\|there}}` | A merge field has no fallback. | Add a fallback after a bar. |
+| **Make the workflow live first** / **Make it live first** | The action needs a live workflow. | Publish it. |
+| **Only owners can make HTML blocks live.** | An email has an HTML block. | Ask an owner to publish. |
+| **This workflow sends the calendar invite, so it stays** | Booking confirmed, Meeting moved and Meeting canceled can't be deleted. | Turn steps off instead. |
+| **This email sends the calendar invite, so it stays.** | That email step can't be removed. | — |
+| **Each meeting email goes once per meeting, so it can't be copied.** | Meeting emails can't be duplicated. | Write a new email step. |
+| **The email couldn't be saved. Try again.** | An email step's save failed. | Try again. |
+| **The email is still being linked to the Emails page. Try again in a moment.** | A new email step is still being set up. | Wait a moment. |
+| **The emails couldn't be linked to the Emails page. Reload to try again.** | Setting up the workflow's emails failed. | Reload. |
+| **Couldn't read the emails. Try again in a moment.** | Publish couldn't read the steps' emails. | Try again. |
+| **Pick a contact.** / **Contact not found.** | The **Test** tab needs a person. | Pick someone from your audience. |
+| **Up to 5,000 at a time** | Adding too many people to a workflow at once. | Add them in parts. |
+| **Say what should happen, in a sentence or two.** | Building a workflow from words needs a description. | Describe the trigger and the emails. |
+| **Say what starts it: a form, a booking, a list or a click.** | Tia couldn't tell the trigger. | Name the trigger. |
+| **Tia didn't build it. Try saying it another way.** | Tia couldn't build the workflow. | Rephrase. |
+| **Write a brief first: who it's for, what you offer, and what's true about it.** | Drafting emails needs a brief. | Fill in the brief. |
+
+## Sending setup
+
+| Message | What it means | Fix |
+| - | - | - |
+| **Set up sending first (Settings › Sending)** | No sender is set. | Fill in **Settings**, then **Sender**. |
+| **Add your physical address first (Settings › Sending)** | Marketing emails need your postal address. | Add it in **Sender**. |
+| **Only the workspace owner can change sending** | Sender settings are owner-only. | Ask an owner. |
+| **Only the workspace owner can add a sending domain** | Domains are owner-only. | Ask an owner. |
+| **Up to 20 sending domains** | The workspace has 20. | Remove one. |
+| **That domain is already added to a workspace** | Another workspace uses it. | Use another domain, or remove it there. |
+| **Unknown time zone: [zone]** | The default time zone isn't real. | Pick from the list. |
+| **Only the workspace owner can resume sending** | Resuming is owner-only. | Ask an owner. |
+| **Paused**, with a reason | Spam complaints reached 0.2% or hard bounces 5% this week. | Fix the list, then **Resume**. |
+
+## Why an email was skipped
+
+**Settings**, then **Domains**, shows recent sends. A skipped email shows one of these:
+
+| Shown | Means |
+| - | - |
+| **Suppressed** | The address bounced or marked an email as spam before. |
+| **Erased** | The person's data was erased on request. |
+| **No consent** | Nothing says they agreed to marketing email. |
+| **Consent withdrawn** | They took back consent. |
+| **Not subscribed** | They unsubscribed, or aren't on the topic. |
+| **Frequency cap** | They hit **Marketing emails per contact**. It goes later. |
+| **Domain not verified** | The from address's domain isn't verified. |
+| **No address** | Your physical address is missing. |
+| **Not a member** | They're not on the list it was sent to. |
+| **No contact** / **Email changed** | The person is gone, or their email changed. |
+| **Paused** | Sending is paused. |
+| **Not set up** | Sender settings are missing. |
+
+## Audiences and imports
+
+| Message | What it means | Fix |
+| - | - | - |
+| **That file is over 20 MB. Split it and import each part.** | The CSV is too big. | Split it. |
+| **That file has no rows under its header.** / **That file couldn't be read.** | The CSV is empty or not a CSV. | Check the file. |
+| **Import up to 5,000 people at a time.** / **Add up to 5,000 at a time** | Too many in one go. | Import in parts. |
+| **Tick that they agreed to get email, or ask an owner to add them.** | Members can only add people with consent. | Tick consent, or ask an owner. |
+| **Only an owner can add these people.** | Approving imports without consent is owner-only. | Ask an owner. |
+| **Use a two-letter country code, like US.** | The country isn't a code. | Use `US`, `GB`, `DE`. |
+| **A contact needs an email** / **Another contact has this email** | A person's email is missing or a repeat. | Fix the email. |
+| **Up to 200 lists** / **List not found** | List limits, or a deleted list. | Use fewer lists, or reload. |
+
+## Emails, templates and topics
+
+| Message | What it means | Fix |
+| - | - | - |
+| **Add a subject** | The email has no subject. | Write one. |
+| **The email is empty** | Nothing to send. | Add content. |
+| **Pick who gets it** | No audience picked. | Pick everyone or a list. |
+| **Pick a time in the future.** / **Pick a time within a year** | The send time is past or too far. | Pick another time. |
+| **Marketing emails need the Footer block.** | The unsubscribe footer was removed. | Keep the **Footer** block. |
+| **This email couldn't be built.** | A test send failed to render. | Check the blocks, then try again. |
+| **This email has no blocks to copy.** | Copying an empty email. | Add blocks first. |
+| **Name the template** / **Up to 200 templates** | Template limits. | Name it, or delete old ones. |
+| **Up to 500 drafts** | The workspace has 500 draft emails. | Delete drafts you don't need. |
+| **Name the topic** / **Up to 50 topics** / **Only the workspace owner can change topics** | Topic rules. | Name it, use fewer, or ask an owner. |
+| **Use a picture up to 5 MB.** / **Use a PNG, JPEG, GIF or WebP picture up to 5 MB.** | An image is too big. | Use a smaller image. |
+| **Say what to change.** / **Say what to write.** | Tia needs words. | Type what you want. |
+| **The AI declined to write this. Change the brief and try again.** | Tia won't write that. | Change the brief. |
+| **The AI didn't answer. Try again in a moment.** | Tia was busy. | Try again. |
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Sending domain" href="/email/sending-domain/" description="Set up DKIM, SPF and DMARC." />
+  <LinkCard title="Error messages" href="/errors/" description="All areas." />
+</CardGrid>

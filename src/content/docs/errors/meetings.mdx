@@ -1,0 +1,128 @@
+---
+title: "Meeting errors"
+description: "Claritia meeting error messages and fixes: meeting types, plans, hosts, working hours, calendars, booking pages and handles, links and polls, paid meetings, and what guests see."
+sidebar:
+  label: "Meetings"
+  order: 3
+---
+
+import { Aside, CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+## Meeting types
+
+| Message | What it means | Fix |
+| - | - | - |
+| **Name the meeting type.** | The name is empty. | Type a name. |
+| **The link name uses letters, numbers and dashes, like intro-call.** | The type's link has other characters. | Use `a-z`, `0-9` and `-`. |
+| **That link name is taken.** | Another type uses it. | Pick another. |
+| **Pick at least one length.** / **Pick a length.** | No length is picked. | Pick 15, 30, 45 or your own. |
+| **Add a host.** | The type has nobody to book. | Add at least one host. |
+| **A host isn't in this workspace.** / **Someone picked isn't in this workspace.** | A host left the workspace. | Pick someone else. |
+| **Everyone needs two or more hosts.** | A collective meeting needs at least two people. | Add another host. |
+| **Two teams need a host in each team.** | A paired round robin is missing a team member. | Add a host to each team. |
+| **Add the phone number to call.** | The location is "I'll call" with no number. | Add your number. |
+| **The meeting link needs https://.** | A custom meeting link is incomplete. | Use the full address. |
+| **The page after booking needs https://.** | The redirect after booking is incomplete. | Use the full address. |
+| **Pick the currency for the price.** | A paid type has no currency. | Pick one. |
+| **Add yourself as a host, or ask an owner.** | A member made a type without being a host. | Add yourself as a host. |
+| **Only its hosts and owners can change this type.** / **Only its hosts and owners can delete this type.** | You're not a host of this type. | Ask a host or an owner. |
+| **An owner gave you this type; ask them to remove it.** | A copy of a shared type can't be deleted by you. | Ask an owner. |
+| **Only owners can give types to people.** | Giving a shared type is owner-only. | Ask an owner. |
+| **That Routing team isn't live. Make Routing live first.** | The type uses a team that isn't published. | Publish the team first. |
+
+### Plan limits on meeting types
+
+| Message | Fix |
+| - | - |
+| **Free has 1 meeting type. Upgrade to add more.** | Turn off another type, or upgrade. |
+| **Free has 1 seat. Upgrade to add more.** | Free has one person to book. Upgrade to add hosts. |
+| **Group meetings are on Starter and up.** | Upgrade, or pick One-on-one. |
+| **Team meetings are on Pro and up.** | Round robin and collective need Pro. |
+| **This kind of meeting is on Business.** | Account owner first and paired round robin need Business. |
+| **Paid meetings are on Starter and up.** | Upgrade, or turn off **Take payment**. |
+
+## Working hours and schedules
+
+| Message | What it means | Fix |
+| - | - | - |
+| **Pick a time zone.** | Hours have no time zone. | Pick yours. |
+| **A date change needs one date like 2026-12-24.** | A day off or date change is missing its date. | Pick a date. |
+| **Name the schedule.** | A new schedule has no name. | Type one, like "Workshops". |
+| **Working hours is your default schedule.** | The default schedule can't be removed or renamed. | — |
+| **Schedule not found.** | The schedule was deleted. | Reload. |
+| **Only owners can change someone else's hours.** | You opened a teammate's hours. | Ask an owner, or change your own. |
+
+## Calendars
+
+| Message | What it means | Fix |
+| - | - | - |
+| **Connect your calendar first** | Booking needs your busy times. | Connect Google Calendar or Outlook. |
+| **Reconnect this calendar first.** / **Reconnect** | Claritia lost access, for example after a password change. | Click **Reconnect** and sign in. |
+| **The sign-in link expired. Try again.** | You took too long on the calendar's sign-in page. | Click connect again. |
+| **Could not connect.** | The sign-in didn't finish. | Try again, and approve every access asked. |
+| **Free has 1 calendar. Upgrade to add more.** | Free has one calendar account per seat. | Disconnect one, or upgrade. |
+| **Each seat can connect 6 calendars.** | Paid plans allow 6 calendar accounts per person. | Disconnect one you don't use. |
+| **Only the person who connected this calendar can change it.** | Someone else's calendar. | Ask them. |
+| **Pick one calendar for new events.** / **Pick the calendars again.** | The calendar list changed. | Pick again in **Calendars**. |
+| **Your page shows [n] open times next week** in amber | Fewer than 5 open times in the next 7 days. | Check your hours, calendars and days off. |
+
+## Booking page and handle
+
+| Message | What it means | Fix |
+| - | - | - |
+| **Use 3 to 40 lowercase letters, numbers and dashes.** | The handle is too short, too long or has other characters. | Change it, like `sam-lee`. |
+| **That name is taken.** | Another person or team uses that handle. | Pick another. |
+| **That name is kept for Claritia.** | The handle is reserved. | Pick another. |
+| **Your link uses letters, numbers and dashes, like sam-lee.** | The handle has other characters. | Use `a-z`, `0-9` and `-`. |
+| **The photo link needs https://.** | The photo address is incomplete. | Upload a photo instead. |
+| **This browser can't read the image.** | The picked file isn't an image the browser reads. | Use a PNG or JPEG. |
+| **Save your profile first.** | A handle needs a saved profile. | Save the profile, then the handle. |
+
+## Links and polls
+
+| Message | What it means | Fix |
+| - | - | - |
+| **Pick a meeting type.** | A single-use link needs a type. | Pick one. |
+| **Pick at least one time.** / **Pick two or more times.** | A one-off needs a time; a poll needs two. | Pick more times. |
+| **No free times in the next two weeks** | Nothing to pick from. | Check your availability. |
+| **A meeting is 5 minutes to 8 hours.** | The length is out of range. | Change the length. |
+| **Offer 40 times at most.** | Too many times. | Pick fewer. |
+| **Every time must be ahead.** / **Times must be within a year.** | A time is past, or too far ahead. | Pick other times. |
+| **Two times overlap.** | Two times of a one-off overlap. | Drop one. |
+| **The link must end in the future.** | The end date is past. | Pick a later date. |
+| **The link wasn't made.** | Saving failed. | Try again. |
+| **Only the link's owner can change it.** | Someone else's link. | Ask them or an owner. |
+| **This link can't be copied again. Make a new one.** | Old links can't be shown again. | Make a new link. |
+
+## Meetings
+
+| Message | What it means | Fix |
+| - | - | - |
+| **Canceled. The refund didn't go through; refund it in Stripe.** | The meeting is canceled, but Stripe didn't refund. | Refund it in your Stripe account. |
+| **Calendar update failed** | A meeting's history shows the calendar event didn't update. | Click **Read now** on the calendar, or reconnect it. |
+| **Pick held, no-show or cancel.** | A status change was unclear. | Use **Held**, **No-show** or **Cancel meeting**. |
+| **Only owners can connect payments.** | Connecting Stripe is owner-only. | Ask an owner. |
+| **Stripe didn't answer. Try again in a moment.** | Stripe was slow. | Try again. |
+| **Webex didn't make the meeting.** / **Whereby didn't make the room.** | The video tool refused. | Reconnect it in **Settings**, then **Integrations**. |
+
+## What guests see
+
+| Message | What it means |
+| - | - |
+| **Times couldn't load.** | The page couldn't reach Claritia. |
+| **Someone is booking that time. Pick another.** | Another guest holds or booked the time. |
+| **Add your name.** / **Add a valid email.** | A detail is missing. |
+| **The spam check didn't pass. Try again.** | The Cloudflare check failed. |
+| **Too many tries. Wait a minute and try again.** | Many tries from one place. |
+| **This meeting was canceled.** | The meeting is already canceled. |
+| **This meeting can't be moved.** / **This meeting can't be canceled.** | The meeting type doesn't allow it, or it has started. |
+| **This poll is closed.** | You already booked a time. |
+| **This isn't set up yet.** | Show my calendar isn't on. |
+| **Your calendar couldn't be read.** | Google didn't share the busy times. |
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Meeting types" href="/meetings/meeting-types/" description="Every meeting setting." />
+  <LinkCard title="Error messages" href="/errors/" description="All areas." />
+</CardGrid>

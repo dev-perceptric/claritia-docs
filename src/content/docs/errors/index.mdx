@@ -1,0 +1,72 @@
+---
+title: "Error messages"
+description: "Every error message Claritia can show, what it means and how to fix it, grouped by area: sign-in and account, forms, meetings, email and workflows, integrations, webhooks and the API."
+sidebar:
+  label: "Overview"
+  order: 1
+---
+
+import { Aside, CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+Claritia's error messages are short and say what to do. This guide lists them by area, with what each one means and how to fix it.
+
+## Where errors show
+
+- **One line under the thing you changed.** Most errors show as a short red line in the card, panel or dialog you're working in.
+- **A tag on a row.** A form with leads that didn't reach a tool shows **[n] not synced**. A failing webhook shows **Failing**. A calendar that lost access shows **Reconnect**.
+- **A note that goes away.** Small confirmations, like **Link copied**, show for a moment at the bottom of the screen.
+- **For your guests.** The booking page and your live forms show their own messages, like **Add a valid email.**
+
+Claritia keeps a change on screen while it saves. If the save fails, the old value comes back and the error shows, so what you see always matches what's saved.
+
+## Errors that can happen anywhere
+
+| Message | What it means | Fix |
+| - | - | - |
+| **Workspace not found** | You're not a member of the workspace you're working in, or it was removed. | Reload. Switch workspace from the sidebar if you're in more than one. |
+| **Not signed in** | Your sign-in ended. | Sign in again. |
+| **Try again in a moment.** | Claritia or a tool it called was busy. | Wait a few seconds and try again. |
+| **Not saved. Try again.** / **That didn't save. Try again.** | A save didn't reach Claritia, often a dropped connection. | Check your connection and try again. |
+| **Someone else changed this workflow. Reload to see their changes.** | A teammate saved the same thing at the same time. | Reload and make your change again. |
+| **Only the workspace owner can do this** | The action is owner-only. | Ask an owner. See [Roles and permissions](/reference/roles-and-permissions/). |
+| **The server is not set up for this.** | A part of Claritia isn't switched on yet. | Write to support. |
+
+## Sign-in and account
+
+| Message | What it means | Fix |
+| - | - | - |
+| **Enter your email address.** | The email box is empty. | Type your email. |
+| **Use your work or personal email. Throwaway inboxes can't sign up.** | The email is from a disposable inbox service. | Use a real inbox you keep. |
+| **That code is wrong or has expired. Check the newest email.** | The sign-in code doesn't match, or a newer one was sent. | Use the code in the latest email. |
+| **Too many emails were sent in a short time. Wait a minute and try again.** | Several sign-in emails went out in a row. | Wait a minute. |
+| **This is taking longer than usual. Check your inbox; if nothing arrives in a minute, try again.** | The email is slow to send. | Check your inbox and spam folder. |
+| **The security check didn't pass. Try again.** | The Cloudflare check didn't finish. | Reload the page and try again. |
+| **Wait for the security check to finish, then try again.** | You clicked before the check finished. | Wait a second. |
+| **This sign-in option is not turned on yet. Use email for now.** | Google or Microsoft sign-in isn't on. | Sign in with your email. |
+| **Enter your team's name.** | Setup needs a workspace name. | Type a name. |
+| **Enter one or more email addresses.** | The invite step is empty. | Type an email, or skip. |
+| **Invite not found** | The invite was canceled, or used. | Ask for a new invite. |
+| **That email doesn't look right** | An invite email has a typo. | Check the address. |
+| **Only the workspace owner can invite people** / **Only the workspace owner can remove people** | Team changes are owner-only. | Ask an owner. |
+| **The owner can't be removed** | An owner can't be removed from Members. | — |
+| **Only the workspace owner can rename it** | Renaming is owner-only. | Ask an owner. |
+| **Use 1 to 80 characters** | A workspace name is empty or too long. | Use a shorter name. |
+
+## Billing
+
+| Message | What it means | Fix |
+| - | - | - |
+| **Only the workspace owner can change the plan.** / **Only the workspace owner can manage billing.** | Billing is owner-only. | Ask an owner. |
+| **This workspace already has a plan. Change it from Billing.** | You started a new checkout on a paid workspace. | Change plan on **Settings**, then **Billing**. |
+| **Start a plan first.** / **This workspace has no paid plan to change.** | There's no subscription to change yet. | Pick a plan first. |
+| **This workspace has no billing yet.** | There are no invoices to manage. | Start a plan first. |
+| **Billing isn't set up yet.** | Payments aren't on for Claritia right now. | Try again later. |
+
+## More by area
+
+<CardGrid>
+  <LinkCard title="Forms" href="/errors/forms/" description="Building, publishing, filling and importing." />
+  <LinkCard title="Meetings" href="/errors/meetings/" description="Types, hours, calendars, links and booking." />
+  <LinkCard title="Email and workflows" href="/errors/email/" description="Sending, domains, audiences and Tia." />
+  <LinkCard title="Integrations and API" href="/errors/integrations/" description="Connecting tools, sync, webhooks and keys." />
+</CardGrid>

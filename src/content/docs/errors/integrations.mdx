@@ -1,0 +1,128 @@
+---
+title: "Integration, webhook and API errors"
+description: "Claritia error messages for integrations, form Sync, webhooks, link domains, API keys, the REST API and the MCP server, with what each means and how to fix it."
+sidebar:
+  label: "Integrations and API"
+  order: 5
+---
+
+import { Aside, CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+## Connecting a tool
+
+| Message | What it means | Fix |
+| - | - | - |
+| **Only owners can connect tools.** / **Only owners can connect tools** | Connecting is owner-only. | Ask an owner. |
+| **Unknown tool.** | The tool isn't one Claritia connects to. | Reload **Integrations**. |
+| **Access was not allowed.** | You clicked Cancel or Deny on the tool's sign-in page. | Click **Connect** again and approve. |
+| **Connect it again first** / **Connect this tool again.** | The tool's sign-in expired. | Disconnect and connect it again. |
+| **Error** tag on a card | The last call to the tool failed. | Open the card. Reconnect if asked. |
+| **That doesn't look like a Mailchimp API key (it ends in -us21 or similar).** | The key is cut short. | Copy the whole key. |
+| **Use the API URL from ActiveCampaign › Settings › Developer.** | The ActiveCampaign address is wrong. | Copy it from there. |
+| **The account SID starts with AC and has 34 characters.** | The Twilio SID is wrong. | Copy it from Twilio. |
+| **Use your Zendesk address, like acme or acme.zendesk.com.** / **Use your Freshdesk address, like acme.freshdesk.com.** | The help desk address is wrong. | Type your address. |
+| **That key can't reach the bucket.** / **No bucket by that name in that region.** | Amazon S3 details are wrong. | Check the bucket, region and key. |
+| **Square has no such location.** | The Square **Location ID** is wrong. | Copy it from Square. |
+| **Google Ads isn't set up on this server yet.** / **Connect Google Ads in Settings › Integrations.** / **Connect Google Ads again.** | Google Ads isn't connected, or lost access. | Connect it. |
+
+## A form's Sync tab
+
+| Message | What it means | Fix |
+| - | - | - |
+| **[n] leads didn't reach [tool] this week.** | Sends failed after every retry. | Read the reason, fix it, then click **Send again**. |
+| **Create anyway** | The tool said the lead is a duplicate. | Click it to make the record anyway. |
+| **Pick where leads go.** / **Pick where rows go.** / **Pick a list.** | The destination isn't finished. | Pick the list, sheet or table. |
+| **Pick what happens when the record exists.** | The CRM rule isn't set. | Pick **Update it** or **Leave it**. |
+| **Connect this tool again to read its fields.** / **Connect this tool again to read its lists.** | Claritia can't read the tool's fields or lists. | Reconnect it. |
+| **This tool has no fields to link.** / **This tool has no lists.** / **This tool has nothing to pick.** | The tool has nothing to choose yet. | Make a list or field in the tool. |
+| **Make a new sheet or paste one's link.** / **Paste the spreadsheet's link from your browser.** | Google Sheets needs a sheet. | Click **Start a new sheet**, or paste a link. |
+| **Paste the workbook's link from Excel's Share button.** / **That link isn't an Excel workbook (.xlsx).** | Excel needs a workbook link. | Use **Share** in Excel, then copy. |
+| **Name the table.** | Postgres or MySQL needs a table name. | Type one. |
+| **That table is gone from Airtable. Pick another in the form's Sync tab.** | The Airtable table was deleted. | Pick another. |
+| **Paste the template doc's link.** / **Paste the template doc's link from your browser.** | Google Docs needs the template link. | Copy it from the address bar. |
+| **Freshdesk needs the person's email to make a ticket.** / **Intercom needs the person's email to open a conversation.** | The fill has no email. | Keep the email question required. |
+| **Paste a Slack webhook address (https://hooks.slack.com/services/…).** | The Slack address is wrong. | Copy the incoming webhook address. |
+| **Enter the full address, starting with https://.** / **Webhooks need an https:// address.** | A form webhook's address is incomplete. | Use `https://`. |
+| **That address is on a private network.** | The address points inside a private network. | Use a public address. |
+
+## Typeform, Tally, Webflow, Calendly, Cal.com
+
+| Message | What it means | Fix |
+| - | - | - |
+| **Not allowed.** (answered to the tool) | The signature or the address's token didn't match. | Use the same signing secret in both places. Copy the address again with **Webhook URL**. |
+| **Not found.** (answered to the tool) | The tool was disconnected in Claritia. | Connect it again and paste the new address. |
+
+## Webhooks
+
+| Message | What it means | Fix |
+| - | - | - |
+| **No access** | Webhooks are owner-only. | Ask an owner. |
+| **Enter the full address, starting with https://.** | The address is incomplete. | Type it in full. |
+| **Take the name and password out of the address.** | The address has `user:pass@`. | Remove it. |
+| **That address is too long.** | Over 2,000 characters. | Use a shorter address. |
+| **Pick at least one event.** | No events are on. | Switch one on. |
+| **Add the address.** | A new endpoint has no address. | Type it. |
+| **Failing**, with the reason | The last send failed. | See below. |
+
+What a failed send says:
+
+| Reason | Fix |
+| - | - |
+| `No answer within 15 seconds.` | Answer `200` first, then do slow work later. |
+| `Couldn't reach it: ...` | Check the address is up and public. |
+| `It answered 301 (a redirect). Use the final address.` | Use the address it redirects to. |
+| `It answered 500.` | Fix your server. Claritia tries again. |
+| `It answered 404: ...` | Check the path. |
+| `That address is on a private network.` | Use a public address. |
+| `The endpoint is paused.` | Click **Resume**. |
+| `Add this endpoint's address again.` | Edit the endpoint and type the address again. |
+| `The fill is in Spam.` / `Held: past this plan's fills for the month.` / `The fill was deleted.` | The fill isn't sent. |
+| `The app removed this hook.` | Zapier or Make answered `410 Gone`, so the hook was removed. |
+
+## Link domain
+
+| Message | Fix |
+| - | - |
+| **Enter a domain, like forms.acme.com.** / **That isn't a domain. Enter one like forms.acme.com.** | Type a domain. |
+| **Use a subdomain, like forms.acme.com, so your website stays where it is.** | Add a part before your domain. |
+| **That domain is already in use.** | Another workspace uses it. |
+| **Remove the domain you have first.** | One custom domain per workspace. |
+| **Your own domain is on Business.** | Upgrade. |
+| **Only owners add a domain.** / **Only owners remove the domain.** | Ask an owner. |
+| **Not pointing** | Fix the CNAME, then **Check now**. |
+
+## API keys and the REST API
+
+| Status | Message | Fix |
+| - | - | - |
+| 400 | **Name the key (up to 60 characters).** | Name the key. |
+| 400 | **A workspace can have 20 keys. Revoke one first.** | Revoke a key. |
+| 401 | **Send an API key as 'Authorization: Bearer clr_...'. Make one in Settings.** | Add the header. |
+| 401 | **This API key is wrong or was revoked.** | Make a new key. |
+| 404 | **Form not found.** / **Workflow not found.** / **Hook not found.** | Check the id. |
+| 409 | **Make the workflow live first.** | Publish the workflow. |
+| 409 | **This workspace has 200 hooks. Remove one first.** | Delete hooks you don't use. |
+| 429 | **Too many calls. Wait a minute.** | Wait for `Retry-After`. |
+
+See [API reference](/api-reference/) for each endpoint's errors.
+
+## Apps and the MCP server
+
+| Message | What it means | Fix |
+| - | - | - |
+| **Couldn't connect. Try again.** / **Couldn't read the app. Try again.** | The approve page failed. | Start the sign-in again in the app. |
+| **[app] isn't set up on this server yet.** | That app's sign-in isn't on. | Use an API key instead. |
+| **This code was already used.** / **The code is wrong or expired.** | The app's sign-in code was reused or old. | Sign in again from the app. |
+| **Sign in to Claritia, or send an API key as 'Authorization: Bearer clr_...'.** | An AI app called a tool that needs sign-in. | Click **Connect** in the app. |
+| **Publishing needs a key made by a workspace owner. Publish it in the app instead.** | `publish_form` with a member's key. | Use an owner's key. |
+| **This connection made 20 forms today. Sign in to Claritia to make more.** | The guest limit. | Sign in. |
+| **Forms made without an account can't ask for a password.** | A guest form asked for a sign-in or card details. | Sign in to make that form. |
+
+See [MCP tools](/api-reference/mcp-tools/#errors-the-model-may-see) for the full list.
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Integrations" href="/integrations/" description="Every tool and how it connects." />
+  <LinkCard title="Error messages" href="/errors/" description="All areas." />
+</CardGrid>

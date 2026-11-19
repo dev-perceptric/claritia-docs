@@ -62,7 +62,7 @@ Twilio adds two steps to workflows, in the **Outside** group of the add menu:
 
 | Step | What it does |
 | - | - |
-| **Text message** | Texts the person's phone, with consent. Write the **Text**, like `Hi {{first_name|there}}, a reminder: we meet {{meeting_time|soon}}.` Turn on **Email if the text can't go** and add an **Email subject** to send an email instead when there's no phone or no consent. |
+| **Text message** | Texts the person's phone, with consent. Write the **Text**, like `Hi {{first_name\|there}}, a reminder: we meet {{meeting_time\|soon}}.` Turn on **Email if the text can't go** and add an **Email subject** to send an email instead when there's no phone or no consent. |
 | **WhatsApp** | Sends an approved WhatsApp template. Paste its **Template Content SID**, like `HXxxxxxxxx`, and fill each **Variable** in order. Needs the **WhatsApp sender** when you connect. |
 
 People who reply STOP are never texted again. Claritia reads delivery back from Twilio.

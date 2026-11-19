@@ -1,0 +1,123 @@
+---
+title: "Form errors"
+description: "Claritia form error messages and fixes: Form Studio and Tia, the form check before publishing, the fill page your visitors see, uploads, phone codes, payments, imports and templates."
+sidebar:
+  label: "Forms"
+  order: 2
+---
+
+import { Aside, CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+## The form check
+
+Before a form goes live, Claritia checks it. Problems show in **Form check** in Form Studio, with a count, like **Form check (2)**. **Publish anyway** is offered only when nothing would break.
+
+| Message | What it means | Fix |
+| - | - | - |
+| **Add an email field, so each answer reaches a contact.** | Every form needs an email question. | Add an **Email** question. |
+| **The email field stays, so each answer reaches a contact.** | You tried to remove the email question. | Keep it. Change its label if you like. |
+| **The email field can't be hidden by a rule.** | A rule hides the email question. | Change the rule so the email always shows. |
+| **Every field needs a label.** | A question has no label. | Give it a label. A screen reader reads it too. |
+| **A rule points at a field that's gone.** | A logic rule uses a deleted question. | Fix or remove the rule in **Logic**. |
+| **A rule is incomplete.** | A rule is missing its question, test or value. | Finish the rule. |
+| **A rule compares a field in a way that doesn't fit its type.** | Like "is before" on a text question. | Pick a test that fits. |
+| **A rule compares with a number that isn't one.** | The value in a number test isn't a number. | Type a number. |
+| **A rule can't depend on its own field.** | A question's rule looks at itself. | Point it at another question. |
+| **A rule can't depend on a heading, text, divider or image.** | Content blocks have no answer. | Use a question. |
+| **A heading, text, divider or image can't be required.** | Content blocks were marked required. | Turn off **Required**. |
+| **A form needs at least one page.** / **A form needs at least one step.** | The last page was removed. | Add a page. |
+| **A form takes one payment.** | There are two payment questions. | Keep one. |
+| **The payment charges a calculation that's gone.** | The payment points at a deleted calculation. | Pick another calculation, or a fixed amount. |
+| **Write a formula.** / **Keep the formula under 500 characters.** | A calculation is empty or too long. | Write a shorter formula. |
+| **Consent is set in the form's settings, not as a field.** | A consent box was added as a question. | Use the consent setting in **Settings**. |
+| **A result screen holds results, text and calculations only.** | A question was put on a results page. | Move it to another page. |
+| **Results need at least one outcome.** / **Each outcome needs a title.** / **Results need one default outcome, last in the list.** | A quiz or score result is missing outcomes. | Add outcomes, with an "everyone else" one last. |
+| **The page to open after the submit needs a full https:// address.** | The redirect address is incomplete. | Use the whole address, starting with `https://`. |
+| **A form can book a meeting or open a page after the submit, not both.** | The ending has a booking and a redirect. | Pick one. |
+| **Booking: add a rule for who sees the calendar, or show it to everyone.** | The booking ending has no audience. | Add a rule, or show it to everyone. |
+| **Booking: a rule for who sees the calendar points at a field that's gone.** | A booking rule uses a deleted question. | Fix the rule. |
+| **Team alerts: add an email or turn on Slack.** | Alerts are on with nowhere to send. | Add an email. |
+| **Auto-reply: write the message.** / **Auto-reply: the form needs an email field.** | The auto-reply is on but incomplete. | Write it, and keep an email question. |
+| **Connect Stripe in Settings, Payments before publishing a form that takes payment.** | The form charges, but Stripe isn't connected. | Connect [Stripe](/integrations/stripe/). |
+
+## Form Studio and Tia
+
+| Message | What it means | Fix |
+| - | - | - |
+| **The draft didn't save. Try again.** | A change didn't reach Claritia. | Try again. Changes are kept on screen until the connection comes back. |
+| **Not saved** | The top of Form Studio shows unsaved changes. | Wait, or check your connection. |
+| **Leave without saving?** | You're leaving with changes not saved. | Click **Back to editor** to stay. |
+| **Tia didn't finish. Try again.** | Tia stopped partway. | Ask again. |
+| **Tia couldn't answer that. Try saying it another way.** | Tia didn't understand. | Say it in other words. |
+| **Tia couldn't translate the form. Try again.** / **Nothing to translate.** | Translation failed, or the form is empty. | Try again, or add questions first. |
+| **This chat is too long to save. Start a new chat for big changes.** | One chat got very long. | Start a new chat. |
+| **Build the form first.** / **The form has no questions to send.** | The page has no questions yet. | Add at least one question. |
+| **Tia isn't set up on this server.** | AI is off right now. | Build by hand, or try later. |
+| **The name didn't match, so nothing was deleted.** | Deleting a form asks you to type its name. | Type the exact name. |
+| **That form is gone.** | Someone deleted it. | Reload the Forms page. |
+
+## Publishing and sharing
+
+| Message | What it means | Fix |
+| - | - | - |
+| **Publish the form first** | The form is still a draft. | Click **Publish**. |
+| **Pick live or paused** | A status change was unclear. | Use **Pause the form** or **Resume the form**. |
+| **That ending is taken** | Another form uses that link ending. | Pick another, like `demo-request-2`. |
+| **Use lowercase letters, numbers and dashes, up to 50** | The link ending has other characters. | Use `a-z`, `0-9` and `-`. |
+| **Too many sends at once. Try again in a minute.** | You emailed the form's link many times quickly. | Wait a minute. |
+| **Up to 50 addresses at once** | Emailing the form's link to too many people. | Send in groups of 50. |
+
+## What your visitors may see
+
+These show on the live form.
+
+| Message | What it means |
+| - | - |
+| **This form isn't taking answers** | The form is paused or deleted. |
+| **This form changed. Refresh the page and try again.** | You published a new version while they filled it in. Their answers stay in the page. |
+| **Too many tries. Wait a minute and send again.** | Many sends from the same place in a short time. |
+| **Tick the box to send the form.** | The consent box is required. |
+| **Use your work email.** / **Use an email at an allowed company domain.** | The email question only takes work emails, or certain domains. |
+| **Enter a valid phone number.** / **Enter the number with its country code, like +1 555 123 4567.** | The phone is incomplete. |
+| **That code didn't match. Check it, or send a new one.** / **The code didn't send. Try again in a moment.** | The phone or email check code is wrong or didn't arrive. |
+| **Enter a number.** / **Use whole numbers.** / **Enter a date.** / **Enter a time.** / **Pick a country.** | An answer is in the wrong shape. |
+| **Fill in the street, city and country.** | An address is incomplete. |
+| **Pick both dates.** / **The end date comes after the start.** | A date range is incomplete or reversed. |
+| **Answer every row.** / **Put every choice in order.** | A grid or ranking question is incomplete. |
+| **Sign again.** | The signature didn't save. |
+| **That file is too big.** / **That kind of file isn't taken here.** / **Upload the file again.** / **Too many uploads. Wait a minute.** | An upload failed or isn't allowed. |
+| **Use a link that starts with https://.** | A website answer is incomplete. |
+| **This link has run out. Start the form again.** | A "save and finish later" link expired. |
+| **The payment page didn't open. We have your answers; we'll be in touch.** | Checkout failed, but the fill was saved. |
+| **These times have expired. Refresh the page to see new ones.** | The booking step was open too long. |
+| **This booking isn't open anymore.** / **This booking link isn't valid.** | The booking step's link is old. |
+
+## Importing a form
+
+| Message | What it means | Fix |
+| - | - | - |
+| **Paste a Google Forms, Typeform or Tally link.** | The link isn't from one of those. | Copy the form's link from the tool. |
+| **That Google Form isn't there. Paste the link from the form's edit page.** | The link is wrong. | Use the edit page's address. |
+| **Your Google account can't open that form. Sign in with the account that owns it, or ask its owner to add you as an editor.** | No access to that Google Form. | Sign in with the owner's account. |
+| **Sign in to Google again.** | Google sign-in expired. | Sign in again. |
+| **That Typeform isn't there, or it isn't published. Publish it, then paste its link.** | The Typeform is a draft or gone. | Publish it in Typeform. |
+| **That Tally form couldn't be read. Paste the link people fill in (tally.so/r/…).** | The Tally link is the editor link. | Use the share link. |
+| **That Typeform has no questions to import.** / **That Tally form has no questions to import.** | The form is empty. | Add questions first. |
+| **Too many imports at once. Wait a minute.** | Several imports in a row. | Wait a minute. |
+
+## Brand and design
+
+| Message | What it means | Fix |
+| - | - | - |
+| **Enter the site's address, like acme.com.** | The website box is empty. | Type your site. |
+| **That isn't a web address.** / **That isn't a full address.** / **Couldn't open that page.** | Claritia couldn't open the site to read your brand. | Check it opens in a browser. |
+| **Images can be up to 5 MB.** / **Use a PNG, JPEG, GIF or WebP image.** | An image is too big or the wrong kind. | Use a smaller PNG, JPEG, GIF or WebP. |
+| **Up to 2,000 images** | The design library is full. | Delete images you don't use. |
+| **Someone else changed these styles. Their version is loaded.** | A teammate saved the same styles. | Make your change again. |
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Form Studio and Tia" href="/forms/form-studio/" description="Build and change forms." />
+  <LinkCard title="Error messages" href="/errors/" description="All areas." />
+</CardGrid>
