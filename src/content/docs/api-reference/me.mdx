@@ -1,0 +1,91 @@
+---
+title: "GET /me"
+description: "Check a Claritia API key works and read the workspace it belongs to, plus the app the key was made for (Zapier, Make, Activepieces or your own code)."
+sidebar:
+  label: "GET /me"
+  order: 3
+---
+
+import { CardGrid, LinkCard, TabItem, Tabs } from '@astrojs/starlight/components';
+
+Returns the workspace a key belongs to. Apps call it to show the connected account. Use it to check a new key works.
+
+```http
+GET https://app.tryclaritia.com/api/v1/me
+```
+
+## Parameters
+
+None.
+
+## Request
+
+<Tabs syncKey="lang">
+  <TabItem label="curl">
+
+```bash
+curl https://app.tryclaritia.com/api/v1/me \
+  -H "Authorization: Bearer clr_your_key"
+```
+
+  </TabItem>
+  <TabItem label="JavaScript">
+
+```js
+const res = await fetch('https://app.tryclaritia.com/api/v1/me', {
+  headers: { Authorization: 'Bearer clr_your_key' },
+});
+const { workspace, app } = await res.json();
+```
+
+  </TabItem>
+  <TabItem label="Python">
+
+```python
+import requests
+
+res = requests.get(
+    "https://app.tryclaritia.com/api/v1/me",
+    headers={"Authorization": "Bearer clr_your_key"},
+)
+print(res.json()["workspace"]["name"])
+```
+
+  </TabItem>
+</Tabs>
+
+## Response
+
+`200 OK`
+
+```json
+{
+  "workspace": {
+    "id": "00000000-0000-4000-8000-000000000001",
+    "name": "Northwind Studio"
+  },
+  "app": "api"
+}
+```
+
+| Field | Type | Description |
+| - | - | - |
+| `workspace.id` | string | The workspace's id. |
+| `workspace.name` | string | The workspace's name, as set in **Settings**, then **General**. |
+| `app` | string | Who the key is for: `zapier`, `make` or `activepieces` for a key made by that app's sign-in, else `api`. Claritia reads it from the key's name. |
+
+## Errors
+
+| Status | `error` |
+| - | - |
+| 401 | `Send an API key as 'Authorization: Bearer clr_...'. Make one in Settings.` |
+| 401 | `This API key is wrong or was revoked.` |
+| 404 | `Workspace not found.` |
+| 429 | `Too many calls. Wait a minute.` |
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Authentication" href="/api-reference/authentication/" description="Make, use and revoke keys." />
+  <LinkCard title="GET /forms" href="/api-reference/forms/" description="List the workspace's forms." />
+</CardGrid>

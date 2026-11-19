@@ -31,6 +31,7 @@ export default defineConfig({
         { label: 'Integrations', items: ['integrations', 'integrations/send-leads', 'integrations/webhooks'] },
         group('Workspace', 'workspace', ['members-and-seats', 'plans-and-billing', 'brand-and-domains', 'security-and-privacy']),
         group('Developers', 'developers', ['api', 'mcp']),
+        { label: 'API reference', collapsed: true, items: ['api-reference', ...['authentication', 'me', 'forms', 'events', 'hooks', 'workflows', 'mcp-tools', 'webhook-events'].map((p) => `api-reference/${p}`)] },
         group('Reference', 'reference', ['glossary', 'faq', 'troubleshooting'], { collapsed: true }),
       ],
     }),

@@ -1,0 +1,202 @@
+---
+title: "GET /events"
+description: "Read the latest Claritia events of one kind, newest first: form fills, meetings booked, moved, canceled, held or no-show, and routing results. Filter by form or email, or get a sample."
+sidebar:
+  label: "GET /events"
+  order: 5
+---
+
+import { Aside, CardGrid, LinkCard, TabItem, Tabs } from '@astrojs/starlight/components';
+
+Returns the latest events of one kind, newest first, in the same shape a [hook](/api-reference/hooks/) sends them. Automation apps use it for their test step and for polling triggers. You can also use it to find one person's fills by email.
+
+```http
+GET https://app.tryclaritia.com/api/v1/events?event={event}
+```
+
+## Parameters
+
+| Name | In | Type | Required | Description |
+| - | - | - | - | - |
+| `event` | query | string | No | The event kind. Default `form.submitted`. One of `form.submitted`, `meeting.booked`, `meeting.rescheduled`, `meeting.canceled`, `meeting.held`, `meeting.no_show`, `lead.routed`. |
+| `form` | query | string | No | A form id, from [`GET /forms`](/api-reference/forms/). For `form.submitted`, only that form's fills. |
+| `email` | query | string | No | Only events for this person. Fills match the contact's email; meetings match the guest's email. |
+| `limit` | query | number | No | How many, from 1 to 100. Default 3. |
+| `sample` | query | `1` | No | When there are no events yet, return one made-up item marked `"test": true`. |
+
+What's left out:
+
+- Fills in **Spam**, test fills and fills past your plan's monthly limit.
+- Routing results older than 90 days.
+
+## Request
+
+<Tabs syncKey="lang">
+  <TabItem label="curl">
+
+```bash
+curl "https://app.tryclaritia.com/api/v1/events?event=form.submitted&form=aaaaaaaa-0000-4000-8000-000000000002&limit=1" \
+  -H "Authorization: Bearer clr_your_key"
+```
+
+  </TabItem>
+  <TabItem label="JavaScript">
+
+```js
+const q = new URLSearchParams({ event: 'meeting.booked', email: 'ada@example.com', limit: '5' });
+const res = await fetch(`https://app.tryclaritia.com/api/v1/events?${q}`, {
+  headers: { Authorization: 'Bearer clr_your_key' },
+});
+const { items } = await res.json();
+```
+
+  </TabItem>
+  <TabItem label="Python">
+
+```python
+import requests
+
+res = requests.get(
+    "https://app.tryclaritia.com/api/v1/events",
+    params={"event": "lead.routed", "limit": 10},
+    headers={"Authorization": "Bearer clr_your_key"},
+)
+items = res.json()["items"]
+```
+
+  </TabItem>
+</Tabs>
+
+## Response
+
+`200 OK`. Each item is the event's main object (the fill, the meeting or the lead) with three fields added: `event`, `event_id` and `test`.
+
+### form.submitted
+
+```json
+{
+  "items": [
+    {
+      "id": "44444444-cccc-4000-8000-000000000000",
+      "submitted_at": "2026-11-18T15:04:11.220Z",
+      "test": false,
+      "form": { "id": "aaaaaaaa-0000-4000-8000-000000000002", "name": "Book a demo", "version": 3 },
+      "email": "ada@example.com",
+      "answers": { "email": "ada@example.com", "first_name": "Ada", "q.company_size": "11-50" },
+      "answers_by_label": { "Work email": "ada@example.com", "First name": "Ada", "Company size": "11-50" },
+      "fields": [
+        { "label": "Work email", "key": "email", "value": "ada@example.com" },
+        { "label": "First name", "key": "first_name", "value": "Ada" },
+        { "label": "Company size", "key": "q.company_size", "value": "11-50" }
+      ],
+      "contact": {
+        "id": "7c0e1f52-3d1b-4b8e-9a51-2f7f0c3b6d10",
+        "email": "ada@example.com",
+        "first_name": "Ada",
+        "last_name": "Park",
+        "title": null,
+        "phone": null,
+        "country": "US",
+        "company": "Example Co",
+        "company_domain": "example.com"
+      },
+      "meta": { "page": "https://example.com/demo", "utm_source": "google" },
+      "event": "form.submitted",
+      "event_id": "evt_44444444cccc40008000000000000000",
+      "test": false
+    }
+  ]
+}
+```
+
+| Field | Type | Description |
+| - | - | - |
+| `id` | string | The fill's id. |
+| `submitted_at` | string | When the fill came in. |
+| `form` | object | The form's `id`, `name` and the `version` that was live. |
+| `email` | string or null | The contact's email. |
+| `answers` | object | Every answer by its key. Several picks are an array. |
+| `answers_by_label` | object | The same answers by their label, as text. |
+| `fields` | array | Each answer as `label`, `key` and `value` text, in the form's order. Answers to questions since removed keep their key as the label. |
+| `contact` | object | The person behind the fill. |
+| `meta` | object | Hidden values: the page, UTM tags and any hidden fields. |
+
+### meeting.*
+
+The five meeting events share one shape:
+
+```json
+{
+  "items": [
+    {
+      "id": "22222222-bbbb-4000-8000-000000000000",
+      "status": "booked",
+      "start_time": "2026-11-20T15:00:00.000Z",
+      "end_time": "2026-11-20T15:30:00.000Z",
+      "guest_timezone": "America/New_York",
+      "source": "form",
+      "created_at": "2026-11-18T15:05:02.000Z",
+      "type": { "id": "11111111-aaaa-4000-8000-000000000001", "name": "Intro call", "slug": "intro-call", "kind": "one" },
+      "hosts": [{ "id": "u1", "name": "Sam Lee", "email": "sam@example.com", "timezone": "America/Chicago" }],
+      "guest": { "name": "Ada Park", "email": "ada@example.com", "contact_id": "7c0e1f52-3d1b-4b8e-9a51-2f7f0c3b6d10" },
+      "answers": {},
+      "location": { "kind": "google_meet", "url": "https://meet.google.com/abc-defg-hij" },
+      "submission_id": "44444444-cccc-4000-8000-000000000000",
+      "cancel_reason": null,
+      "rescheduled_from": null,
+      "payment": null,
+      "event": "meeting.booked",
+      "event_id": "evt_1042",
+      "test": false
+    }
+  ]
+}
+```
+
+See [Webhook events](/api-reference/webhook-events/#the-meeting-object) for every field.
+
+### lead.routed
+
+```json
+{
+  "items": [
+    {
+      "id": "9b1f7f3a-1c2d-4e5f-8a9b-0c1d2e3f4a5b",
+      "result": "routed",
+      "owner": { "id": "u2", "name": "Sam Lee", "email": "sam@example.com", "tz": "America/Chicago" },
+      "by": "rule",
+      "queue": null,
+      "reason": "form",
+      "submission_id": "44444444-cccc-4000-8000-000000000000",
+      "routed_at": "2026-11-18T15:04:12.000Z",
+      "contact": { "id": "7c0e1f52-3d1b-4b8e-9a51-2f7f0c3b6d10", "email": "ada@example.com", "first_name": "Ada", "last_name": "Park", "title": null, "company": "Example Co" },
+      "event": "lead.routed",
+      "event_id": "evt_9b1f7f3a1c2d4e5f8a9b0c1d2e3f4a5b",
+      "test": false
+    }
+  ]
+}
+```
+
+`result` is `routed` when the lead got an owner, or `unassigned` when no rule or team took it.
+
+<Aside type="tip">
+In a test step, add `sample=1`. A new workspace with no fills yet still gets one item to map fields from. Sample items use made-up people like Ada Park at `example.com`.
+</Aside>
+
+## Errors
+
+| Status | `error` |
+| - | - |
+| 400 | `Unknown event.` The `event` isn't one of the seven kinds. |
+| 401 | `This API key is wrong or was revoked.` |
+| 404 | `Form not found.` The `form` isn't a form id. |
+| 429 | `Too many calls. Wait a minute.` |
+| 500 | `Couldn't read the events. Try again.` |
+
+## Related
+
+<CardGrid>
+  <LinkCard title="POST /hooks" href="/api-reference/hooks/" description="Get events pushed to you instead of polling." />
+  <LinkCard title="Webhook events" href="/api-reference/webhook-events/" description="Every event and field." />
+</CardGrid>

@@ -1,0 +1,252 @@
+---
+title: "MCP tools"
+description: "Every tool on the Claritia MCP server, with its inputs, what it returns and an example: forms, answers, routing tests and email campaigns, plus the guest tools that make a form before sign-up."
+sidebar:
+  label: "MCP tools"
+  order: 8
+---
+
+import { Aside, CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+The MCP server lets AI apps like Claude, ChatGPT, Claude Code and Cursor work in Claritia. This page lists every tool, its inputs and its output. To connect an app, see [Connect your AI app](/developers/mcp/).
+
+```text
+https://app.tryclaritia.com/api/mcp
+```
+
+## How the server works
+
+- It speaks MCP over Streamable HTTP. Every answer comes back as plain JSON on its `POST`. There's no event stream and no session.
+- It handles `initialize`, `ping`, `tools/list` and `tools/call`. It accepts protocol versions `2025-11-25`, `2025-06-18`, `2025-03-26` and `2024-11-05`.
+- Every tool returns text for the model to read, and most also return `structuredContent` with the same data as JSON.
+- A mistake the model can fix, like a missing argument, comes back as a result with `isError: true` and a sentence that says what to do.
+- With an API key, the server is the full **signed-in** server below. With no `Authorization` header, it's the **guest** server, which can make forms before sign-up.
+
+Every tool call acts as the person who made the key, in that key's workspace.
+
+## Example call
+
+```bash
+curl -X POST https://app.tryclaritia.com/api/mcp \
+  -H "Authorization: Bearer clr_your_key" \
+  -H "Content-Type: application/json" \
+  -d '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"get_answers","arguments":{"form":"Book a demo","limit":2}}}'
+```
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "content": [{ "type": "text", "text": "Book a demo, 2 latest answers:\n2026-11-18 15:04: email: ada@example.com; first_name: Ada\n2026-11-18 11:40: email: lee@example.com; first_name: Lee" }],
+    "structuredContent": { "answers": [{ "id": "...", "created_at": "2026-11-18T15:04:11.220Z", "values": { "email": "ada@example.com", "first_name": "Ada" } }] },
+    "isError": false
+  }
+}
+```
+
+## Forms
+
+Tools that take `form` accept the form's name or its id. If two forms share a name, pass the id.
+
+### list_forms
+
+The workspace's forms with their state and published version, newest change first. Read-only.
+
+- **Inputs:** none.
+- **Returns:** `forms`, each with `id`, `name`, `status` (`draft`, `live` or `paused`) and `version`.
+- **Example:** "Which of my forms are live?"
+
+### get_form
+
+A form's draft as JSON, and any problems that would stop it from publishing. Read-only.
+
+- **Inputs:** `form` (required).
+- **Returns:** `id`, `draft` (steps, fields with their ids, rules, layout, consent, after-submit) and `problems`.
+
+### create_form
+
+Makes a draft form in Form Studio, in the workspace's brand, or the plain look when there's no brand yet.
+
+- **Inputs:** `name` (required, up to 120 characters), `template` (optional): one of `demo`, `contact_sales`, `trial`, `newsletter`, `event`, `partner`, `webinar`, `download`, `job`, `quote`, `feedback`, `waitlist`.
+- **Returns:** the new form's `id`, and its link in the app.
+- **Example:** "Make a webinar sign-up form called Spring webinar."
+
+### set_form_page
+
+Writes a Form Studio form's whole page: its HTML and, if you like, its own CSS. The brand's style sheet stays as it is.
+
+- **Inputs:** `form` (required), `html` (required), `css` (optional).
+- **Rules for the HTML:** every input has a unique name and a label. Contact answers carry `data-cl-save`. Steps are `data-cl-step` sections with `data-cl-next` and `data-cl-back`. Conditions use `data-cl-show-if`. The thank-you is `<section data-cl-thanks hidden>`. Claritia blocks are `<div data-cl-field="TYPE" data-cl-name="..." data-cl-label="...">`, where `TYPE` is `file`, `phone`, `address`, `date`, `time`, `daterange`, `rating`, `signature`, `country`, `calc`, `payment`, `result`, `grid`, `ranking` or `hidden`.
+- **Returns:** the number of questions, and each question's `name`, `id`, `label` and `required`.
+- Settings like the auto-reply, alerts, consent and spam checks stay as they were.
+
+### edit_form
+
+Changes a form made before Form Studio, with a list of ops applied in order. Forms made in the Studio are changed with `set_form_page` instead.
+
+- **Inputs:** `form` (required), `ops` (required, 1 to 50). Ops include `add_field`, `update_field`, `remove_field`, `move_field`, `add_step`, `update_step`, `remove_step`, `set_rule`, `remove_rule`, `set_layout`, `set_constants`, `set_results`, `set_copy`, `set_consent`, `set_spam` and `set_after`.
+- **Returns:** one line per op that changed, and the new `draft`.
+- If one op would add a problem, it's refused and nothing is saved.
+
+### get_answers
+
+A form's latest answers, newest first. Spam and test fills are left out. Read-only.
+
+- **Inputs:** `form` (required), `limit` (1 to 50, default 20).
+- **Returns:** `answers`, each with `id`, `created_at` and `values`.
+
+### publish_form
+
+Makes the draft live. Needs a key made by a workspace **owner**.
+
+- **Inputs:** `form` (required).
+- **Returns:** the live `version` and the `embed` code, plus the form's link.
+
+```html
+<script src="https://app.tryclaritia.com/forms/v1.js" async></script>
+<claritia-form form-id="FORM_ID"></claritia-form>
+```
+
+## Routing
+
+### get_router
+
+Your lead routing as JSON: the live version and the draft, with steps, rules and their conditions, teams with their members, the fallback and territories. Also lists each team member's name, email and id, and the fields rules can test. Read-only.
+
+- **Inputs:** none.
+
+### route_explain
+
+Why a person's latest lead went where it did, in plain sentences, each marked as passed or missed. Read-only.
+
+- **Inputs:** `contact` (required): an email or a contact id.
+- **Returns:** the explanation and a link to the routing log. Says `This contact hasn't been routed yet.` when there's nothing to explain.
+
+### route_test
+
+Where a lead would go, by email, on both the draft and the live routing. Changes nothing. Read-only.
+
+- **Inputs:** `email` (required), `changes` (optional): field values to try, like `{"lead.country": "DE"}`, `company.size` or `answer.<key>`.
+- **Returns:** the owner each version picks and why.
+- **Example:** "Where would a lead from a 500-person company in Germany go?"
+
+### route_suggest
+
+Saves a whole routing body, in the shape `get_router` returns, as the **draft**. It never changes live routing. A person reviews it and publishes it in Claritia.
+
+- **Inputs:** `router` (required), `why` (optional).
+- **Returns:** the draft's `revision` and any `problems` to fix before publishing.
+
+## Emails
+
+These tools work on one-time campaign emails. Workflow emails are edited in the app.
+
+### list_emails
+
+Your campaigns with their state (`draft`, `scheduled`, `sending`, `paused` or `sent`) and results: sent, opened, clicked, meetings booked and forms filled. Read-only.
+
+### list_audiences
+
+Who emails can go to: everyone, each list with how many people are in it, and the topics people subscribe to. Read-only.
+
+### create_email
+
+Tia writes a new campaign in your brand and voice, saved as a draft.
+
+- **Inputs:** `about` (required, at least a sentence): the news, the date, who it's for, where the button goes. `name` (optional). `template` (optional): a template key such as `weekly_tips`, `studio_news`, `workshop_invite`, `save_the_date`, `welcome_client`, `still_thinking`, `meeting_followup`, `review_request` or `holiday_hours`. There are 79 in all; the tool's own description lists them.
+- **Returns:** the email's `id`, its `subject` and the list of `changes` Tia made.
+- If Tia needs to ask something first, the result says so with the choices. Answer with `change_email`.
+
+### change_email
+
+Tia changes a draft: the words, the layout, a button or the subject.
+
+- **Inputs:** `email` (required, name or id), `change` (required).
+- An email that was sent can't change: `[name] was sent, so it can't change.`
+
+### send_test
+
+Sends the email to the person who made the key, through the real sending path, with `[Test]` before the subject.
+
+- **Inputs:** `email` (required).
+- Needs a verified sending setup. Otherwise the result says what's missing.
+
+### schedule_campaign
+
+Sends a draft now or at a set time, to everyone or one list, and optionally only to people on one topic. Needs a key made by a workspace **owner**.
+
+- **Inputs:** `email` (required), `list` (optional, name or id; leave out for everyone), `topic` (optional), `send_at` (optional ISO time, like `2026-12-01T15:00:00Z`, within a year; leave out to send now).
+- **Returns:** how many people it's queued for and its `status`.
+- Over **500 people**, the tool stops and gives a link. A person confirms the send in the app.
+- On a new sending domain that's still warming up, the send spreads over a few days. The result says until when.
+
+### email_results
+
+What one campaign led to: delivered, opened, clicked, meetings booked and forms filled within 7 days of a click, unsubscribes, and bounces or spam reports. Read-only.
+
+- **Inputs:** `email` (required).
+
+## Guest tools (no key)
+
+With no `Authorization` header, the server offers tools that make a live form before the person has an account.
+
+### find_form_template
+
+Searches Claritia's 840 ready-made forms and returns up to 6 best matches. Read-only.
+
+- **Inputs:** `query` (required): what the form is for, like "yoga class sign-up".
+- **Returns:** `templates`, each with `id`, `name`, `blurb` and `questions`.
+
+### create_form (guest)
+
+Makes a **live** form anyone can fill.
+
+- **Inputs:** `name` (required), and either `template` (an id from `find_form_template`) or `html` (the whole page, with an email field marked `data-cl-save="email"`, a submit button and a thank-you section). Optional `css`, and `style`: one of `paper`, `midnight`, `coral`, `grove`, `editorial`, `terminal`, `bubblegum`, `tide`, `poster`, `gilded`, `lilac`, `clay`, `studio`, `harbor`, `mint`, `retro`, `noir` or `sunrise`.
+- **Returns:** `form_id`, `key` (starts `clm_`), `live_url` to share, `claim_url` for the person, `embed` and the `questions`.
+
+### update_form (guest)
+
+Changes a guest form before it's claimed: a new template, new HTML, a new style or name. The live link stays the same.
+
+- **Inputs:** `form_id` and `key` from `create_form` (both required), plus any of `name`, `template`, `html`, `css`, `style`.
+
+`list_forms` and `get_answers` are listed on the guest server too. Calling either one starts the app's sign-in.
+
+### Guest limits
+
+- One connection can make **20 forms a day**.
+- A guest form can't ask for a password, sign-in, card or bank details, or codes.
+- An unclaimed form closes after **14 days**. Opening the claim link signs the person up free and moves the form into their workspace.
+
+<Aside type="note">
+The server also lists a few tools from Claritia's older testing product, such as `list_projects`. They only work in workspaces that still run tests.
+</Aside>
+
+## Errors the model may see
+
+| Message | What to do |
+| - | - |
+| `Form [name] not found. Call list_forms to see them.` | Check the name, or pass the id. |
+| `More than one form is called [name]. Pass its id.` | Pass the id from `list_forms`. |
+| `The form changed while you edited it. Call get_form and try again.` | Someone saved at the same time. Read it again. |
+| `This form is a Form Studio page. Change it with set_form_page (its HTML), or in the app.` | Use `set_form_page`. |
+| `The page has no questions to send.` | Add at least one input with a name and label. |
+| `Publishing needs a key made by a workspace owner. Publish it in the app instead.` | Use an owner's key, or publish in the app. |
+| `Fix these first: ...` / `Set these first: ...` | The draft has problems or settings with no value. |
+| `Sending needs a key made by a workspace owner.` | Use an owner's key. |
+| `Add a subject first: change_email with the subject.` | Give the email a subject. |
+| `No one in that audience can get this email.` | Pick a list with subscribed people. |
+| `send_at is an ISO date and time, like 2026-12-01T15:00:00Z.` | Fix the time format. |
+| `That time has passed. Leave send_at out to send now.` | Pick a future time. |
+| `Pick a time within a year.` | Pick a sooner time. |
+| `This connection made 20 forms today. Sign in to Claritia to make more.` | Sign in, or wait a day. |
+| `That form was claimed, closed, or the key is wrong. Once claimed, it's changed in Claritia.` | Change it in the app. |
+| `The AI isn't set up on the server.` | Try again later. |
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Connect your AI app" href="/developers/mcp/" description="Claude, ChatGPT, Claude Code and Cursor." />
+  <LinkCard title="Authentication" href="/api-reference/authentication/" description="Owner keys and app sign-in." />
+</CardGrid>

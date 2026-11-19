@@ -1,0 +1,121 @@
+---
+title: "API reference"
+description: "Every Claritia REST endpoint, MCP tool and outgoing webhook event: the base address, how to sign requests with an API key, rate limits and error shapes."
+sidebar:
+  label: "Overview"
+  order: 1
+---
+
+import { Aside, CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+The Claritia API lets your own code, an automation app or an AI app read what comes into Claritia and act on it. This section lists every public endpoint and tool, with the exact fields, sample calls and the errors each can send back.
+
+For a shorter, task-first guide, see [API and webhooks](/developers/api/).
+
+## Base address
+
+Every REST endpoint sits under one base address:
+
+```text
+https://app.tryclaritia.com/api/v1
+```
+
+The MCP server for AI apps has its own address:
+
+```text
+https://app.tryclaritia.com/api/mcp
+```
+
+All requests use HTTPS. Bodies are JSON, and every answer is JSON.
+
+## Endpoints
+
+| Method | Path | What it does |
+| - | - | - |
+| `GET` | [`/me`](/api-reference/me/) | The key's workspace, and the app the key belongs to |
+| `GET` | [`/forms`](/api-reference/forms/) | The workspace's forms, newest first |
+| `GET` | [`/events`](/api-reference/events/) | The latest events of one kind, shaped as a hook sends them |
+| `POST` | [`/hooks`](/api-reference/hooks/) | Subscribe an address to one or more events |
+| `DELETE` | [`/hooks/{id}`](/api-reference/hooks/#delete-hooksid) | Unsubscribe a hook |
+| `GET` | [`/workflows`](/api-reference/workflows/) | The workspace's live workflows |
+| `POST` | [`/workflows/{id}/contacts`](/api-reference/workflows/#post-workflowsidcontacts) | Add a person to a live workflow |
+
+The MCP server has its own tools. See [MCP tools](/api-reference/mcp-tools/).
+
+## Authentication
+
+Every REST call carries an API key in the `Authorization` header:
+
+```http
+Authorization: Bearer clr_your_key
+```
+
+A key is `clr_` followed by 40 letters, digits, `-` and `_`. Make one in **Settings**, then **API keys**. See [Authentication](/api-reference/authentication/) for how keys work, who can make them, and how apps like Zapier and Claude sign in without one.
+
+## Rate limits
+
+Each key can make **120 calls a minute**. Past that, the API answers:
+
+```http
+HTTP/1.1 429 Too Many Requests
+Retry-After: 60
+```
+
+```json
+{ "error": "Too many calls. Wait a minute." }
+```
+
+Wait for the time in `Retry-After`, in seconds, then try again.
+
+## Errors
+
+Every error is JSON with one plain sentence in `error`:
+
+```json
+{ "error": "Workflow not found." }
+```
+
+| Status | When |
+| - | - |
+| `400` | The request is missing something or has a bad value. The sentence says what. |
+| `401` | No key, a key in the wrong shape, or a key that was revoked. |
+| `404` | The form, hook, workflow or workspace isn't in this key's workspace. |
+| `409` | The request clashes with the current state, like adding a person to a workflow that isn't live, or a 201st hook. |
+| `429` | Too many calls this minute. |
+| `500` | Something failed on Claritia's side. The sentence ends with "Try again." |
+
+These sentences come from the API on every endpoint:
+
+| Status | `error` |
+| - | - |
+| `401` | `Send an API key as 'Authorization: Bearer clr_...'. Make one in Settings.` |
+| `401` | `This API key is wrong or was revoked.` |
+| `429` | `Too many calls. Wait a minute.` |
+| `500` | `The server is not set up for API keys.` |
+
+<Aside type="tip">
+Treat any `5xx` or `429` as a hiccup: wait and try again with growing gaps. Treat a `4xx` other than `429` as a mistake to fix before you send it again.
+</Aside>
+
+## IDs and times
+
+- Forms, workflows, hooks, contacts and meetings have UUIDs, like `3f2b8c1e-9a4d-4e6b-8f1a-2c5d7e9b0a14`. The API reads them in lowercase or uppercase.
+- Times are ISO 8601 in UTC, like `2026-11-20T15:00:00.000Z`.
+- Event ids start with `evt_`. A repeat send of the same event keeps the same id, so you can drop repeats.
+
+## Webhooks
+
+Claritia can also push events to you. There are two ways in:
+
+- **Settings › Webhooks** in the app, for meeting changes. See [Webhook events](/api-reference/webhook-events/).
+- **`POST /hooks`** from your code or an automation app, for fills, meetings and routing results. See [Hooks](/api-reference/hooks/).
+
+Both send the same signed `POST`. See [Check the signature](/api-reference/webhook-events/#check-the-signature).
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Authentication" href="/api-reference/authentication/" description="API keys, roles and app sign-in." />
+  <LinkCard title="MCP tools" href="/api-reference/mcp-tools/" description="Every tool your AI app can call." />
+  <LinkCard title="Webhook events" href="/api-reference/webhook-events/" description="Payloads, headers, signatures and retries." />
+</CardGrid>

@@ -1,0 +1,105 @@
+---
+title: "GET /forms"
+description: "List the forms in a Claritia workspace, newest first, with each form's id, name, status (draft, live or paused) and when it was made. Use the ids for hooks and events."
+sidebar:
+  label: "GET /forms"
+  order: 4
+---
+
+import { CardGrid, LinkCard, TabItem, Tabs } from '@astrojs/starlight/components';
+
+Returns the workspace's forms, newest first. Apps use it for a form picker. You need a form's `id` to limit a hook or an events call to that form.
+
+```http
+GET https://app.tryclaritia.com/api/v1/forms
+```
+
+## Parameters
+
+None. The list holds up to 500 forms.
+
+## Request
+
+<Tabs syncKey="lang">
+  <TabItem label="curl">
+
+```bash
+curl https://app.tryclaritia.com/api/v1/forms \
+  -H "Authorization: Bearer clr_your_key"
+```
+
+  </TabItem>
+  <TabItem label="JavaScript">
+
+```js
+const res = await fetch('https://app.tryclaritia.com/api/v1/forms', {
+  headers: { Authorization: 'Bearer clr_your_key' },
+});
+const { forms } = await res.json();
+const live = forms.filter((f) => f.status === 'live');
+```
+
+  </TabItem>
+  <TabItem label="Python">
+
+```python
+import requests
+
+res = requests.get(
+    "https://app.tryclaritia.com/api/v1/forms",
+    headers={"Authorization": "Bearer clr_your_key"},
+)
+for form in res.json()["forms"]:
+    print(form["id"], form["name"], form["status"])
+```
+
+  </TabItem>
+</Tabs>
+
+## Response
+
+`200 OK`
+
+```json
+{
+  "forms": [
+    {
+      "id": "aaaaaaaa-0000-4000-8000-000000000002",
+      "name": "Book a demo",
+      "status": "live",
+      "created_at": "2026-11-02T14:21:07.512Z"
+    },
+    {
+      "id": "aaaaaaaa-0000-4000-8000-000000000005",
+      "name": "Client feedback",
+      "status": "draft",
+      "created_at": "2026-10-28T09:03:44.180Z"
+    }
+  ]
+}
+```
+
+| Field | Type | Description |
+| - | - | - |
+| `forms` | array | The forms, newest first. `[]` when there are none. |
+| `forms[].id` | string | The form's id. It's also in the form's address in the app, `/forms/<id>`. |
+| `forms[].name` | string | The form's name. |
+| `forms[].status` | string | `draft` (never published), `live` or `paused`. |
+| `forms[].created_at` | string | When the form was made. |
+
+## Errors
+
+| Status | `error` |
+| - | - |
+| 401 | `Send an API key as 'Authorization: Bearer clr_...'. Make one in Settings.` |
+| 401 | `This API key is wrong or was revoked.` |
+| 429 | `Too many calls. Wait a minute.` |
+| 500 | `Couldn't read the forms. Try again.` |
+
+## Related
+
+<CardGrid>
+  <LinkCard title="GET /events" href="/api-reference/events/" description="Read a form's latest fills." />
+  <LinkCard title="POST /hooks" href="/api-reference/hooks/" description="Get each new fill as it comes in." />
+  <LinkCard title="list_forms MCP tool" href="/api-reference/mcp-tools/#list_forms" description="The same list for your AI app." />
+</CardGrid>

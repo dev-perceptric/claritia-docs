@@ -1,0 +1,126 @@
+---
+title: "Authentication"
+description: "How Claritia API keys work: the clr_ key format, who can make and revoke keys, which calls need an owner's key, and how Zapier, Make, Claude and ChatGPT sign in with OAuth."
+sidebar:
+  label: "Authentication"
+  order: 2
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+Every call to the REST API and the signed-in MCP server carries an API key. A key belongs to one workspace and acts for the person who made it.
+
+## Send the key
+
+Put the key in the `Authorization` header with the word `Bearer`:
+
+```bash
+curl https://app.tryclaritia.com/api/v1/me \
+  -H "Authorization: Bearer clr_AbCdEfGhIjKlMnOpQrStUvWxYz0123456789_-Ab"
+```
+
+A key is `clr_` and 40 more characters: letters, digits, `-` and `_`. A header that doesn't match that shape is refused before Claritia looks the key up.
+
+## Make a key
+
+<Steps>
+
+1. **Open API keys**
+
+   Go to **Settings**, then **API keys**. In a workspace with no keys, the page shows **Connect your own code** and a **New key** button.
+
+   ![Settings, API keys with two keys, when each was last used and Revoke](../../../assets/shots/developers/api-keys.webp)
+
+1. **Name it**
+
+   Click **New key**. Type a **Key name** up to 60 characters, like "GitHub Actions", and click **Create key**.
+
+1. **Copy it now**
+
+   The panel says **Copy [name] now. It won't show again.** It has two rows to copy: **Key**, the key itself, and **Claude Code**, a ready `claude mcp add` command with the key in it. Click **Done** when you have them.
+
+</Steps>
+
+Claritia keeps only a SHA-256 hash of the key. If you lose it, revoke it and make a new one.
+
+### Who can make keys
+
+- Any member of the workspace can make a key. Claritia checks your sign-in is fresh when you do.
+- A workspace can have **20 keys** at once. The 21st shows `A workspace can have 20 keys. Revoke one first.`
+- The list shows each key's name, its first 8 characters (like `clr_3f9a…`) and **Used** with how long ago, or **Never used**. The last-used time updates at most once a minute.
+
+## What a key can do
+
+A key acts as the person who made it, in the workspace it was made in. Most calls work with any member's key. A few need a key made by a workspace **owner**:
+
+| Call | Needs |
+| - | - |
+| `publish_form` (MCP) | An owner's key. Otherwise: `Publishing needs a key made by a workspace owner. Publish it in the app instead.` |
+| `schedule_campaign` (MCP) | An owner's key. Otherwise: `Sending needs a key made by a workspace owner.` |
+| `send_test`, `create_email` (MCP) | A key with a person behind it. Every key made in Settings, or by an app's sign-in, has one. Otherwise: `This key has no person behind it. Make a new key in Settings.` |
+| Every REST endpoint | Any working key |
+
+## Revoke a key
+
+In **Settings**, then **API keys**, click **Revoke** on the key. Confirm **Revoke key**. Anything using it stops working within a minute. Revoking a key that an app made also removes the hooks that app subscribed.
+
+## Sign in from an app (OAuth)
+
+Zapier, Make and Activepieces, and AI apps like Claude and ChatGPT, don't need a pasted key. They send you to Claritia's approve page instead.
+
+<Steps>
+
+1. **Start in the app**
+
+   Click **Connect** or **Sign in** for Claritia in the app.
+
+1. **Approve**
+
+   Claritia opens **Connect [app]**. It says the app gets access to your workspace's forms, fills, bookings and workflows, and which email you're signed in as. An AI app that registered itself also shows **Returns to** and its site.
+
+   ![Claritia's approve page asking to connect Claude, with Cancel and Allow](../../../assets/shots/developers/mcp-approve.webp)
+
+1. **Click Allow**
+
+   The app gets a one-time code and trades it for an API key named after the app, like "Zapier" or "Claude". **Cancel** sends you back with no access.
+
+</Steps>
+
+A key made this way never expires. You see it in **Settings**, then **API keys**, and revoke it there to sign the app out.
+
+### For app builders
+
+The MCP server follows the MCP sign-in spec:
+
+| Item | Value |
+| - | - |
+| Protected resource metadata | `https://app.tryclaritia.com/.well-known/oauth-protected-resource` |
+| Authorize | `https://app.tryclaritia.com/oauth/authorize` |
+| Token | `https://app.tryclaritia.com/api/oauth/token` |
+| Register (RFC 7591) | `https://app.tryclaritia.com/api/oauth/register` |
+| Scope | `forms` |
+| Grant | `authorization_code` only, no refresh token |
+| PKCE | `S256`, required for apps that register themselves |
+
+- A registered app gets a client id starting `mcp_` and no secret. It can send 1 to 10 return addresses: `https://` anywhere, or `http://` on `localhost`, `127.0.0.1` or `[::1]`.
+- A code works once. Using it a second time revokes the key it made.
+- An MCP call with no key, or a wrong one, to a tool that needs sign-in answers `401` with a `WWW-Authenticate` header that points at the metadata above.
+
+<Aside type="caution">
+Treat a key like a password. Don't put it in a web page, a public repo or a front-end bundle. Use it only from a server or a secret store.
+</Aside>
+
+## Errors
+
+| Status | `error` | Fix |
+| - | - | - |
+| `401` | `Send an API key as 'Authorization: Bearer clr_...'. Make one in Settings.` | Add the header, with `Bearer` and the full key. |
+| `401` | `This API key is wrong or was revoked.` | Check the key, or make a new one. |
+| `400` | `Name the key (up to 60 characters).` | Give the key a name when you make it. |
+
+## Related
+
+<CardGrid>
+  <LinkCard title="API reference" href="/api-reference/" description="Every endpoint, rate limits and errors." />
+  <LinkCard title="Connect your AI app" href="/developers/mcp/" description="Set up Claude, ChatGPT or Cursor." />
+</CardGrid>

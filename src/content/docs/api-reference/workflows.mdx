@@ -1,0 +1,138 @@
+---
+title: "GET /workflows and POST /workflows/{id}/contacts"
+description: "List a Claritia workspace's live workflows, and add a person to one by email from your own code or an automation app. The workflow's enroll rules still apply."
+sidebar:
+  label: "Workflows"
+  order: 7
+---
+
+import { Aside, CardGrid, LinkCard, TabItem, Tabs } from '@astrojs/starlight/components';
+
+Use these two calls to start a workflow for someone from outside Claritia. For example, add a person to a welcome series when they pay in your own shop.
+
+## GET /workflows
+
+```http
+GET https://app.tryclaritia.com/api/v1/workflows
+```
+
+Returns the workspace's **live** workflows, in name order, up to 500. Drafts and paused workflows aren't listed.
+
+```bash
+curl https://app.tryclaritia.com/api/v1/workflows \
+  -H "Authorization: Bearer clr_your_key"
+```
+
+`200 OK`
+
+```json
+{
+  "workflows": [
+    { "id": "bbbbbbbb-0000-4000-8000-000000000010", "name": "Project inquiry follow-up" },
+    { "id": "bbbbbbbb-0000-4000-8000-000000000001", "name": "Reminders" }
+  ]
+}
+```
+
+| Field | Type | Description |
+| - | - | - |
+| `workflows[].id` | string | The workflow's id. It's also in its address in the app, `/emails/automations/<id>`. |
+| `workflows[].name` | string | The workflow's name. |
+
+## POST /workflows/\{id\}/contacts
+
+```http
+POST https://app.tryclaritia.com/api/v1/workflows/{id}/contacts
+Content-Type: application/json
+```
+
+Adds a person to a live workflow. Claritia finds the contact by email, or makes one the way a form fill does, then starts a run.
+
+### Parameters
+
+| Name | In | Type | Required | Description |
+| - | - | - | - | - |
+| `id` | path | string | Yes | The workflow's id, from `GET /workflows`. |
+| `email` | body | string | Yes | The person's email. |
+| `first_name` | body | string | No | Up to 80 characters. Claritia fixes the case, like `ada` to `Ada`. |
+| `last_name` | body | string | No | Up to 80 characters. |
+
+### Request
+
+<Tabs syncKey="lang">
+  <TabItem label="curl">
+
+```bash
+curl -X POST https://app.tryclaritia.com/api/v1/workflows/bbbbbbbb-0000-4000-8000-000000000010/contacts \
+  -H "Authorization: Bearer clr_your_key" \
+  -H "Content-Type: application/json" \
+  -d '{"email": "ada@example.com", "first_name": "Ada", "last_name": "Park"}'
+```
+
+  </TabItem>
+  <TabItem label="JavaScript">
+
+```js
+const res = await fetch(`https://app.tryclaritia.com/api/v1/workflows/${workflowId}/contacts`, {
+  method: 'POST',
+  headers: { Authorization: 'Bearer clr_your_key', 'Content-Type': 'application/json' },
+  body: JSON.stringify({ email: 'ada@example.com', first_name: 'Ada' }),
+});
+const { added, contact_id } = await res.json();
+```
+
+  </TabItem>
+  <TabItem label="Python">
+
+```python
+import requests
+
+res = requests.post(
+    f"https://app.tryclaritia.com/api/v1/workflows/{workflow_id}/contacts",
+    headers={"Authorization": "Bearer clr_your_key"},
+    json={"email": "ada@example.com", "first_name": "Ada"},
+)
+print(res.json())
+```
+
+  </TabItem>
+</Tabs>
+
+### Response
+
+`200 OK`
+
+```json
+{ "added": true, "contact_id": "7c0e1f52-3d1b-4b8e-9a51-2f7f0c3b6d10" }
+```
+
+| Field | Type | Description |
+| - | - | - |
+| `added` | boolean | `true` when a run started. `false` when the workflow's enroll rules kept the person out, or they're already in it today. |
+| `contact_id` | string | The contact's id, found or new. |
+
+The same re-entry rules apply as for any other way in. A workflow set to **once** lets each person in one time. A workflow set to **repeat** lets them in again after its gap in days, 30 by default.
+
+<Aside type="note">
+Only live workflows take people. Publish the workflow in the app first, or the call answers `409`.
+</Aside>
+
+## Errors
+
+| Status | `error` |
+| - | - |
+| 400 | `Send a valid email.` |
+| 401 | `This API key is wrong or was revoked.` |
+| 404 | `Workflow not found.` |
+| 409 | `Make the workflow live first.` |
+| 429 | `Too many calls. Wait a minute.` |
+| 500 | `Couldn't save the contact. Try again.` |
+| 500 | `Couldn't add them. Try again.` |
+| 500 | `Couldn't read the workflows. Try again.` |
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Workflows" href="/email/workflows/" description="Build and publish workflows in the app." />
+  <LinkCard title="Triggers and steps" href="/email/triggers-and-steps/" description="Enroll rules and every step." />
+</CardGrid>

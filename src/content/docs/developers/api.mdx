@@ -9,6 +9,8 @@ import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components'
 
 The REST API lets your own code, or an automation app, read what comes into Claritia and act on it. Every call uses an API key from your workspace.
 
+For every field, parameter and error, see the [API reference](/api-reference/).
+
 ## Make an API key
 
 <Steps>
@@ -114,6 +116,7 @@ Errors come back as JSON with one plain line: `{ "error": "Workflow not found." 
 ## Next steps
 
 <CardGrid>
+  <LinkCard title="API reference" href="/api-reference/" description="Every endpoint, field and error." />
   <LinkCard title="Connect your AI app" href="/developers/mcp/" description="Use Claritia from Claude, ChatGPT or Cursor." />
   <LinkCard title="Embed script" href="/forms/share-and-embed/#for-developers" description="Forms and calendars on your own site." />
 </CardGrid>

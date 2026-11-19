@@ -1,0 +1,174 @@
+---
+title: "POST /hooks and DELETE /hooks/{id}"
+description: "Subscribe an https address to Claritia events (form fills, meetings and routing results), get its signing secret, limit it to some forms, and unsubscribe. REST hooks as Zapier and Make use them."
+sidebar:
+  label: "POST /hooks"
+  order: 6
+---
+
+import { Aside, CardGrid, LinkCard, TabItem, Tabs } from '@astrojs/starlight/components';
+
+A hook sends a signed `POST` to your address each time an event happens. Zapier, Make and Activepieces subscribe hooks this way when you turn on a Zap or scenario. You can do the same from your own code.
+
+## POST /hooks
+
+```http
+POST https://app.tryclaritia.com/api/v1/hooks
+Content-Type: application/json
+```
+
+### Body
+
+| Name | Type | Required | Description |
+| - | - | - | - |
+| `url` | string | Yes | Where to send. Must start with `https://`, have no name or password in it, and be up to 2,000 characters. Claritia also reads `target_url` or `hookUrl`. |
+| `event` | string | One of these | One event kind. |
+| `events` | array | One of these | Several event kinds. |
+| `form` | string | No | A form id. Only fills from this form are sent. |
+| `forms` | array | No | Up to 50 form ids. Only for `form.submitted`. |
+| `description` | string | No | A note, up to 120 characters. |
+
+The event kinds are `form.submitted`, `meeting.booked`, `meeting.rescheduled`, `meeting.canceled`, `meeting.held`, `meeting.no_show` and `lead.routed`.
+
+With no `form` or `forms`, a `form.submitted` hook gets fills from every form.
+
+### Request
+
+<Tabs syncKey="lang">
+  <TabItem label="curl">
+
+```bash
+curl -X POST https://app.tryclaritia.com/api/v1/hooks \
+  -H "Authorization: Bearer clr_your_key" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "url": "https://example.com/claritia",
+    "events": ["form.submitted"],
+    "forms": ["aaaaaaaa-0000-4000-8000-000000000002"],
+    "description": "Demo requests to our dashboard"
+  }'
+```
+
+  </TabItem>
+  <TabItem label="JavaScript">
+
+```js
+const res = await fetch('https://app.tryclaritia.com/api/v1/hooks', {
+  method: 'POST',
+  headers: { Authorization: 'Bearer clr_your_key', 'Content-Type': 'application/json' },
+  body: JSON.stringify({ url: 'https://example.com/claritia', event: 'meeting.booked' }),
+});
+const { id, secret } = await res.json(); // keep both
+```
+
+  </TabItem>
+  <TabItem label="Python">
+
+```python
+import requests
+
+res = requests.post(
+    "https://app.tryclaritia.com/api/v1/hooks",
+    headers={"Authorization": "Bearer clr_your_key"},
+    json={"url": "https://example.com/claritia", "event": "lead.routed"},
+)
+hook = res.json()
+```
+
+  </TabItem>
+</Tabs>
+
+### Response
+
+`201 Created`
+
+```json
+{
+  "id": "d5c3a1e0-7f4b-4a2e-9c6d-1b8e0f2a3c4d",
+  "secret": "whsec_kY7m2Qe9...",
+  "events": ["form.submitted"],
+  "forms": ["aaaaaaaa-0000-4000-8000-000000000002"]
+}
+```
+
+| Field | Type | Description |
+| - | - | - |
+| `id` | string | The hook's id. Send it to `DELETE /hooks/{id}` to unsubscribe. |
+| `secret` | string | The signing secret, `whsec_` and 43 characters. It's shown only here. Keep it to check each send's signature. |
+| `events` | array | The events the hook listens to. |
+| `forms` | array | The forms it's limited to. `[]` means every form. |
+
+### What gets sent
+
+Each event is a signed `POST` with a JSON body like this:
+
+```json
+{
+  "id": "evt_44444444cccc40008000000000000000",
+  "event": "form.submitted",
+  "created_at": "2026-11-18T15:04:11.220Z",
+  "workspace_id": "00000000-0000-4000-8000-000000000001",
+  "test": false,
+  "data": { "fill": { "id": "44444444-cccc-4000-8000-000000000000", "...": "..." } }
+}
+```
+
+`data` holds `fill` for fills, `meeting` for meeting events and `lead` for routing results. Each has the same fields as the items from [`GET /events`](/api-reference/events/). See [Webhook events](/api-reference/webhook-events/) for headers, signatures and retries.
+
+- A fill's first try waits 5 seconds, so its contact and uploads are in.
+- A booking's first try waits a minute, so the video link from the calendar event is in.
+- Fills in **Spam**, test fills and fills past your plan's monthly limit are never sent.
+- If your address answers `410 Gone`, Claritia removes the hook, as REST hooks expect.
+
+## DELETE /hooks/\{id\}
+
+```http
+DELETE https://app.tryclaritia.com/api/v1/hooks/{id}
+```
+
+| Name | In | Type | Required | Description |
+| - | - | - | - | - |
+| `id` | path | string | Yes | The hook's id, from `POST /hooks`. |
+
+```bash
+curl -X DELETE https://app.tryclaritia.com/api/v1/hooks/d5c3a1e0-7f4b-4a2e-9c6d-1b8e0f2a3c4d \
+  -H "Authorization: Bearer clr_your_key"
+```
+
+`200 OK`
+
+```json
+{ "removed": true }
+```
+
+`removed` is `false` when the hook was already gone. The call still answers `200`, so an app's retry never fails.
+
+<Aside type="note">
+Revoking the key that made a hook removes the hook too. Hooks made by Zapier or Make go away when you revoke that app's key in **Settings**, then **API keys**.
+</Aside>
+
+## Errors
+
+| Status | `error` |
+| - | - |
+| 400 | `Send the hook's address as url, starting with https://.` |
+| 400 | `Hooks need an https:// address.` |
+| 400 | `Take the name and password out of the address.` |
+| 400 | `That address is too long.` |
+| 400 | `Pick an event: form.submitted, meeting.booked, meeting.rescheduled, meeting.canceled, meeting.held, meeting.no_show, lead.routed.` |
+| 400 | `Up to 50 forms per hook.` |
+| 400 | `A form must be a form id.` |
+| 400 | `Only form.submitted hooks take forms.` |
+| 401 | `This API key was revoked.` |
+| 404 | `Form not found.` One of the `forms` isn't in this workspace. |
+| 404 | `Hook not found.` The `id` in `DELETE` isn't a hook id. |
+| 409 | `This workspace has 200 hooks. Remove one first.` |
+| 500 | `Couldn't add the hook. Try again.` |
+| 500 | `Couldn't remove the hook. Try again.` |
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Webhook events" href="/api-reference/webhook-events/" description="Payloads, signatures and retries." />
+  <LinkCard title="GET /events" href="/api-reference/events/" description="Read recent events to test a hook." />
+</CardGrid>
