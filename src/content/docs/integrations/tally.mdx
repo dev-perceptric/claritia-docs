@@ -1,0 +1,100 @@
+---
+title: "Tally"
+description: "Connect Tally to Claritia to bring Tally answers into Claritia. How to connect, what syncs and when, the access it asks for, and how to disconnect."
+sidebar:
+  label: "Tally"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+Tally is a simple, free form builder. You make a form the way you write a document, and it's popular with startups and creators.
+
+With Claritia, you can bring Tally answers into Claritia.
+
+| | |
+| - | - |
+| Category | Forms |
+| Connects with | Webhook address you paste in the tool |
+| Used in | Settings › Integrations |
+| Who can connect | Workspace owners |
+| Plan | Starter and up (listed on the pricing page; check) |
+
+## Connect Tally
+
+Only workspace owners can connect or disconnect tools. Other members see the card and its state.
+
+<Steps>
+
+1. **Open Integrations**
+
+   Go to **Settings**, then **Integrations**. Type "Tally" in **Search integrations**, or pick **Forms** in the category menu.
+
+1. **Click Connect**
+
+   The Tally sheet opens with one field, **Signing secret**. Type a long random secret, or the one you set in Tally, and click **Get the webhook URL**.
+
+1. **Copy the webhook address**
+
+   The address is shown under the card with a **Copy** button. Later, click **Webhook URL** on the card to see it again.
+
+1. **Paste it in Tally**
+
+   Add a webhook in Tally with that address. See the steps below.
+
+</Steps>
+
+### Add the webhook in Tally
+
+The steps in Tally's own screens may change. Check them against Tally's help pages.
+
+<Steps>
+
+1. **Open the form in Tally**
+
+   Open the form, then **Integrations**, then **Webhooks**. Click **Connect** and paste Claritia's address.
+
+1. **Set the signing secret**
+
+   Turn on **Signing secret** and use the same text you typed in Claritia.
+
+1. **Test it**
+
+   Fill the form once. The fill comes into Claritia within seconds.
+
+</Steps>
+
+## What Claritia can do in Tally
+
+When you connect, Claritia asks for this access:
+
+- Claritia only receives the answers Tally sends to it.
+- Claritia can't see or change anything else in your Tally account.
+
+## What happens to each fill
+
+Each fill in Tally is sent to Claritia the moment it's made. Claritia matches the person by email, so a person who fills two forms stays one person. Answers come in by their question titles. Claritia never reads anything from Tally on its own.
+
+## What syncs
+
+| | |
+| - | - |
+| Direction | Tally to Claritia, by webhook. |
+| What's sent | Each fill's answers, by question title, and any hidden fields. |
+| When | Within seconds of each fill or booking. Claritia never polls. |
+
+## What teams use it for
+
+- Keep using Tally forms and still get every answer into Claritia.
+- Send Tally leads to your CRM, email lists and workflows through Claritia.
+- Book meetings for people who fill your Tally forms.
+
+## Disconnect
+
+In **Settings**, then **Integrations**, click **Disconnect** on the Tally card and confirm **Disconnect Tally?**. The webhook address stops working, so also remove the webhook in Tally.
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Integrations" href="/integrations/" description="Every tool you can connect." />
+  <LinkCard title="All integrations" href="/integrations/" description="Every tool Claritia connects to." />
+</CardGrid>

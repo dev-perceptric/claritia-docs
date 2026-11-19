@@ -1,0 +1,97 @@
+---
+title: "PostHog"
+description: "Connect PostHog to Claritia to send form fills to PostHog as events. How to connect, what syncs and when, the access it asks for, and how to disconnect."
+sidebar:
+  label: "PostHog"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+PostHog is a product analytics tool. Teams use it to see what people do in their app, watch session replays and turn features on and off.
+
+With Claritia, you can send form fills to PostHog as events.
+
+| | |
+| - | - |
+| Category | Analytics and ads |
+| Connects with | A key from your PostHog account |
+| Used in | A form's **Sync** tab and workflow steps |
+| Who can connect | Workspace owners |
+| Plan | Starter and up (listed on the pricing page; check) |
+
+## Connect PostHog
+
+Only workspace owners can connect or disconnect tools. Other members see the card and its state.
+
+<Steps>
+
+1. **Open Integrations**
+
+   Go to **Settings**, then **Integrations**. Type "PostHog" in **Search integrations**, or pick **Analytics and ads** in the category menu.
+
+1. **Click Connect**
+
+   PostHog has no sign-in for apps like Claritia, so the card's sheet opens a short form that asks for:
+
+   | Field | Required | Notes |
+   | - | - | - |
+   | **Project API key** | Yes |  Hidden as you type. |
+   | **PostHog address** | No | `https://us.i.posthog.com` |
+
+1. **Click Connect in the form**
+
+   The button reads **Checking…** while Claritia tests the details with PostHog. If they work, the card shows **Connected**. If not, the form shows what PostHog said.
+
+</Steps>
+
+## What Claritia can do in PostHog
+
+When you connect, Claritia asks for this access:
+
+- Send events to PostHog, like a form fill or a booked meeting.
+
+## Send fills to PostHog
+
+<Steps>
+
+1. **Open the form's Sync tab**
+
+   Open the form, click **Sync** and pick **PostHog** on the left.
+
+1. **Turn it on**
+
+   Click **Send fills to PostHog**, or switch on **Form Submitted event on each fill**. Claritia says **Fills go to PostHog now**.
+
+</Steps>
+
+Each fill sends one **Form Submitted** event. To stop, click **Remove** and confirm **Stop sending fills to PostHog?**.
+
+### Send an event from a workflow
+
+In a workflow, add the **Analytics event** step, in the **Outside** group. Under **Pick a tool**, choose PostHog, and type an **Event name**, like `Meeting Booked`. Until a tool is connected, the step says **Connect Segment, PostHog, Mixpanel or Amplitude first**.
+
+## What syncs
+
+| | |
+| - | - |
+| Direction | Claritia to PostHog. |
+| What's sent | A **Form Submitted** event for each fill, and any event a workflow's **Analytics event** step sends. |
+| When | Right after each fill. If the tool is busy or down, Claritia tries again after about 1, 5 and 30 minutes, then 2 and 6 hours. |
+| While off | Fills are kept. When you turn it on again, what it held is sent, oldest first. |
+
+## What teams use it for
+
+- See form fills and bookings in PostHog next to everything else people do.
+- Measure which pages and campaigns bring in leads.
+- Workflows can send their own events, like a lead becoming qualified.
+
+## Disconnect
+
+In **Settings**, then **Integrations**, click **Disconnect** on the PostHog card, or open the card and click it there. Confirm **Disconnect PostHog?**. Forms stop sending to it. What was already sent stays in PostHog.
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Send leads to your tools" href="/integrations/send-leads/" description="Every Sync setting in one place." />
+  <LinkCard title="All integrations" href="/integrations/" description="Every tool Claritia connects to." />
+</CardGrid>

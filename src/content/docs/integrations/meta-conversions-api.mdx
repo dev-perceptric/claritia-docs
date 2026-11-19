@@ -1,0 +1,93 @@
+---
+title: "Meta Conversions API"
+description: "Connect Meta Conversions API to Claritia to send conversions to Meta Conversions API. How to connect, what syncs and when, the access it asks for, and how to disconnect."
+sidebar:
+  label: "Meta Conversions API"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+Meta Ads runs ads on Facebook and Instagram. Businesses pay to show ads to people based on their interests, location and more.
+
+With Claritia, you can send conversions to Meta Conversions API.
+
+| | |
+| - | - |
+| Category | Analytics and ads |
+| Connects with | A key from your Meta Conversions API account |
+| Used in | A form's **Settings**, then **Tracking** |
+| Who can connect | Workspace owners |
+| Plan | Starter and up (listed on the pricing page; check) |
+
+## Connect Meta Conversions API
+
+Only workspace owners can connect or disconnect tools. Other members see the card and its state.
+
+<Steps>
+
+1. **Open Integrations**
+
+   Go to **Settings**, then **Integrations**. Type "Meta Conversions API" in **Search integrations**, or pick **Analytics and ads** in the category menu.
+
+1. **Click Connect**
+
+   Meta Conversions API has no sign-in for apps like Claritia, so the card's sheet opens a short form that asks for:
+
+   | Field | Required | Notes |
+   | - | - | - |
+   | **Access token** | Yes |  Hidden as you type. |
+
+1. **Click Connect in the form**
+
+   The button reads **Checking…** while Claritia tests the details with Meta Conversions API. If they work, the card shows **Connected**. If not, the form shows what Meta Conversions API said.
+
+</Steps>
+
+## What Claritia can do in Meta Conversions API
+
+When you connect, Claritia asks for this access:
+
+- Send conversions to Meta, like a form fill or a booked meeting.
+
+## Send fills and bookings to Meta
+
+<Steps>
+
+1. **Open the form's Settings**
+
+   Open the form, click **Settings**, then **Tracking**.
+
+1. **Check Conversions API**
+
+   Under **Meta**, **Conversions API** says **Fills and bookings also go from the server** once Meta is connected. Before that it says **Not connected**, with a button that opens the connect form.
+
+1. **Add the Meta Pixel too**
+
+   Type your **Meta Pixel ID** under **Meta Pixel**, like `123456789012345`, so the browser and the server both report.
+
+</Steps>
+
+## What syncs
+
+| | |
+| - | - |
+| Direction | Claritia to Meta Conversions API. |
+| What's sent | Fills and bookings as conversions. |
+| When | Right after each fill or booking. |
+
+## What teams use it for
+
+- Tell Meta which ads brought in real leads, so it shows your ads to more people like them.
+- Count bookings as conversions, not just clicks.
+- Spend less to get each lead.
+
+## Disconnect
+
+In **Settings**, then **Integrations**, click **Disconnect** on the Meta Conversions API card, or open the card and click it there. Confirm **Disconnect Meta Conversions API?**. Forms stop sending to it. What was already sent stays in Meta Conversions API.
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Form settings" href="/forms/form-settings/#tracking" description="Tracking tags on each form." />
+  <LinkCard title="All integrations" href="/integrations/" description="Every tool Claritia connects to." />
+</CardGrid>

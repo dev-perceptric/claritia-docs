@@ -1,0 +1,98 @@
+---
+title: "PandaDoc"
+description: "Connect PandaDoc to Claritia to make a PandaDoc document for each form fill. How to connect, what syncs and when, the access it asks for, and how to disconnect."
+sidebar:
+  label: "PandaDoc"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+PandaDoc creates proposals, quotes and contracts that people can sign online. Sales teams use its templates to send good-looking documents in minutes.
+
+With Claritia, you can make a PandaDoc document for each form fill.
+
+| | |
+| - | - |
+| Category | Documents and files |
+| Connects with | A key from your PandaDoc account |
+| Used in | A form's **Sync** tab |
+| Who can connect | Workspace owners |
+| Plan | Starter and up (listed on the pricing page; check) |
+
+## Connect PandaDoc
+
+Only workspace owners can connect or disconnect tools. Other members see the card and its state.
+
+<Steps>
+
+1. **Open Integrations**
+
+   Go to **Settings**, then **Integrations**. Type "PandaDoc" in **Search integrations**, or pick **Documents and files** in the category menu.
+
+1. **Click Connect**
+
+   PandaDoc connects with a key from your PandaDoc account. Connect opens a secure connect page that asks for it. If that page isn't set up, the card's sheet opens a short form instead, with:
+
+   | Field | Required | Notes |
+   | - | - | - |
+   | **API key** | Yes |  Hidden as you type. |
+
+1. **Click Connect in the form**
+
+   The button reads **Checking…** while Claritia tests the details with PandaDoc. If they work, the card shows **Connected**. If not, the form shows what PandaDoc said.
+
+</Steps>
+
+## What Claritia can do in PandaDoc
+
+When you connect, Claritia asks for this access:
+
+- See your PandaDoc templates.
+- Create and send a document from a template.
+- Fill it with the person's answers.
+
+## Make a document for each fill
+
+<Steps>
+
+1. **Open the form's Sync tab**
+
+   Open the form, click **Sync** and pick **PandaDoc** on the left.
+
+1. **Turn on A document for each fill**
+
+   Switch on **A document for each fill**.
+
+1. **Pick the template**
+
+   Choose from **Pick a template**. It reads **Reading…** while Claritia loads your PandaDoc templates. Claritia says **Each fill gets [template] now**.
+
+</Steps>
+
+Answers drop into the template in the places you marked. To stop, click **Remove** and confirm **Stop making documents in PandaDoc?**.
+
+## What syncs
+
+| | |
+| - | - |
+| Direction | Claritia to PandaDoc. Claritia reads the template you pick. |
+| What's sent | A new document for each fill, made from your template, with the answers filled in. |
+| When | Right after each fill. If the tool is busy or down, Claritia tries again after about 1, 5 and 30 minutes, then 2 and 6 hours. |
+| While off | Fills are kept. When you turn it on again, what it held is sent, oldest first. |
+
+## What teams use it for
+
+- A filled form turns into a proposal or quote, sent to sign.
+- Prices and details come from the person's answers.
+- Your sales team stops building documents by hand.
+
+## Disconnect
+
+In **Settings**, then **Integrations**, click **Disconnect** on the PandaDoc card, or open the card and click it there. Confirm **Disconnect PandaDoc?**. Forms stop sending to it. What was already sent stays in PandaDoc.
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Send leads to your tools" href="/integrations/send-leads/" description="Every Sync setting in one place." />
+  <LinkCard title="All integrations" href="/integrations/" description="Every tool Claritia connects to." />
+</CardGrid>

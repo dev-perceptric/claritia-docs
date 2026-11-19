@@ -1,0 +1,100 @@
+---
+title: "Discord"
+description: "Connect Discord to Claritia to post form alerts in Discord. How to connect, what syncs and when, the access it asks for, and how to disconnect."
+sidebar:
+  label: "Discord"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+Discord is a chat app for communities and teams. Groups talk in channels by text, voice and video, and many online communities live there.
+
+With Claritia, you can post form alerts in Discord.
+
+| | |
+| - | - |
+| Category | Messages and texts |
+| Connects with | Sign in with Discord |
+| Used in | A form's **Sync** tab and workflow steps |
+| Who can connect | Workspace owners |
+| Plan | Starter and up (listed on the pricing page; check) |
+
+## Connect Discord
+
+Only workspace owners can connect or disconnect tools. Other members see the card and its state.
+
+<Steps>
+
+1. **Open Integrations**
+
+   Go to **Settings**, then **Integrations**. Type "Discord" in **Search integrations**, or pick **Messages and texts** in the category menu.
+
+1. **Click Connect**
+
+   The button reads **Opening…** while Discord's sign-in page loads. Sign in to Discord and approve Claritia.
+
+1. **Come back to Claritia**
+
+   You land back on **Integrations**. The card shows **Connected**, and the account you signed in with when there is one.
+
+</Steps>
+
+If Discord's sign-in isn't set up on Claritia's side, Connect tells you and opens a short form for a **Channel webhook address** instead. You can also open the card and click **Use a key instead**. Keys are only a fallback.
+
+Discord can sign in, or take a **Channel webhook address**, like `https://discord.com/api/webhooks/123/abc`. Alerts post to that channel.
+
+## What Claritia can do in Discord
+
+When you connect, Claritia asks for this access:
+
+- Post messages in the channel you link.
+
+## Post an alert for each fill
+
+<Steps>
+
+1. **Open the form's Sync tab**
+
+   Open the form, click **Sync** and pick **Discord** on the left.
+
+1. **Turn it on**
+
+   Click **Alert Discord on each fill**, or switch on **Alert on each fill**.
+
+1. **The channel is set**
+
+   Alerts post to the channel whose webhook address you pasted when you connected. Claritia says **Alerts go to Discord now**.
+
+</Steps>
+
+To stop, click **Remove** and confirm **Stop alerts in Discord?**.
+
+### Post from a workflow
+
+In a workflow, add the **Teams or Discord** step, in the **Outside** group. Pick Discord and write the message. It starts as "A new meeting was just booked."
+
+## What syncs
+
+| | |
+| - | - |
+| Direction | Claritia to Discord. |
+| What's sent | A message for each fill, and any message a workflow's **Teams or Discord** step sends. |
+| When | Right after each fill. If the tool is busy or down, Claritia tries again after about 1, 5 and 30 minutes, then 2 and 6 hours. |
+| While off | Fills are kept. When you turn it on again, what it held is sent, oldest first. |
+
+## What teams use it for
+
+- Get a Discord message every time someone fills a form.
+- Your community team sees new sign-ups as they happen.
+- Workflows can post updates to your server.
+
+## Disconnect
+
+In **Settings**, then **Integrations**, click **Disconnect** on the Discord card, or open the card and click it there. Confirm **Disconnect Discord?**. Forms stop sending to it. What was already sent stays in Discord.
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Send leads to your tools" href="/integrations/send-leads/" description="Every Sync setting in one place." />
+  <LinkCard title="All integrations" href="/integrations/" description="Every tool Claritia connects to." />
+</CardGrid>

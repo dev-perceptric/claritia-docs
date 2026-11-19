@@ -1,0 +1,116 @@
+---
+title: "Calendly"
+description: "Connect Calendly to Claritia to bring Calendly bookings into Claritia. How to connect, what syncs and when, the access it asks for, and how to disconnect."
+sidebar:
+  label: "Calendly"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+Calendly is a scheduling tool. People pick a time from your calendar and the meeting is booked.
+
+With Claritia, you can bring Calendly bookings into Claritia.
+
+| | |
+| - | - |
+| Category | Meetings |
+| Connects with | Webhook address you paste in the tool |
+| Used in | Settings › Integrations |
+| Who can connect | Workspace owners |
+| Plan | Starter and up (listed on the pricing page; check) |
+
+## Connect Calendly
+
+Only workspace owners can connect or disconnect tools. Other members see the card and its state.
+
+<Steps>
+
+1. **Open Integrations**
+
+   Go to **Settings**, then **Integrations**. Type "Calendly" in **Search integrations**, or pick **Meetings** in the category menu.
+
+1. **Click Connect**
+
+   The Calendly sheet opens with one field, **Signing secret**. Type a long random secret, or the one you set in Calendly, and click **Get the webhook URL**.
+
+1. **Copy the webhook address**
+
+   The address is shown under the card with a **Copy** button. Later, click **Webhook URL** on the card to see it again.
+
+1. **Paste it in Calendly**
+
+   Add a webhook in Calendly with that address. See the steps below.
+
+</Steps>
+
+### Add the webhook in Calendly
+
+Calendly has no screen for webhooks, so you make one with Calendly's API. Calendly webhooks need a paid Calendly plan (check).
+
+<Steps>
+
+1. **Make a signing key**
+
+   Make a long random text, for example with `openssl rand -hex 32`. Use it as Claritia's **Signing secret** when you click Connect.
+
+1. **Get a Calendly token**
+
+   In Calendly, open **Integrations**, then **API & Webhooks**, and make a **Personal access token** (check).
+
+1. **Find your organization**
+
+   ```bash
+   curl -s https://api.calendly.com/users/me -H "Authorization: Bearer <token>"
+   ```
+
+   Copy `current_organization` from the answer.
+
+1. **Make the webhook**
+
+   ```bash
+   curl -s -X POST https://api.calendly.com/webhook_subscriptions \
+     -H "Authorization: Bearer <token>" -H "Content-Type: application/json" \
+     -d '{"url":"<address from Claritia>","events":["invitee.created"],"organization":"<current_organization>","scope":"organization","signing_key":"<your signing key>"}'
+   ```
+
+1. **Test it**
+
+   Book a test meeting on your Calendly page. The guest comes into Claritia with their answers.
+
+</Steps>
+
+## What Claritia can do in Calendly
+
+When you connect, Claritia asks for this access:
+
+- Claritia only receives the bookings Calendly sends to it.
+- Claritia can't see or change anything else in your Calendly account.
+
+## What happens to each booking
+
+Each booking in Calendly is sent to Claritia the moment it's made. Claritia matches the guest by email and links the booking to the form fill that came before it. Claritia never reads anything from Calendly on its own.
+
+## What syncs
+
+| | |
+| - | - |
+| Direction | Calendly to Claritia, by webhook. |
+| What's sent | Each booking's guest, time and answers to the booking questions. |
+| When | Within seconds of each fill or booking. Claritia never polls. |
+
+## What teams use it for
+
+- See Calendly bookings next to the form fill that came before them.
+- Start a Claritia workflow when someone books, like a reminder or a follow-up.
+- Move to Claritia's own booking pages at your own pace.
+
+## Disconnect
+
+In **Settings**, then **Integrations**, click **Disconnect** on the Calendly card and confirm **Disconnect Calendly?**. The webhook address stops working, so also remove the webhook in Calendly.
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Integrations" href="/integrations/" description="Every tool you can connect." />
+  <LinkCard title="All integrations" href="/integrations/" description="Every tool Claritia connects to." />
+</CardGrid>

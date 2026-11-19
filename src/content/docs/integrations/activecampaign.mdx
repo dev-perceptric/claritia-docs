@@ -1,0 +1,108 @@
+---
+title: "ActiveCampaign"
+description: "Connect ActiveCampaign to Claritia to add form sign-ups to a ActiveCampaign list. How to connect, what syncs and when, the access it asks for, and how to disconnect."
+sidebar:
+  label: "ActiveCampaign"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+ActiveCampaign is an email marketing and automation tool. Teams use it to send email sequences that react to what people do.
+
+With Claritia, you can add form sign-ups to a ActiveCampaign list.
+
+| | |
+| - | - |
+| Category | Email lists |
+| Connects with | A key from your ActiveCampaign account |
+| Used in | A form's **Sync** tab |
+| Who can connect | Workspace owners |
+| Plan | Starter and up (listed on the pricing page; check) |
+
+## Connect ActiveCampaign
+
+Only workspace owners can connect or disconnect tools. Other members see the card and its state.
+
+<Steps>
+
+1. **Open Integrations**
+
+   Go to **Settings**, then **Integrations**. Type "ActiveCampaign" in **Search integrations**, or pick **Email lists** in the category menu.
+
+1. **Click Connect**
+
+   ActiveCampaign connects with a key from your ActiveCampaign account. Connect opens a secure connect page that asks for it. If that page isn't set up, the card's sheet opens a short form instead, with:
+
+   | Field | Required | Notes |
+   | - | - | - |
+   | **API URL** | Yes | `https://you.api-us1.com` |
+   | **API key** | Yes |  Hidden as you type. |
+
+1. **Click Connect in the form**
+
+   The button reads **Checking…** while Claritia tests the details with ActiveCampaign. If they work, the card shows **Connected**. If not, the form shows what ActiveCampaign said.
+
+</Steps>
+
+## What Claritia can do in ActiveCampaign
+
+When you connect, Claritia asks for this access:
+
+- See your ActiveCampaign lists.
+- Add new subscribers to the list you choose.
+- Update subscribers who are already on that list.
+
+## Add a form's sign-ups to a ActiveCampaign list
+
+<Steps>
+
+1. **Open the form's Sync tab**
+
+   Open the form, click **Sync** and pick **ActiveCampaign** on the left.
+
+1. **Turn it on**
+
+   Click **Add leads to ActiveCampaign**.
+
+1. **Pick the list**
+
+   Choose from **Pick a list**. The menu reads **Reading…** while Claritia loads your lists from ActiveCampaign. Claritia confirms with **Leads join [name] now**.
+
+1. **Choose who subscribes**
+
+   Set **Subscribe** to **Everyone** or **Who ticked consent**.
+
+1. **Add tags**
+
+   Under **Tags**, type a tag in **Add a tag** and press Enter. Each new person gets those tags in ActiveCampaign. Click a tag's x to remove it.
+
+</Steps>
+
+To stop, click **Turn off** under **Stop sending to ActiveCampaign** and confirm **Stop adding leads to ActiveCampaign?**. Fills stay in Claritia.
+
+## What syncs
+
+| | |
+| - | - |
+| Direction | Claritia to ActiveCampaign. Claritia reads your lists so you can pick one. |
+| What's sent | The person's email and name, their consent, and your tags. |
+| Match | By email. People already on the list are updated. |
+| When | Right after each fill. If the tool is busy or down, Claritia tries again after about 1, 5 and 30 minutes, then 2 and 6 hours. |
+| While off | Fills are kept. When you turn it on again, what it held is sent, oldest first. |
+
+## What teams use it for
+
+- Form sign-ups join your ActiveCampaign list and start your automations.
+- A returning contact gets updated with their newest answers.
+- Leads from different forms can go onto different lists.
+
+## Disconnect
+
+In **Settings**, then **Integrations**, click **Disconnect** on the ActiveCampaign card, or open the card and click it there. Confirm **Disconnect ActiveCampaign?**. Forms stop sending to it. What was already sent stays in ActiveCampaign.
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Send leads to your tools" href="/integrations/send-leads/" description="Every Sync setting in one place." />
+  <LinkCard title="All integrations" href="/integrations/" description="Every tool Claritia connects to." />
+</CardGrid>

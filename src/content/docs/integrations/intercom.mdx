@@ -1,0 +1,99 @@
+---
+title: "Intercom"
+description: "Connect Intercom to Claritia to make a Intercom conversation for each form fill. How to connect, what syncs and when, the access it asks for, and how to disconnect."
+sidebar:
+  label: "Intercom"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+Intercom is a customer messaging tool. Teams use it to chat with customers for sales and support.
+
+With Claritia, you can make a Intercom conversation for each form fill.
+
+| | |
+| - | - |
+| Category | Tasks and tickets |
+| Connects with | Sign in with Intercom |
+| Used in | A form's **Sync** tab |
+| Who can connect | Workspace owners |
+| Plan | Starter and up (listed on the pricing page; check) |
+
+## Connect Intercom
+
+Only workspace owners can connect or disconnect tools. Other members see the card and its state.
+
+<Steps>
+
+1. **Open Integrations**
+
+   Go to **Settings**, then **Integrations**. Type "Intercom" in **Search integrations**, or pick **Tasks and tickets** in the category menu.
+
+1. **Click Connect**
+
+   The button reads **Opening…** while Intercom's sign-in page loads. Sign in to Intercom and approve Claritia.
+
+1. **Come back to Claritia**
+
+   You land back on **Integrations**. The card shows **Connected**, and the account you signed in with when there is one.
+
+</Steps>
+
+If Intercom's sign-in isn't set up on Claritia's side, Connect tells you and opens a short form for an **Access token** instead. You can also open the card and click **Use a key instead**. Keys are only a fallback.
+
+## What Claritia can do in Intercom
+
+When you connect, Claritia asks for this access:
+
+- See your Intercom workspace.
+- Create a new conversation for every form fill.
+- Find conversations it made before, so it never makes the same one twice.
+
+## Make a Intercom conversation for each fill
+
+<Steps>
+
+1. **Open the form's Sync tab**
+
+   Open the form, click **Sync** and pick **Intercom** on the left.
+
+1. **Turn it on**
+
+   Click **Send rows to Intercom**.
+
+1. **Pick the inbox**
+
+   Choose from **Pick a inbox**. It reads **Reading…** while Claritia loads them from Intercom. Claritia says **Fills go to [name] now**.
+
+</Steps>
+
+Each fill becomes one conversation in that inbox, with every answer inside.
+
+To switch, use **Use another table** or pick again. To stop, click **Turn off** and confirm. Fills stay in Claritia.
+
+## What syncs
+
+| | |
+| - | - |
+| Direction | Claritia to Intercom. Claritia reads your inboxs so you can pick one. |
+| What's sent | One conversation for each fill, with every answer. |
+| Repeats | A fill sent twice still makes only one. |
+| When | Right after each fill. If the tool is busy or down, Claritia tries again after about 1, 5 and 30 minutes, then 2 and 6 hours. |
+| While off | Fills are kept. When you turn it on again, what it held is sent, oldest first. |
+
+## What teams use it for
+
+- Form fills start a conversation in Intercom, so your team can reply.
+- Support requests reach the people who answer chats.
+- Every answer from the form is inside the conversation.
+
+## Disconnect
+
+In **Settings**, then **Integrations**, click **Disconnect** on the Intercom card, or open the card and click it there. Confirm **Disconnect Intercom?**. Forms stop sending to it. What was already sent stays in Intercom.
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Send leads to your tools" href="/integrations/send-leads/" description="Every Sync setting in one place." />
+  <LinkCard title="All integrations" href="/integrations/" description="Every tool Claritia connects to." />
+</CardGrid>

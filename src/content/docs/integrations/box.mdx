@@ -1,0 +1,94 @@
+---
+title: "Box"
+description: "Connect Box to Claritia to copy uploaded files to Box. How to connect, what syncs and when, the access it asks for, and how to disconnect."
+sidebar:
+  label: "Box"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+Box is cloud storage and file sharing made for businesses. Larger companies use it because of its security controls and its record of who opened what.
+
+With Claritia, you can copy uploaded files to Box.
+
+| | |
+| - | - |
+| Category | Documents and files |
+| Connects with | Sign in with Box |
+| Used in | A form's **Sync** tab |
+| Who can connect | Workspace owners |
+| Plan | Starter and up (listed on the pricing page; check) |
+
+## Connect Box
+
+Only workspace owners can connect or disconnect tools. Other members see the card and its state.
+
+<Steps>
+
+1. **Open Integrations**
+
+   Go to **Settings**, then **Integrations**. Type "Box" in **Search integrations**, or pick **Documents and files** in the category menu.
+
+1. **Click Connect**
+
+   The button reads **Opening…** while Box's sign-in page loads. Sign in to Box and approve Claritia.
+
+1. **Come back to Claritia**
+
+   You land back on **Integrations**. The card shows **Connected**, and the account you signed in with when there is one.
+
+</Steps>
+
+## What Claritia can do in Box
+
+When you connect, Claritia asks for this access:
+
+- Create folders inside the folder you pick.
+- Upload the files people send through your forms.
+- Only work inside that folder.
+
+## Copy uploaded files to Box
+
+<Steps>
+
+1. **Open the form's Sync tab**
+
+   Open the form, click **Sync** and pick **Box** on the left. Your form needs a file upload question.
+
+1. **Turn it on**
+
+   Click **Copy files to Box**, or switch on **Copy each fill's files**.
+
+1. **Pick the folder**
+
+   Choose from **Pick a folder**. Claritia says **Files go to [folder] now**.
+
+</Steps>
+
+Each fill's files are copied into that folder in Box. To stop, click **Remove** and confirm **Stop copying files to Box?**.
+
+## What syncs
+
+| | |
+| - | - |
+| Direction | Claritia to Box. |
+| What's sent | The files people upload in the form, copied into the folder you pick. |
+| When | Right after each fill. If the tool is busy or down, Claritia tries again after about 1, 5 and 30 minutes, then 2 and 6 hours. |
+| While off | Fills are kept. When you turn it on again, what it held is sent, oldest first. |
+
+## What teams use it for
+
+- Files people upload in your forms are saved to Box automatically.
+- Each fill gets its own folder, named so you can find it.
+- Resumes, photos and documents end up where your team already looks.
+
+## Disconnect
+
+In **Settings**, then **Integrations**, click **Disconnect** on the Box card, or open the card and click it there. Confirm **Disconnect Box?**. Forms stop sending to it. What was already sent stays in Box.
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Send leads to your tools" href="/integrations/send-leads/" description="Every Sync setting in one place." />
+  <LinkCard title="All integrations" href="/integrations/" description="Every tool Claritia connects to." />
+</CardGrid>

@@ -1,0 +1,105 @@
+---
+title: "Mailchimp"
+description: "Connect Mailchimp to Claritia to add form sign-ups to a Mailchimp list. How to connect, what syncs and when, the access it asks for, and how to disconnect."
+sidebar:
+  label: "Mailchimp"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+Mailchimp is an email marketing tool for newsletters and campaigns. It's one of the most used email tools for small businesses.
+
+With Claritia, you can add form sign-ups to a Mailchimp list.
+
+| | |
+| - | - |
+| Category | Email lists |
+| Connects with | Sign in with Mailchimp |
+| Used in | A form's **Sync** tab |
+| Who can connect | Workspace owners |
+| Plan | Starter and up (listed on the pricing page; check) |
+
+## Connect Mailchimp
+
+Only workspace owners can connect or disconnect tools. Other members see the card and its state.
+
+<Steps>
+
+1. **Open Integrations**
+
+   Go to **Settings**, then **Integrations**. Type "Mailchimp" in **Search integrations**, or pick **Email lists** in the category menu.
+
+1. **Click Connect**
+
+   The button reads **Opening…** while Mailchimp's sign-in page loads. Sign in to Mailchimp and approve Claritia.
+
+1. **Come back to Claritia**
+
+   You land back on **Integrations**. The card shows **Connected**, and the account you signed in with when there is one.
+
+</Steps>
+
+If Mailchimp's sign-in isn't set up on Claritia's side, Connect tells you and opens a short form for an **API key** instead. You can also open the card and click **Use a key instead**. Keys are only a fallback.
+
+## What Claritia can do in Mailchimp
+
+When you connect, Claritia asks for this access:
+
+- See your Mailchimp lists.
+- Add new subscribers to the list you choose.
+- Update subscribers who are already on that list.
+
+## Add a form's sign-ups to a Mailchimp audience
+
+<Steps>
+
+1. **Open the form's Sync tab**
+
+   Open the form, click **Sync** and pick **Mailchimp** on the left.
+
+1. **Turn it on**
+
+   Click **Add leads to Mailchimp**.
+
+1. **Pick the audience**
+
+   Choose from **Pick a audience**. The menu reads **Reading…** while Claritia loads your audiences from Mailchimp. Claritia confirms with **Leads join [name] now**.
+
+1. **Choose who subscribes**
+
+   Set **Subscribe** to **Everyone** or **Who ticked consent**.
+
+1. **Add tags**
+
+   Under **Tags**, type a tag in **Add a tag** and press Enter. Each new person gets those tags in Mailchimp. Click a tag's x to remove it.
+
+</Steps>
+
+To stop, click **Turn off** under **Stop sending to Mailchimp** and confirm **Stop adding leads to Mailchimp?**. Fills stay in Claritia.
+
+## What syncs
+
+| | |
+| - | - |
+| Direction | Claritia to Mailchimp. Claritia reads your audiences so you can pick one. |
+| What's sent | The person's email and name, their consent, and your tags. |
+| Match | By email. People already on the audience are updated. |
+| When | Right after each fill. If the tool is busy or down, Claritia tries again after about 1, 5 and 30 minutes, then 2 and 6 hours. |
+| While off | Fills are kept. When you turn it on again, what it held is sent, oldest first. |
+
+## What teams use it for
+
+- People who sign up through your form join your Mailchimp audience.
+- Webinar sign-ups go onto their own list, so you can send reminders from Mailchimp.
+- Someone already on your list gets their details updated, not added twice.
+
+## Disconnect
+
+In **Settings**, then **Integrations**, click **Disconnect** on the Mailchimp card, or open the card and click it there. Confirm **Disconnect Mailchimp?**. Forms stop sending to it. What was already sent stays in Mailchimp.
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Send leads to your tools" href="/integrations/send-leads/" description="Every Sync setting in one place." />
+  <LinkCard title="All integrations" href="/integrations/" description="Every tool Claritia connects to." />
+</CardGrid>

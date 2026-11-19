@@ -1,0 +1,99 @@
+---
+title: "Zendesk"
+description: "Connect Zendesk to Claritia to make a Zendesk ticket for each form fill. How to connect, what syncs and when, the access it asks for, and how to disconnect."
+sidebar:
+  label: "Zendesk"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+Zendesk is a help desk. Support teams use it to answer customer questions, where every question becomes a ticket that someone owns until it's solved.
+
+With Claritia, you can make a Zendesk ticket for each form fill.
+
+| | |
+| - | - |
+| Category | Tasks and tickets |
+| Connects with | Sign in with Zendesk |
+| Used in | A form's **Sync** tab |
+| Who can connect | Workspace owners |
+| Plan | Starter and up (listed on the pricing page; check) |
+
+## Connect Zendesk
+
+Only workspace owners can connect or disconnect tools. Other members see the card and its state.
+
+<Steps>
+
+1. **Open Integrations**
+
+   Go to **Settings**, then **Integrations**. Type "Zendesk" in **Search integrations**, or pick **Tasks and tickets** in the category menu.
+
+1. **Click Connect**
+
+   The button reads **Opening…** while Zendesk's sign-in page loads. Sign in to Zendesk and approve Claritia.
+
+1. **Come back to Claritia**
+
+   You land back on **Integrations**. The card shows **Connected**, and the account you signed in with when there is one.
+
+</Steps>
+
+If Zendesk's sign-in isn't set up on Claritia's side, Connect tells you and opens a short form for a **Zendesk address** instead. You can also open the card and click **Use a key instead**. Keys are only a fallback.
+
+## What Claritia can do in Zendesk
+
+When you connect, Claritia asks for this access:
+
+- See your Zendesk account.
+- Create a new ticket for every form fill.
+- Find tickets it made before, so it never makes the same one twice.
+
+## Make a Zendesk ticket for each fill
+
+<Steps>
+
+1. **Open the form's Sync tab**
+
+   Open the form, click **Sync** and pick **Zendesk** on the left.
+
+1. **Turn it on**
+
+   Click **Send rows to Zendesk**.
+
+1. **Pick the group**
+
+   Choose from **Pick a group**. It reads **Reading…** while Claritia loads them from Zendesk. Claritia says **Fills go to [name] now**.
+
+</Steps>
+
+Each fill becomes one ticket in that group, with every answer inside.
+
+To switch, use **Use another table** or pick again. To stop, click **Turn off** and confirm. Fills stay in Claritia.
+
+## What syncs
+
+| | |
+| - | - |
+| Direction | Claritia to Zendesk. Claritia reads your groups so you can pick one. |
+| What's sent | One ticket for each fill, with every answer. |
+| Repeats | A fill sent twice still makes only one. |
+| When | Right after each fill. If the tool is busy or down, Claritia tries again after about 1, 5 and 30 minutes, then 2 and 6 hours. |
+| While off | Fills are kept. When you turn it on again, what it held is sent, oldest first. |
+
+## What teams use it for
+
+- Support forms become Zendesk tickets with every answer inside.
+- Customers get help without emailing you.
+- Your agents see the full request in one place.
+
+## Disconnect
+
+In **Settings**, then **Integrations**, click **Disconnect** on the Zendesk card, or open the card and click it there. Confirm **Disconnect Zendesk?**. Forms stop sending to it. What was already sent stays in Zendesk.
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Send leads to your tools" href="/integrations/send-leads/" description="Every Sync setting in one place." />
+  <LinkCard title="All integrations" href="/integrations/" description="Every tool Claritia connects to." />
+</CardGrid>

@@ -1,0 +1,102 @@
+---
+title: "Freshdesk"
+description: "Connect Freshdesk to Claritia to make a Freshdesk ticket for each form fill. How to connect, what syncs and when, the access it asks for, and how to disconnect."
+sidebar:
+  label: "Freshdesk"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+Freshdesk is the help desk from Freshworks. Support teams answer customer questions as tickets.
+
+With Claritia, you can make a Freshdesk ticket for each form fill.
+
+| | |
+| - | - |
+| Category | Tasks and tickets |
+| Connects with | A key from your Freshdesk account |
+| Used in | A form's **Sync** tab |
+| Who can connect | Workspace owners |
+| Plan | Starter and up (listed on the pricing page; check) |
+
+## Connect Freshdesk
+
+Only workspace owners can connect or disconnect tools. Other members see the card and its state.
+
+<Steps>
+
+1. **Open Integrations**
+
+   Go to **Settings**, then **Integrations**. Type "Freshdesk" in **Search integrations**, or pick **Tasks and tickets** in the category menu.
+
+1. **Click Connect**
+
+   Freshdesk connects with a key from your Freshdesk account. Connect opens a secure connect page that asks for it. If that page isn't set up, the card's sheet opens a short form instead, with:
+
+   | Field | Required | Notes |
+   | - | - | - |
+   | **Freshdesk address** | Yes | `acme.freshdesk.com` |
+   | **API key** | Yes |  Hidden as you type. |
+
+1. **Click Connect in the form**
+
+   The button reads **Checking…** while Claritia tests the details with Freshdesk. If they work, the card shows **Connected**. If not, the form shows what Freshdesk said.
+
+</Steps>
+
+## What Claritia can do in Freshdesk
+
+When you connect, Claritia asks for this access:
+
+- See your Freshdesk help desk.
+- Create a new ticket for every form fill.
+- Find tickets it made before, so it never makes the same one twice.
+
+## Make a Freshdesk ticket for each fill
+
+<Steps>
+
+1. **Open the form's Sync tab**
+
+   Open the form, click **Sync** and pick **Freshdesk** on the left.
+
+1. **Turn it on**
+
+   Click **Send rows to Freshdesk**.
+
+1. **Pick the group**
+
+   Choose from **Pick a group**. It reads **Reading…** while Claritia loads them from Freshdesk. Claritia says **Fills go to [name] now**.
+
+</Steps>
+
+Each fill becomes one ticket in that group, with every answer inside.
+
+To switch, use **Use another table** or pick again. To stop, click **Turn off** and confirm. Fills stay in Claritia.
+
+## What syncs
+
+| | |
+| - | - |
+| Direction | Claritia to Freshdesk. Claritia reads your groups so you can pick one. |
+| What's sent | One ticket for each fill, with every answer. |
+| Repeats | A fill sent twice still makes only one. |
+| When | Right after each fill. If the tool is busy or down, Claritia tries again after about 1, 5 and 30 minutes, then 2 and 6 hours. |
+| While off | Fills are kept. When you turn it on again, what it held is sent, oldest first. |
+
+## What teams use it for
+
+- Support forms become Freshdesk tickets.
+- Every answer from the form is inside the ticket.
+- Your support team works from one inbox.
+
+## Disconnect
+
+In **Settings**, then **Integrations**, click **Disconnect** on the Freshdesk card, or open the card and click it there. Confirm **Disconnect Freshdesk?**. Forms stop sending to it. What was already sent stays in Freshdesk.
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Send leads to your tools" href="/integrations/send-leads/" description="Every Sync setting in one place." />
+  <LinkCard title="All integrations" href="/integrations/" description="Every tool Claritia connects to." />
+</CardGrid>

@@ -1,0 +1,100 @@
+---
+title: "Amazon S3"
+description: "Connect Amazon S3 to Claritia to copy uploaded files to Amazon S3. How to connect, what syncs and when, the access it asks for, and how to disconnect."
+sidebar:
+  label: "Amazon S3"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+Amazon S3 is Amazon's storage for files of any size. Developers use it to keep files for apps and websites.
+
+With Claritia, you can copy uploaded files to Amazon S3.
+
+| | |
+| - | - |
+| Category | Documents and files |
+| Connects with | A key from your Amazon S3 account |
+| Used in | A form's **Sync** tab |
+| Who can connect | Workspace owners |
+| Plan | Starter and up (listed on the pricing page; check) |
+
+## Connect Amazon S3
+
+Only workspace owners can connect or disconnect tools. Other members see the card and its state.
+
+<Steps>
+
+1. **Open Integrations**
+
+   Go to **Settings**, then **Integrations**. Type "Amazon S3" in **Search integrations**, or pick **Documents and files** in the category menu.
+
+1. **Click Connect**
+
+   Amazon S3 has no sign-in for apps like Claritia, so the card's sheet opens a short form that asks for:
+
+   | Field | Required | Notes |
+   | - | - | - |
+   | **Bucket** | Yes |  |
+   | **Region** | Yes | `us-east-1` |
+   | **Folder in the bucket** | No | `claritia/` |
+   | **Access key ID** | Yes |  |
+   | **Secret access key** | Yes |  Hidden as you type. |
+
+1. **Click Connect in the form**
+
+   The button reads **Checking…** while Claritia tests the details with Amazon S3. If they work, the card shows **Connected**. If not, the form shows what Amazon S3 said.
+
+</Steps>
+
+## What Claritia can do in Amazon S3
+
+When you connect, Claritia asks for this access:
+
+- Write files into the bucket you choose, with the key you enter.
+
+## Copy uploaded files to Amazon S3
+
+<Steps>
+
+1. **Open the form's Sync tab**
+
+   Open the form, click **Sync** and pick **Amazon S3** on the left. Your form needs a file upload question.
+
+1. **Turn it on**
+
+   Click **Copy files to Amazon S3**, or switch on **Copy each fill's files**.
+
+1. **Pick the folder**
+
+   Choose from **Pick a folder**. Claritia says **Files go to [folder] now**.
+
+</Steps>
+
+Each fill's files are copied into that folder in Amazon S3. To stop, click **Remove** and confirm **Stop copying files to Amazon S3?**.
+
+## What syncs
+
+| | |
+| - | - |
+| Direction | Claritia to Amazon S3. |
+| What's sent | The files people upload in the form, copied into the folder you pick. |
+| When | Right after each fill. If the tool is busy or down, Claritia tries again after about 1, 5 and 30 minutes, then 2 and 6 hours. |
+| While off | Fills are kept. When you turn it on again, what it held is sent, oldest first. |
+
+## What teams use it for
+
+- Files people upload in your forms are copied to your own S3 bucket.
+- Keep every upload in storage you control.
+- Your other systems can pick up the files from S3.
+
+## Disconnect
+
+In **Settings**, then **Integrations**, click **Disconnect** on the Amazon S3 card, or open the card and click it there. Confirm **Disconnect Amazon S3?**. Forms stop sending to it. What was already sent stays in Amazon S3.
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Send leads to your tools" href="/integrations/send-leads/" description="Every Sync setting in one place." />
+  <LinkCard title="All integrations" href="/integrations/" description="Every tool Claritia connects to." />
+</CardGrid>

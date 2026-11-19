@@ -1,0 +1,122 @@
+---
+title: "Salesforce"
+description: "Connect Salesforce to Claritia to send each form lead to Salesforce as a contact. How to connect, what syncs and when, the access it asks for, and how to disconnect."
+sidebar:
+  label: "Salesforce"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+Salesforce is the CRM that most large sales teams use. It holds leads, contacts, companies and deals, and companies build their whole sales process around it.
+
+With Claritia, you can send each form lead to Salesforce as a contact.
+
+| | |
+| - | - |
+| Category | CRMs |
+| Connects with | Sign in with Salesforce |
+| Used in | A form's **Sync** tab |
+| Who can connect | Workspace owners |
+| Plan | Business (listed on the pricing page; check) |
+
+## Connect Salesforce
+
+Only workspace owners can connect or disconnect tools. Other members see the card and its state.
+
+<Steps>
+
+1. **Open Integrations**
+
+   Go to **Settings**, then **Integrations**. Type "Salesforce" in **Search integrations**, or pick **CRMs** in the category menu.
+
+1. **Click Connect**
+
+   The button reads **Opening…** while Salesforce's sign-in page loads. Sign in to Salesforce and approve Claritia.
+
+1. **Come back to Claritia**
+
+   You land back on **Integrations**. The card shows **Connected**, and the account you signed in with when there is one.
+
+</Steps>
+
+## What Claritia can do in Salesforce
+
+When you connect, Claritia asks for this access:
+
+- Create new contacts in Salesforce.
+- Update contacts that are already in Salesforce, found by their email.
+- See the people on your Salesforce team, so a new lead can get the right owner.
+
+## Send a form's leads to Salesforce
+
+<Steps>
+
+1. **Open the form's Sync tab**
+
+   Open the form and click **Sync**. The left side lists each connected tool with its state, such as **Not sending leads** or **Synced 48 this month**. Pick **Salesforce**.
+
+1. **Turn it on**
+
+   Click **Send leads to Salesforce**. Claritia says **Leads go to Salesforce now**.
+
+1. **Pick what to make**
+
+   Set **Make them as** to **Contacts** or **Leads**. Leads is the default for a new destination.
+
+1. **Choose what happens to people already there**
+
+   Under **When the email is already in Salesforce**, pick **Update it** or **Leave it**. **Make a new one** is greyed out, because Salesforce keeps one contact per email. Claritia matches people by email.
+
+1. **Set the owner**
+
+   **Owner** is **Routing's pick**, the person your form's routing or meeting assigned, or **Salesforce decides**, so Salesforce's own assignment rules pick. With Routing's pick, records Salesforce already owns keep their owner.
+
+1. **Send consent**
+
+   Turn on **Send email consent** to pass on who ticked your form's consent box, as Salesforce's subscription status.
+
+1. **Check the fields**
+
+   The **Fields** table lists each question and the **Salesforce field** it fills, or **Not sent**. Change the field on each question in **Build**. A problem shows **Fix**, and a choice question whose answers don't match Salesforce's options shows **Check choices**. Fields that match show **OK**.
+
+</Steps>
+
+### Leads that didn't arrive
+
+If a lead didn't reach Salesforce, a red line at the top of the pane says how many didn't arrive this week and why. Click **Send again** to retry them. When Salesforce turned a lead down as a duplicate, **Create anyway** makes it.
+
+### Stop sending
+
+At the bottom of the pane, **Stop sending to Salesforce** has **Turn off**. Leads keep going to Claritia, and you can click **Turn on** any time.
+
+## What syncs
+
+| | |
+| - | - |
+| Direction | Claritia to Salesforce. Claritia also reads your Salesforce users, so a lead can get an owner, and your fields, so questions can fill them. |
+| What's sent | Each fill's contact: name, email, phone, job title, company, and the answers you map to fields. The owner and consent if you turn them on. |
+| Match | By email. One person stays one record. |
+| When | Right after each fill. If the tool is busy or down, Claritia tries again after about 1, 5 and 30 minutes, then 2 and 6 hours. |
+| While off | Fills are kept. When you turn it on again, what it held is sent, oldest first. |
+
+## What teams use it for
+
+- Every form fill becomes a lead or contact in Salesforce, ready for your sales team.
+- A person who already exists in Salesforce gets updated instead of duplicated.
+- The rep Claritia routes a lead to becomes its owner in Salesforce.
+- Your answers to custom questions go into the Salesforce fields you link them to.
+
+## Disconnect
+
+In **Settings**, then **Integrations**, click **Disconnect** on the Salesforce card, or open the card and click it there. Confirm **Disconnect Salesforce?**. Forms stop sending to it. What was already sent stays in Salesforce.
+
+<Aside type="note">
+Salesforce is listed on the Business plan. Pick **Leads** or **Contacts** per form under **Make them as**.
+</Aside>
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Send leads to your tools" href="/integrations/send-leads/" description="Every Sync setting in one place." />
+  <LinkCard title="All integrations" href="/integrations/" description="Every tool Claritia connects to." />
+</CardGrid>

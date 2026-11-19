@@ -1,0 +1,91 @@
+---
+title: "Google Ads"
+description: "Connect Google Ads to Claritia to send conversions to Google Ads. How to connect, what syncs and when, the access it asks for, and how to disconnect."
+sidebar:
+  label: "Google Ads"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+Google Ads runs ads on Google Search, YouTube and across millions of websites. You pay when people click, and Google tries to show ads to people likely to buy.
+
+With Claritia, you can send conversions to Google Ads.
+
+| | |
+| - | - |
+| Category | Analytics and ads |
+| Connects with | Sign in with Google Ads |
+| Used in | A form's **Settings**, then **Tracking** |
+| Who can connect | Workspace owners |
+| Plan | Starter and up (listed on the pricing page; check) |
+
+## Connect Google Ads
+
+Only workspace owners can connect or disconnect tools. Other members see the card and its state.
+
+<Steps>
+
+1. **Open Integrations**
+
+   Go to **Settings**, then **Integrations**. Type "Google Ads" in **Search integrations**, or pick **Analytics and ads** in the category menu.
+
+1. **Click Connect**
+
+   The button reads **Opening…** while Google Ads's sign-in page loads. Sign in to Google Ads and approve Claritia.
+
+1. **Come back to Claritia**
+
+   You land back on **Integrations**. The card shows **Connected**, and the account you signed in with when there is one.
+
+</Steps>
+
+## What Claritia can do in Google Ads
+
+When you connect, Claritia asks for this access:
+
+- Send conversions to Google Ads, like a form fill or a booked meeting.
+
+## Send fills to Google Ads as offline conversions
+
+<Steps>
+
+1. **Open the form's Settings**
+
+   Open the form, click **Settings**, then **Tracking**.
+
+1. **Pick the account and action**
+
+   Under **Google Ads**, **Offline conversions** shows **Fills with a Google click ID** once connected. In **Account and action**, pick the **Google Ads account** and the **Conversion action**.
+
+1. **Add the conversion tag too**
+
+   Under **Google Ads conversion**, add the **Conversion ID and label** for the browser tag.
+
+</Steps>
+
+Only fills that came from a Google ad click carry a click ID, so only those are sent.
+
+## What syncs
+
+| | |
+| - | - |
+| Direction | Claritia to Google Ads. |
+| What's sent | Fills that carry a Google click ID, as offline conversions. |
+| When | Right after each fill or booking. |
+
+## What teams use it for
+
+- Tell Google which ads brought in real leads, so it bids smarter.
+- Count bookings as conversions, not just clicks.
+- See your true cost for each lead.
+
+## Disconnect
+
+In **Settings**, then **Integrations**, click **Disconnect** on the Google Ads card, or open the card and click it there. Confirm **Disconnect Google Ads?**. Forms stop sending to it. What was already sent stays in Google Ads.
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Form settings" href="/forms/form-settings/#tracking" description="Tracking tags on each form." />
+  <LinkCard title="All integrations" href="/integrations/" description="Every tool Claritia connects to." />
+</CardGrid>

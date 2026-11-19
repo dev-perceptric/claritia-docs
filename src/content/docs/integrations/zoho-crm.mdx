@@ -1,0 +1,113 @@
+---
+title: "Zoho CRM"
+description: "Connect Zoho CRM to Claritia to send each form lead to Zoho CRM as a contact. How to connect, what syncs and when, the access it asks for, and how to disconnect."
+sidebar:
+  label: "Zoho CRM"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+Zoho CRM is a CRM from Zoho, a company with dozens of business apps. Teams use it to manage leads, contacts and deals in one place.
+
+With Claritia, you can send each form lead to Zoho CRM as a contact.
+
+| | |
+| - | - |
+| Category | CRMs |
+| Connects with | Sign in with Zoho CRM |
+| Used in | A form's **Sync** tab |
+| Who can connect | Workspace owners |
+| Plan | Starter and up (listed on the pricing page; check) |
+
+## Connect Zoho CRM
+
+Only workspace owners can connect or disconnect tools. Other members see the card and its state.
+
+<Steps>
+
+1. **Open Integrations**
+
+   Go to **Settings**, then **Integrations**. Type "Zoho CRM" in **Search integrations**, or pick **CRMs** in the category menu.
+
+1. **Click Connect**
+
+   The button reads **Opening…** while Zoho CRM's sign-in page loads. Sign in to Zoho CRM and approve Claritia.
+
+1. **Come back to Claritia**
+
+   You land back on **Integrations**. The card shows **Connected**, and the account you signed in with when there is one.
+
+</Steps>
+
+## What Claritia can do in Zoho CRM
+
+When you connect, Claritia asks for this access:
+
+- Create new contacts in Zoho CRM.
+- Update contacts that are already in Zoho CRM, found by their email.
+- See the people on your Zoho CRM team, so a new lead can get the right owner.
+
+## Send a form's leads to Zoho CRM
+
+<Steps>
+
+1. **Open the form's Sync tab**
+
+   Open the form and click **Sync**. The left side lists each connected tool with its state, such as **Not sending leads** or **Synced 48 this month**. Pick **Zoho CRM**.
+
+1. **Turn it on**
+
+   Click **Send leads to Zoho CRM**. Claritia says **Leads go to Zoho CRM now**.
+
+1. **Choose what happens to people already there**
+
+   Under **When the email is already in Zoho CRM**, pick **Update it** or **Leave it**. **Make a new one** is greyed out, because Zoho CRM keeps one contact per email. Claritia matches people by email.
+
+1. **Set the owner**
+
+   **Owner** is **Routing's pick**, the person your form's routing or meeting assigned, or **Zoho CRM decides**, so Zoho CRM's own assignment rules pick. With Routing's pick, records Zoho CRM already owns keep their owner.
+
+1. **Send consent**
+
+   Turn on **Send email consent** to pass on who ticked your form's consent box, as Zoho CRM's subscription status.
+
+1. **Check the fields**
+
+   The **Fields** table lists each question and the **Zoho CRM field** it fills, or **Not sent**. Change the field on each question in **Build**. A problem shows **Fix**, and a choice question whose answers don't match Zoho CRM's options shows **Check choices**. Fields that match show **OK**.
+
+</Steps>
+
+### Leads that didn't arrive
+
+If a lead didn't reach Zoho CRM, a red line at the top of the pane says how many didn't arrive this week and why. Click **Send again** to retry them. When Zoho CRM turned a lead down as a duplicate, **Create anyway** makes it.
+
+### Stop sending
+
+At the bottom of the pane, **Stop sending to Zoho CRM** has **Turn off**. Leads keep going to Claritia, and you can click **Turn on** any time.
+
+## What syncs
+
+| | |
+| - | - |
+| Direction | Claritia to Zoho CRM. Claritia also reads your Zoho CRM users, so a lead can get an owner, and your fields, so questions can fill them. |
+| What's sent | Each fill's contact: name, email, phone, job title, company, and the answers you map to fields. The owner and consent if you turn them on. |
+| Match | By email. One person stays one record. |
+| When | Right after each fill. If the tool is busy or down, Claritia tries again after about 1, 5 and 30 minutes, then 2 and 6 hours. |
+| While off | Fills are kept. When you turn it on again, what it held is sent, oldest first. |
+
+## What teams use it for
+
+- Every form fill becomes a lead in Zoho CRM.
+- A returning person gets updated, not duplicated.
+- Custom questions go into the Zoho fields you link them to.
+
+## Disconnect
+
+In **Settings**, then **Integrations**, click **Disconnect** on the Zoho CRM card, or open the card and click it there. Confirm **Disconnect Zoho CRM?**. Forms stop sending to it. What was already sent stays in Zoho CRM.
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Send leads to your tools" href="/integrations/send-leads/" description="Every Sync setting in one place." />
+  <LinkCard title="All integrations" href="/integrations/" description="Every tool Claritia connects to." />
+</CardGrid>

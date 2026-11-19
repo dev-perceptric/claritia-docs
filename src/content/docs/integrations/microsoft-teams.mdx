@@ -1,0 +1,97 @@
+---
+title: "Microsoft Teams"
+description: "Connect Microsoft Teams to Claritia to post form alerts in Microsoft Teams. How to connect, what syncs and when, the access it asks for, and how to disconnect."
+sidebar:
+  label: "Microsoft Teams"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+Microsoft Teams is Microsoft's chat and meeting app for work. Teams talk in channels, share files and hold video calls, all inside Microsoft 365.
+
+With Claritia, you can post form alerts in Microsoft Teams.
+
+| | |
+| - | - |
+| Category | Messages and texts |
+| Connects with | Sign in with Microsoft Teams |
+| Used in | A form's **Sync** tab and workflow steps |
+| Who can connect | Workspace owners |
+| Plan | Starter and up (listed on the pricing page; check) |
+
+## Connect Microsoft Teams
+
+Only workspace owners can connect or disconnect tools. Other members see the card and its state.
+
+<Steps>
+
+1. **Open Integrations**
+
+   Go to **Settings**, then **Integrations**. Type "Microsoft Teams" in **Search integrations**, or pick **Messages and texts** in the category menu.
+
+1. **Click Connect**
+
+   The button reads **Opening…** while Microsoft Teams's sign-in page loads. Sign in to Microsoft Teams and approve Claritia.
+
+1. **Come back to Claritia**
+
+   You land back on **Integrations**. The card shows **Connected**, and the account you signed in with when there is one.
+
+</Steps>
+
+## What Claritia can do in Microsoft Teams
+
+When you connect, Claritia asks for this access:
+
+- See your teams and channels.
+- Post messages in the channel you pick.
+
+## Post an alert for each fill
+
+<Steps>
+
+1. **Open the form's Sync tab**
+
+   Open the form, click **Sync** and pick **Microsoft Teams** on the left.
+
+1. **Turn it on**
+
+   Click **Alert Microsoft Teams on each fill**, or switch on **Alert on each fill**.
+
+1. **Pick the channel**
+
+   Choose from **Pick a channel**. Claritia says **Alerts go to [channel] now**.
+
+</Steps>
+
+To stop, click **Remove** and confirm **Stop alerts in Microsoft Teams?**.
+
+### Post from a workflow
+
+In a workflow, add the **Teams or Discord** step, in the **Outside** group. Pick Microsoft Teams and write the message. It starts as "A new meeting was just booked."
+
+## What syncs
+
+| | |
+| - | - |
+| Direction | Claritia to Microsoft Teams. |
+| What's sent | A message for each fill, and any message a workflow's **Teams or Discord** step sends. |
+| When | Right after each fill. If the tool is busy or down, Claritia tries again after about 1, 5 and 30 minutes, then 2 and 6 hours. |
+| While off | Fills are kept. When you turn it on again, what it held is sent, oldest first. |
+
+## What teams use it for
+
+- Get a message in Teams every time someone fills a form.
+- Your sales channel hears about hot leads right away.
+- Workflows can post updates, like a meeting being booked.
+
+## Disconnect
+
+In **Settings**, then **Integrations**, click **Disconnect** on the Microsoft Teams card, or open the card and click it there. Confirm **Disconnect Microsoft Teams?**. Forms stop sending to it. What was already sent stays in Microsoft Teams.
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Send leads to your tools" href="/integrations/send-leads/" description="Every Sync setting in one place." />
+  <LinkCard title="All integrations" href="/integrations/" description="Every tool Claritia connects to." />
+</CardGrid>

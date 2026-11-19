@@ -1,0 +1,103 @@
+---
+title: "Brevo"
+description: "Connect Brevo to Claritia to add form sign-ups to a Brevo list. How to connect, what syncs and when, the access it asks for, and how to disconnect."
+sidebar:
+  label: "Brevo"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+Brevo is an email, text and chat marketing tool. It used to be called Sendinblue. Small businesses use it for newsletters, promotions and automatic welcome emails.
+
+With Claritia, you can add form sign-ups to a Brevo list.
+
+| | |
+| - | - |
+| Category | Email lists |
+| Connects with | A key from your Brevo account |
+| Used in | A form's **Sync** tab |
+| Who can connect | Workspace owners |
+| Plan | Starter and up (listed on the pricing page; check) |
+
+## Connect Brevo
+
+Only workspace owners can connect or disconnect tools. Other members see the card and its state.
+
+<Steps>
+
+1. **Open Integrations**
+
+   Go to **Settings**, then **Integrations**. Type "Brevo" in **Search integrations**, or pick **Email lists** in the category menu.
+
+1. **Click Connect**
+
+   Brevo connects with a key from your Brevo account. Connect opens a secure connect page that asks for it. If that page isn't set up, the card's sheet opens a short form instead, with:
+
+   | Field | Required | Notes |
+   | - | - | - |
+   | **API key** | Yes |  Hidden as you type. |
+
+1. **Click Connect in the form**
+
+   The button reads **Checking…** while Claritia tests the details with Brevo. If they work, the card shows **Connected**. If not, the form shows what Brevo said.
+
+</Steps>
+
+## What Claritia can do in Brevo
+
+When you connect, Claritia asks for this access:
+
+- See your Brevo lists.
+- Add new subscribers to the list you choose.
+- Update subscribers who are already on that list.
+
+## Add a form's sign-ups to a Brevo list
+
+<Steps>
+
+1. **Open the form's Sync tab**
+
+   Open the form, click **Sync** and pick **Brevo** on the left.
+
+1. **Turn it on**
+
+   Click **Add leads to Brevo**.
+
+1. **Pick the list**
+
+   Choose from **Pick a list**. The menu reads **Reading…** while Claritia loads your lists from Brevo. Claritia confirms with **Leads join [name] now**.
+
+1. **Choose who subscribes**
+
+   Set **Subscribe** to **Everyone** or **Who ticked consent**.
+
+</Steps>
+
+To stop, click **Turn off** under **Stop sending to Brevo** and confirm **Stop adding leads to Brevo?**. Fills stay in Claritia.
+
+## What syncs
+
+| | |
+| - | - |
+| Direction | Claritia to Brevo. Claritia reads your lists so you can pick one. |
+| What's sent | The person's email and name, and their consent. |
+| Match | By email. People already on the list are updated. |
+| When | Right after each fill. If the tool is busy or down, Claritia tries again after about 1, 5 and 30 minutes, then 2 and 6 hours. |
+| While off | Fills are kept. When you turn it on again, what it held is sent, oldest first. |
+
+## What teams use it for
+
+- Form sign-ups join the Brevo list you choose.
+- A returning contact gets updated, not duplicated.
+- Your Brevo campaigns reach new leads right away.
+
+## Disconnect
+
+In **Settings**, then **Integrations**, click **Disconnect** on the Brevo card, or open the card and click it there. Confirm **Disconnect Brevo?**. Forms stop sending to it. What was already sent stays in Brevo.
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Send leads to your tools" href="/integrations/send-leads/" description="Every Sync setting in one place." />
+  <LinkCard title="All integrations" href="/integrations/" description="Every tool Claritia connects to." />
+</CardGrid>

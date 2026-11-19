@@ -1,0 +1,94 @@
+---
+title: "Dropbox"
+description: "Connect Dropbox to Claritia to copy uploaded files to Dropbox. How to connect, what syncs and when, the access it asks for, and how to disconnect."
+sidebar:
+  label: "Dropbox"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+Dropbox is cloud storage for keeping and sharing files. People use it to back up files, send large files and work on shared folders with a team.
+
+With Claritia, you can copy uploaded files to Dropbox.
+
+| | |
+| - | - |
+| Category | Documents and files |
+| Connects with | Sign in with Dropbox |
+| Used in | A form's **Sync** tab |
+| Who can connect | Workspace owners |
+| Plan | Starter and up (listed on the pricing page; check) |
+
+## Connect Dropbox
+
+Only workspace owners can connect or disconnect tools. Other members see the card and its state.
+
+<Steps>
+
+1. **Open Integrations**
+
+   Go to **Settings**, then **Integrations**. Type "Dropbox" in **Search integrations**, or pick **Documents and files** in the category menu.
+
+1. **Click Connect**
+
+   The button reads **Opening…** while Dropbox's sign-in page loads. Sign in to Dropbox and approve Claritia.
+
+1. **Come back to Claritia**
+
+   You land back on **Integrations**. The card shows **Connected**, and the account you signed in with when there is one.
+
+</Steps>
+
+## What Claritia can do in Dropbox
+
+When you connect, Claritia asks for this access:
+
+- Create folders inside the folder you pick.
+- Upload the files people send through your forms.
+- Only work inside that folder.
+
+## Copy uploaded files to Dropbox
+
+<Steps>
+
+1. **Open the form's Sync tab**
+
+   Open the form, click **Sync** and pick **Dropbox** on the left. Your form needs a file upload question.
+
+1. **Turn it on**
+
+   Click **Copy files to Dropbox**, or switch on **Copy each fill's files**.
+
+1. **Pick the folder**
+
+   Choose from **Pick a folder**. Claritia says **Files go to [folder] now**.
+
+</Steps>
+
+Each fill's files are copied into that folder in Dropbox. To stop, click **Remove** and confirm **Stop copying files to Dropbox?**.
+
+## What syncs
+
+| | |
+| - | - |
+| Direction | Claritia to Dropbox. |
+| What's sent | The files people upload in the form, copied into the folder you pick. |
+| When | Right after each fill. If the tool is busy or down, Claritia tries again after about 1, 5 and 30 minutes, then 2 and 6 hours. |
+| While off | Fills are kept. When you turn it on again, what it held is sent, oldest first. |
+
+## What teams use it for
+
+- Files people upload in your forms are saved to Dropbox automatically.
+- Each fill gets its own folder, named so you can find it.
+- Resumes, photos and documents end up where your team already looks.
+
+## Disconnect
+
+In **Settings**, then **Integrations**, click **Disconnect** on the Dropbox card, or open the card and click it there. Confirm **Disconnect Dropbox?**. Forms stop sending to it. What was already sent stays in Dropbox.
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Send leads to your tools" href="/integrations/send-leads/" description="Every Sync setting in one place." />
+  <LinkCard title="All integrations" href="/integrations/" description="Every tool Claritia connects to." />
+</CardGrid>

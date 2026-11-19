@@ -1,0 +1,93 @@
+---
+title: "Twilio"
+description: "Connect Twilio to Claritia to send texts and WhatsApp messages from workflows. How to connect, what syncs and when, the access it asks for, and how to disconnect."
+sidebar:
+  label: "Twilio"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+Twilio lets businesses send text messages and make phone calls through software. Companies use it for reminders, alerts and two-way texting with customers.
+
+With Claritia, you can send texts and WhatsApp messages from workflows.
+
+| | |
+| - | - |
+| Category | Messages and texts |
+| Connects with | A key from your Twilio account |
+| Used in | Workflow steps |
+| Who can connect | Workspace owners |
+| Plan | Starter and up (listed on the pricing page; check) |
+
+## Connect Twilio
+
+Only workspace owners can connect or disconnect tools. Other members see the card and its state.
+
+<Steps>
+
+1. **Open Integrations**
+
+   Go to **Settings**, then **Integrations**. Type "Twilio" in **Search integrations**, or pick **Messages and texts** in the category menu.
+
+1. **Click Connect**
+
+   Twilio has no sign-in for apps like Claritia, so the card's sheet opens a short form that asks for:
+
+   | Field | Required | Notes |
+   | - | - | - |
+   | **Account SID** | Yes | `ACxxxxxxxx` |
+   | **Auth token** | Yes |  Hidden as you type. |
+   | **Phone number or Messaging Service SID** | Yes | `+15551234567` |
+   | **WhatsApp sender** | No | `+15551234567` |
+
+1. **Click Connect in the form**
+
+   The button reads **Checking…** while Claritia tests the details with Twilio. If they work, the card shows **Connected**. If not, the form shows what Twilio said.
+
+</Steps>
+
+The **Phone number or Messaging Service SID** is who texts come from. Add a **WhatsApp sender** only if you send WhatsApp templates.
+
+## What Claritia can do in Twilio
+
+When you connect, Claritia asks for this access:
+
+- Send text messages from your Twilio number.
+- Get replies, like STOP, so people who opt out stop getting texts.
+- See whether each text was delivered.
+
+## Text people from a workflow
+
+Twilio adds two steps to workflows, in the **Outside** group of the add menu:
+
+| Step | What it does |
+| - | - |
+| **Text message** | Texts the person's phone, with consent. Write the **Text**, like `Hi {{first_name|there}}, a reminder: we meet {{meeting_time|soon}}.` Turn on **Email if the text can't go** and add an **Email subject** to send an email instead when there's no phone or no consent. |
+| **WhatsApp** | Sends an approved WhatsApp template. Paste its **Template Content SID**, like `HXxxxxxxxx`, and fill each **Variable** in order. Needs the **WhatsApp sender** when you connect. |
+
+People who reply STOP are never texted again. Claritia reads delivery back from Twilio.
+
+## What syncs
+
+| | |
+| - | - |
+| Direction | Claritia to Twilio for texts. Twilio to Claritia for replies like STOP and for delivery. |
+| What's sent | The text or WhatsApp template from each workflow step. |
+| When | When the workflow reaches the step. |
+
+## What teams use it for
+
+- Send a text reminder before every meeting.
+- Text new leads right after they fill your form.
+- People who reply STOP are never texted again.
+
+## Disconnect
+
+In **Settings**, then **Integrations**, click **Disconnect** on the Twilio card, or open the card and click it there. Confirm **Disconnect Twilio?**. Forms stop sending to it. What was already sent stays in Twilio.
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Triggers and steps" href="/email/triggers-and-steps/" description="Every workflow step." />
+  <LinkCard title="All integrations" href="/integrations/" description="Every tool Claritia connects to." />
+</CardGrid>

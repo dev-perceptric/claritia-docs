@@ -1,0 +1,115 @@
+---
+title: "Omniscient"
+description: "Connect Omniscient to Claritia to send each form lead to Omniscient as a contact. How to connect, what syncs and when, the access it asks for, and how to disconnect."
+sidebar:
+  label: "Omniscient"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+Omniscient is a CRM with deal rooms, shared spaces where you and a buyer work through a deal together. It's made by the same team as Claritia.
+
+With Claritia, you can send each form lead to Omniscient as a contact.
+
+| | |
+| - | - |
+| Category | CRMs |
+| Connects with | Sign in with Omniscient |
+| Used in | A form's **Sync** tab |
+| Who can connect | Workspace owners |
+| Plan | Starter and up (listed on the pricing page; check) |
+
+## Connect Omniscient
+
+Only workspace owners can connect or disconnect tools. Other members see the card and its state.
+
+<Steps>
+
+1. **Open Integrations**
+
+   Go to **Settings**, then **Integrations**. Type "Omniscient" in **Search integrations**, or pick **CRMs** in the category menu.
+
+1. **Click Connect**
+
+   The button reads **Opening…** while Omniscient's sign-in page loads. Sign in to Omniscient and approve Claritia.
+
+1. **Come back to Claritia**
+
+   You land back on **Integrations**. The card shows **Connected**, and the account you signed in with when there is one.
+
+</Steps>
+
+Omniscient is made by the same team as Claritia, so it signs in with your Omniscient account. Omniscient's own **Connect** button also sends you to this card.
+
+## What Claritia can do in Omniscient
+
+When you connect, Claritia asks for this access:
+
+- Create new contacts in Omniscient.
+- Update contacts that are already in Omniscient, found by their email.
+- See the people on your Omniscient team, so a new lead can get the right owner.
+
+## Send a form's leads to Omniscient
+
+<Steps>
+
+1. **Open the form's Sync tab**
+
+   Open the form and click **Sync**. The left side lists each connected tool with its state, such as **Not sending leads** or **Synced 48 this month**. Pick **Omniscient**.
+
+1. **Turn it on**
+
+   Click **Send leads to Omniscient**. Claritia says **Leads go to Omniscient now**.
+
+1. **Choose what happens to people already there**
+
+   Under **When the email is already in Omniscient**, pick **Update it** or **Leave it**. **Make a new one** is greyed out, because Omniscient keeps one contact per email. Claritia matches people by email.
+
+1. **Set the owner**
+
+   **Owner** is **Routing's pick**, the person your form's routing or meeting assigned, or **Omniscient decides**, so Omniscient's own assignment rules pick. With Routing's pick, records Omniscient already owns keep their owner.
+
+1. **Send consent**
+
+   Turn on **Send email consent** to pass on who ticked your form's consent box, as Omniscient's subscription status.
+
+1. **Check the fields**
+
+   The **Fields** table lists each question and the **Omniscient field** it fills, or **Not sent**. Change the field on each question in **Build**. A problem shows **Fix**, and a choice question whose answers don't match Omniscient's options shows **Check choices**. Fields that match show **OK**.
+
+</Steps>
+
+### Leads that didn't arrive
+
+If a lead didn't reach Omniscient, a red line at the top of the pane says how many didn't arrive this week and why. Click **Send again** to retry them. When Omniscient turned a lead down as a duplicate, **Create anyway** makes it.
+
+### Stop sending
+
+At the bottom of the pane, **Stop sending to Omniscient** has **Turn off**. Leads keep going to Claritia, and you can click **Turn on** any time.
+
+## What syncs
+
+| | |
+| - | - |
+| Direction | Claritia to Omniscient. Claritia also reads your Omniscient users, so a lead can get an owner, and your fields, so questions can fill them. |
+| What's sent | Each fill's contact: name, email, phone, job title, company, and the answers you map to fields. The owner and consent if you turn them on. |
+| Match | By email. One person stays one record. |
+| When | Right after each fill. If the tool is busy or down, Claritia tries again after about 1, 5 and 30 minutes, then 2 and 6 hours. |
+| While off | Fills are kept. When you turn it on again, what it held is sent, oldest first. |
+
+## What teams use it for
+
+- New leads from your forms land in Omniscient as contacts.
+- Booked meetings show up next to the contact, so the deal room has the full story.
+- Returning visitors update their existing contact instead of making a new one.
+
+## Disconnect
+
+In **Settings**, then **Integrations**, click **Disconnect** on the Omniscient card, or open the card and click it there. Confirm **Disconnect Omniscient?**. Forms stop sending to it. What was already sent stays in Omniscient.
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Send leads to your tools" href="/integrations/send-leads/" description="Every Sync setting in one place." />
+  <LinkCard title="All integrations" href="/integrations/" description="Every tool Claritia connects to." />
+</CardGrid>

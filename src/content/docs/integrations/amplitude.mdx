@@ -1,0 +1,97 @@
+---
+title: "Amplitude"
+description: "Connect Amplitude to Claritia to send form fills to Amplitude as events. How to connect, what syncs and when, the access it asks for, and how to disconnect."
+sidebar:
+  label: "Amplitude"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+Amplitude is a product analytics tool. Teams use it to understand how people use their product and which changes help them stick around.
+
+With Claritia, you can send form fills to Amplitude as events.
+
+| | |
+| - | - |
+| Category | Analytics and ads |
+| Connects with | A key from your Amplitude account |
+| Used in | A form's **Sync** tab and workflow steps |
+| Who can connect | Workspace owners |
+| Plan | Starter and up (listed on the pricing page; check) |
+
+## Connect Amplitude
+
+Only workspace owners can connect or disconnect tools. Other members see the card and its state.
+
+<Steps>
+
+1. **Open Integrations**
+
+   Go to **Settings**, then **Integrations**. Type "Amplitude" in **Search integrations**, or pick **Analytics and ads** in the category menu.
+
+1. **Click Connect**
+
+   Amplitude has no sign-in for apps like Claritia, so the card's sheet opens a short form that asks for:
+
+   | Field | Required | Notes |
+   | - | - | - |
+   | **API key** | Yes |  Hidden as you type. |
+   | **Region (us or eu)** | No | `us` |
+
+1. **Click Connect in the form**
+
+   The button reads **Checking…** while Claritia tests the details with Amplitude. If they work, the card shows **Connected**. If not, the form shows what Amplitude said.
+
+</Steps>
+
+## What Claritia can do in Amplitude
+
+When you connect, Claritia asks for this access:
+
+- Send events to Amplitude, like a form fill or a booked meeting.
+
+## Send fills to Amplitude
+
+<Steps>
+
+1. **Open the form's Sync tab**
+
+   Open the form, click **Sync** and pick **Amplitude** on the left.
+
+1. **Turn it on**
+
+   Click **Send fills to Amplitude**, or switch on **Form Submitted event on each fill**. Claritia says **Fills go to Amplitude now**.
+
+</Steps>
+
+Each fill sends one **Form Submitted** event. To stop, click **Remove** and confirm **Stop sending fills to Amplitude?**.
+
+### Send an event from a workflow
+
+In a workflow, add the **Analytics event** step, in the **Outside** group. Under **Pick a tool**, choose Amplitude, and type an **Event name**, like `Meeting Booked`. Until a tool is connected, the step says **Connect Segment, PostHog, Mixpanel or Amplitude first**.
+
+## What syncs
+
+| | |
+| - | - |
+| Direction | Claritia to Amplitude. |
+| What's sent | A **Form Submitted** event for each fill, and any event a workflow's **Analytics event** step sends. |
+| When | Right after each fill. If the tool is busy or down, Claritia tries again after about 1, 5 and 30 minutes, then 2 and 6 hours. |
+| While off | Fills are kept. When you turn it on again, what it held is sent, oldest first. |
+
+## What teams use it for
+
+- See form fills and bookings in Amplitude next to everything else people do.
+- Measure which pages and campaigns bring in leads.
+- Workflows can send their own events, like a lead becoming qualified.
+
+## Disconnect
+
+In **Settings**, then **Integrations**, click **Disconnect** on the Amplitude card, or open the card and click it there. Confirm **Disconnect Amplitude?**. Forms stop sending to it. What was already sent stays in Amplitude.
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Send leads to your tools" href="/integrations/send-leads/" description="Every Sync setting in one place." />
+  <LinkCard title="All integrations" href="/integrations/" description="Every tool Claritia connects to." />
+</CardGrid>

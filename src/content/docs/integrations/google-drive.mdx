@@ -1,0 +1,94 @@
+---
+title: "Google Drive"
+description: "Connect Google Drive to Claritia to copy uploaded files to Google Drive. How to connect, what syncs and when, the access it asks for, and how to disconnect."
+sidebar:
+  label: "Google Drive"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+Google Drive is Google's cloud storage for files and folders. Teams keep their documents there and share them with each other and with clients.
+
+With Claritia, you can copy uploaded files to Google Drive.
+
+| | |
+| - | - |
+| Category | Documents and files |
+| Connects with | Sign in with Google Drive |
+| Used in | A form's **Sync** tab |
+| Who can connect | Workspace owners |
+| Plan | Starter and up (listed on the pricing page; check) |
+
+## Connect Google Drive
+
+Only workspace owners can connect or disconnect tools. Other members see the card and its state.
+
+<Steps>
+
+1. **Open Integrations**
+
+   Go to **Settings**, then **Integrations**. Type "Google Drive" in **Search integrations**, or pick **Documents and files** in the category menu.
+
+1. **Click Connect**
+
+   The button reads **Opening…** while Google Drive's sign-in page loads. Sign in to Google Drive and approve Claritia.
+
+1. **Come back to Claritia**
+
+   You land back on **Integrations**. The card shows **Connected**, and the account you signed in with when there is one.
+
+</Steps>
+
+## What Claritia can do in Google Drive
+
+When you connect, Claritia asks for this access:
+
+- Create folders inside the folder you pick.
+- Upload the files people send through your forms.
+- Only work inside that folder.
+
+## Copy uploaded files to Google Drive
+
+<Steps>
+
+1. **Open the form's Sync tab**
+
+   Open the form, click **Sync** and pick **Google Drive** on the left. Your form needs a file upload question.
+
+1. **Turn it on**
+
+   Click **Copy files to Google Drive**, or switch on **Copy each fill's files**.
+
+1. **Pick the folder**
+
+   Choose from **Pick a folder**. Claritia says **Files go to [folder] now**.
+
+</Steps>
+
+Each fill's files are copied into that folder in Google Drive. To stop, click **Remove** and confirm **Stop copying files to Google Drive?**.
+
+## What syncs
+
+| | |
+| - | - |
+| Direction | Claritia to Google Drive. |
+| What's sent | The files people upload in the form, copied into the folder you pick. |
+| When | Right after each fill. If the tool is busy or down, Claritia tries again after about 1, 5 and 30 minutes, then 2 and 6 hours. |
+| While off | Fills are kept. When you turn it on again, what it held is sent, oldest first. |
+
+## What teams use it for
+
+- Files people upload in your forms are saved to Google Drive automatically.
+- Each fill gets its own folder, named so you can find it.
+- Resumes, photos and documents end up where your team already looks.
+
+## Disconnect
+
+In **Settings**, then **Integrations**, click **Disconnect** on the Google Drive card, or open the card and click it there. Confirm **Disconnect Google Drive?**. Forms stop sending to it. What was already sent stays in Google Drive.
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Send leads to your tools" href="/integrations/send-leads/" description="Every Sync setting in one place." />
+  <LinkCard title="All integrations" href="/integrations/" description="Every tool Claritia connects to." />
+</CardGrid>

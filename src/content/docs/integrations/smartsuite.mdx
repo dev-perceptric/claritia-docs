@@ -1,0 +1,102 @@
+---
+title: "SmartSuite"
+description: "Connect SmartSuite to Claritia to make a SmartSuite record for each form fill. How to connect, what syncs and when, the access it asks for, and how to disconnect."
+sidebar:
+  label: "SmartSuite"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+SmartSuite is a work platform for projects, processes and data. Teams build their own trackers, like a hiring pipeline or a client list, without code.
+
+With Claritia, you can make a SmartSuite record for each form fill.
+
+| | |
+| - | - |
+| Category | Tasks and tickets |
+| Connects with | A key from your SmartSuite account |
+| Used in | A form's **Sync** tab |
+| Who can connect | Workspace owners |
+| Plan | Starter and up (listed on the pricing page; check) |
+
+## Connect SmartSuite
+
+Only workspace owners can connect or disconnect tools. Other members see the card and its state.
+
+<Steps>
+
+1. **Open Integrations**
+
+   Go to **Settings**, then **Integrations**. Type "SmartSuite" in **Search integrations**, or pick **Tasks and tickets** in the category menu.
+
+1. **Click Connect**
+
+   SmartSuite has no sign-in for apps like Claritia, so the card's sheet opens a short form that asks for:
+
+   | Field | Required | Notes |
+   | - | - | - |
+   | **API key** | Yes |  Hidden as you type. |
+   | **Workspace ID** | Yes |  |
+
+1. **Click Connect in the form**
+
+   The button reads **Checking…** while Claritia tests the details with SmartSuite. If they work, the card shows **Connected**. If not, the form shows what SmartSuite said.
+
+</Steps>
+
+## What Claritia can do in SmartSuite
+
+When you connect, Claritia asks for this access:
+
+- See your SmartSuite solutions and tables.
+- Create a new record for every form fill.
+- Find records it made before, so it never makes the same one twice.
+
+## Make a SmartSuite record for each fill
+
+<Steps>
+
+1. **Open the form's Sync tab**
+
+   Open the form, click **Sync** and pick **SmartSuite** on the left.
+
+1. **Turn it on**
+
+   Click **Send rows to SmartSuite**.
+
+1. **Pick the table**
+
+   Choose from **Pick a table**. It reads **Reading…** while Claritia loads them from SmartSuite. Claritia says **Fills go to [name] now**.
+
+</Steps>
+
+Each fill becomes one record in that table, with every answer inside.
+
+To switch, use **Use another table** or pick again. To stop, click **Turn off** and confirm. Fills stay in Claritia.
+
+## What syncs
+
+| | |
+| - | - |
+| Direction | Claritia to SmartSuite. Claritia reads your tables so you can pick one. |
+| What's sent | One record for each fill, with every answer. |
+| Repeats | A fill sent twice still makes only one. |
+| When | Right after each fill. If the tool is busy or down, Claritia tries again after about 1, 5 and 30 minutes, then 2 and 6 hours. |
+| While off | Fills are kept. When you turn it on again, what it held is sent, oldest first. |
+
+## What teams use it for
+
+- Every form fill becomes a record in SmartSuite.
+- Requests and applications get tracked from start to finish.
+- Your SmartSuite automations can run on new records.
+
+## Disconnect
+
+In **Settings**, then **Integrations**, click **Disconnect** on the SmartSuite card, or open the card and click it there. Confirm **Disconnect SmartSuite?**. Forms stop sending to it. What was already sent stays in SmartSuite.
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Send leads to your tools" href="/integrations/send-leads/" description="Every Sync setting in one place." />
+  <LinkCard title="All integrations" href="/integrations/" description="Every tool Claritia connects to." />
+</CardGrid>

@@ -1,0 +1,104 @@
+---
+title: "Cal.com"
+description: "Connect Cal.com to Claritia to bring Cal.com bookings into Claritia. How to connect, what syncs and when, the access it asks for, and how to disconnect."
+sidebar:
+  label: "Cal.com"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+Cal.com is an open-source scheduling tool. People pick a free time from your calendar and the meeting is booked, like Calendly, but you can host it yourself.
+
+With Claritia, you can bring Cal.com bookings into Claritia.
+
+| | |
+| - | - |
+| Category | Meetings |
+| Connects with | Webhook address you paste in the tool |
+| Used in | Settings › Integrations |
+| Who can connect | Workspace owners |
+| Plan | Starter and up (listed on the pricing page; check) |
+
+## Connect Cal.com
+
+Only workspace owners can connect or disconnect tools. Other members see the card and its state.
+
+<Steps>
+
+1. **Open Integrations**
+
+   Go to **Settings**, then **Integrations**. Type "Cal.com" in **Search integrations**, or pick **Meetings** in the category menu.
+
+1. **Click Connect**
+
+   The Cal.com sheet opens with one field, **Signing secret**. Type a long random secret, or the one you set in Cal.com, and click **Get the webhook URL**.
+
+1. **Copy the webhook address**
+
+   The address is shown under the card with a **Copy** button. Later, click **Webhook URL** on the card to see it again.
+
+1. **Paste it in Cal.com**
+
+   Add a webhook in Cal.com with that address. See the steps below.
+
+</Steps>
+
+### Add the webhook in Cal.com
+
+The steps in Cal.com's own screens may change (check).
+
+<Steps>
+
+1. **Open Webhooks**
+
+   In Cal.com, open **Settings**, then **Developer**, then **Webhooks**, and click **New**.
+
+1. **Paste the address**
+
+   Paste Claritia's address as the **Subscriber URL**. Set the event trigger to **Booking Created**.
+
+1. **Set the secret**
+
+   Set a **Secret** and use the same text you typed in Claritia's **Signing secret**. Save.
+
+1. **Test it**
+
+   Book a test meeting. The guest comes into Claritia within seconds.
+
+</Steps>
+
+## What Claritia can do in Cal.com
+
+When you connect, Claritia asks for this access:
+
+- Claritia only receives the bookings Cal.com sends to it.
+- Claritia can't see or change anything else in your Cal.com account.
+
+## What happens to each booking
+
+Each booking in Cal.com is sent to Claritia the moment it's made. Claritia matches the guest by email and links the booking to the form fill that came before it. Claritia never reads anything from Cal.com on its own.
+
+## What syncs
+
+| | |
+| - | - |
+| Direction | Cal.com to Claritia, by webhook. |
+| What's sent | Each booking's guest, time and answers to the booking questions. |
+| When | Within seconds of each fill or booking. Claritia never polls. |
+
+## What teams use it for
+
+- See Cal.com bookings next to the form fill that came before them.
+- Start a Claritia workflow when someone books, like a reminder or a follow-up.
+- Move to Claritia's own booking pages at your own pace.
+
+## Disconnect
+
+In **Settings**, then **Integrations**, click **Disconnect** on the Cal.com card and confirm **Disconnect Cal.com?**. The webhook address stops working, so also remove the webhook in Cal.com.
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Integrations" href="/integrations/" description="Every tool you can connect." />
+  <LinkCard title="All integrations" href="/integrations/" description="Every tool Claritia connects to." />
+</CardGrid>

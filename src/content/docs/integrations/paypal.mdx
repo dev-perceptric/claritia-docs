@@ -1,0 +1,100 @@
+---
+title: "PayPal"
+description: "Connect PayPal to Claritia to take PayPal payments for paid meetings. How to connect, what syncs and when, the access it asks for, and how to disconnect."
+sidebar:
+  label: "PayPal"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+PayPal is an online payments service used around the world. Many people already have an account, so they can pay without typing a card number.
+
+With Claritia, you can take PayPal payments for paid meetings.
+
+| | |
+| - | - |
+| Category | Payments |
+| Connects with | A key from your PayPal account |
+| Used in | A meeting type's **Payment** |
+| Who can connect | Workspace owners |
+| Plan | Starter and up (listed on the pricing page; check) |
+
+## Connect PayPal
+
+Only workspace owners can connect or disconnect tools. Other members see the card and its state.
+
+<Steps>
+
+1. **Open Integrations**
+
+   Go to **Settings**, then **Integrations**. Type "PayPal" in **Search integrations**, or pick **Payments** in the category menu.
+
+1. **Click Connect**
+
+   PayPal has no sign-in for apps like Claritia, so the card's sheet opens a short form that asks for:
+
+   | Field | Required | Notes |
+   | - | - | - |
+   | **Client ID** | Yes |  |
+   | **Secret** | Yes |  Hidden as you type. |
+   | **Webhook ID** | No |  |
+   | **Mode** | No | `live or sandbox` |
+
+1. **Click Connect in the form**
+
+   The button reads **Checking…** while Claritia tests the details with PayPal. If they work, the card shows **Connected**. If not, the form shows what PayPal said.
+
+</Steps>
+
+Set **Mode** to `sandbox` to test with PayPal's test accounts, or leave it empty for `live`. The **Webhook ID** lets Claritia confirm payments when a guest never comes back to the page.
+
+## What Claritia can do in PayPal
+
+When you connect, Claritia asks for this access:
+
+- Take payments for your paid meetings, paid into your PayPal account.
+
+## Take PayPal payments for meetings
+
+<Steps>
+
+1. **Open a meeting type**
+
+   Go to **Meeting types** and click the card, then **All settings**.
+
+1. **Turn on payment**
+
+   Under **Payment**, turn on **Take payment** and set the **Amount** and **Currency**.
+
+1. **Pick PayPal**
+
+   Set **Paid with** to **PayPal**. Click **Save changes**.
+
+</Steps>
+
+When a guest books, Claritia holds the time for 10 minutes and sends them to PayPal to pay. The meeting shows **Waiting on payment** until Claritia reads the payment back from PayPal. Then it's booked, and the invite and emails go out. If someone else took the time meanwhile, the payment is refunded at once. If checkout can't start, the meeting is canceled and the time freed.
+
+## What syncs
+
+| | |
+| - | - |
+| Direction | Claritia to PayPal to start checkout, then PayPal to Claritia to confirm the payment. |
+| What's sent | The meeting's name, the amount, the currency and the guest's email. |
+| When | At each booking. |
+
+## What teams use it for
+
+- Let guests pay with PayPal when they book a paid meeting.
+- Reach people who'd rather not type a card number.
+- Money goes straight to your PayPal account.
+
+## Disconnect
+
+In **Settings**, then **Integrations**, click **Disconnect** on the PayPal card, or open the card and click it there. Confirm **Disconnect PayPal?**. Forms stop sending to it. What was already sent stays in PayPal.
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Paid meetings" href="/meetings/paid-meetings/" description="Charge for meetings." />
+  <LinkCard title="All integrations" href="/integrations/" description="Every tool Claritia connects to." />
+</CardGrid>

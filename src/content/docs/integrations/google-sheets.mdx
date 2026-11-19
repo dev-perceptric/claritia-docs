@@ -1,0 +1,98 @@
+---
+title: "Google Sheets"
+description: "Connect Google Sheets to Claritia to add a row to Google Sheets for each form fill. How to connect, what syncs and when, the access it asks for, and how to disconnect."
+sidebar:
+  label: "Google Sheets"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+Google Sheets is Google's spreadsheet app. It's free, works in the browser, and many teams use it as a simple shared database.
+
+With Claritia, you can add a row to Google Sheets for each form fill.
+
+| | |
+| - | - |
+| Category | Sheets and databases |
+| Connects with | Sign in with Google Sheets |
+| Used in | A form's **Sync** tab |
+| Who can connect | Workspace owners |
+| Plan | Starter and up (listed on the pricing page; check) |
+
+## Connect Google Sheets
+
+Only workspace owners can connect or disconnect tools. Other members see the card and its state.
+
+<Steps>
+
+1. **Open Integrations**
+
+   Go to **Settings**, then **Integrations**. Type "Google Sheets" in **Search integrations**, or pick **Sheets and databases** in the category menu.
+
+1. **Click Connect**
+
+   The button reads **Opening…** while Google Sheets's sign-in page loads. Sign in to Google Sheets and approve Claritia.
+
+1. **Come back to Claritia**
+
+   You land back on **Integrations**. The card shows **Connected**, and the account you signed in with when there is one.
+
+</Steps>
+
+## What Claritia can do in Google Sheets
+
+When you connect, Claritia asks for this access:
+
+- See the spreadsheet you pick in Claritia.
+- Add a new row for every form fill.
+- Add a column when you add a new question to your form.
+
+## Send a form's fills to Google Sheets
+
+<Steps>
+
+1. **Open the form's Sync tab**
+
+   Open the form, click **Sync** and pick **Google Sheets** on the left.
+
+1. **Turn it on**
+
+   Click **Send rows to Google Sheets**.
+
+1. **Pick the sheet**
+
+   Click **Start a new sheet** to make one named after the form, or paste a sheet's link under **Use a sheet I have** and click **Use**. Claritia says **Rows go to the new sheet now** or **Rows go to that sheet now**.
+
+</Steps>
+
+Each fill becomes one row. A new question adds a column.
+
+To switch, use **Use another sheet** or pick again. To stop, click **Turn off** and confirm. Fills stay in Claritia.
+
+## What syncs
+
+| | |
+| - | - |
+| Direction | Claritia to Google Sheets. |
+| What's sent | One row for each fill, with every answer. |
+| Repeats | A fill sent twice still makes only one. |
+| When | Right after each fill. If the tool is busy or down, Claritia tries again after about 1, 5 and 30 minutes, then 2 and 6 hours. |
+| While off | Fills are kept. When you turn it on again, what it held is sent, oldest first. |
+
+## What teams use it for
+
+- Every form fill becomes a new row, so your whole team can see answers in one sheet.
+- Share the sheet with people who don't use Claritia.
+- Use Sheets formulas and charts on your form answers.
+- Fills that are sent twice still make only one row.
+
+## Disconnect
+
+In **Settings**, then **Integrations**, click **Disconnect** on the Google Sheets card, or open the card and click it there. Confirm **Disconnect Google Sheets?**. Forms stop sending to it. What was already sent stays in Google Sheets.
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Send leads to your tools" href="/integrations/send-leads/" description="Every Sync setting in one place." />
+  <LinkCard title="All integrations" href="/integrations/" description="Every tool Claritia connects to." />
+</CardGrid>

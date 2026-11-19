@@ -1,0 +1,79 @@
+---
+title: "Zoom"
+description: "Connect Zoom to Claritia so each booked meeting gets its own Zoom link on your Zoom account. How to connect, pick Zoom as a meeting's location, and disconnect."
+sidebar:
+  label: "Zoom"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+Zoom is a video meeting app. Many teams use it for sales calls, demos and client meetings.
+
+With Claritia, each meeting booked with you gets its own Zoom meeting, made on your Zoom account. The link goes in the calendar invite and the confirmation email.
+
+| | |
+| - | - |
+| Category | Video meetings |
+| Connects with | Sign in with Zoom |
+| Used in | **Meetings**, then **Availability**, then **Calendars**, and a meeting type's **Location** |
+| Who can connect | Each person connects their own Zoom |
+| Plan | Every plan |
+
+## Connect Zoom
+
+<Steps>
+
+1. **Open Availability**
+
+   In the sidebar, under **Meetings**, click **Availability**, then the **Calendars** tab.
+
+1. **Click Zoom**
+
+   Under your calendar accounts, click **Zoom**. Sign in to Zoom and approve Claritia.
+
+1. **Come back to Claritia**
+
+   Zoom shows in your list of accounts with its email. Zoom has no calendars to pick, so there's nothing else to set.
+
+</Steps>
+
+## What Claritia can do in Zoom
+
+- Make a Zoom meeting for each booking with you (`meeting:write`).
+
+Claritia doesn't read your Zoom meetings or recordings.
+
+## Give a meeting type a Zoom link
+
+<Steps>
+
+1. **Open the meeting type**
+
+   Go to **Meeting types** and click the card.
+
+1. **Pick Zoom as the location**
+
+   In **Location**, pick **Zoom**. Click **Save changes**.
+
+</Steps>
+
+Each booking now gets its own Zoom link. On a team meeting, each host who takes Zoom meetings connects their own Zoom.
+
+## What syncs
+
+| | |
+| - | - |
+| Direction | Claritia to Zoom. |
+| What's sent | The meeting's name and time, to make one Zoom meeting per booking. |
+| When | Right after each booking, with the calendar event. Moving or canceling the meeting changes the Zoom meeting too. |
+
+## Disconnect
+
+In **Calendars**, open the Zoom account's menu and click **Disconnect**. Confirm **Disconnect [email]?**. New bookings of Zoom meeting types can't get a Zoom link until you connect again, so pick another **Location** first.
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Meeting types" href="/meetings/meeting-types/" description="Locations and every other setting." />
+  <LinkCard title="Google Calendar" href="/integrations/google-calendar/" description="Busy times and events." />
+</CardGrid>

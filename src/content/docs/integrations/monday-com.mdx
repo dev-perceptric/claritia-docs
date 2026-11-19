@@ -1,0 +1,99 @@
+---
+title: "monday.com"
+description: "Connect monday.com to Claritia to make a monday.com item for each form fill. How to connect, what syncs and when, the access it asks for, and how to disconnect."
+sidebar:
+  label: "monday.com"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+monday.com is a work platform where teams plan projects on colorful boards. Each row is an item, like a task or a request, that moves through stages.
+
+With Claritia, you can make a monday.com item for each form fill.
+
+| | |
+| - | - |
+| Category | Tasks and tickets |
+| Connects with | Sign in with monday.com |
+| Used in | A form's **Sync** tab |
+| Who can connect | Workspace owners |
+| Plan | Starter and up (listed on the pricing page; check) |
+
+## Connect monday.com
+
+Only workspace owners can connect or disconnect tools. Other members see the card and its state.
+
+<Steps>
+
+1. **Open Integrations**
+
+   Go to **Settings**, then **Integrations**. Type "monday.com" in **Search integrations**, or pick **Tasks and tickets** in the category menu.
+
+1. **Click Connect**
+
+   The button reads **Opening…** while monday.com's sign-in page loads. Sign in to monday.com and approve Claritia.
+
+1. **Come back to Claritia**
+
+   You land back on **Integrations**. The card shows **Connected**, and the account you signed in with when there is one.
+
+</Steps>
+
+If monday.com's sign-in isn't set up on Claritia's side, Connect tells you and opens a short form for an **API token** instead. You can also open the card and click **Use a key instead**. Keys are only a fallback.
+
+## What Claritia can do in monday.com
+
+When you connect, Claritia asks for this access:
+
+- See your monday.com boards.
+- Create a new item for every form fill.
+- Find items it made before, so it never makes the same one twice.
+
+## Make a monday.com item for each fill
+
+<Steps>
+
+1. **Open the form's Sync tab**
+
+   Open the form, click **Sync** and pick **monday.com** on the left.
+
+1. **Turn it on**
+
+   Click **Send rows to monday.com**.
+
+1. **Pick the board**
+
+   Choose from **Pick a board**. It reads **Reading…** while Claritia loads them from monday.com. Claritia says **Fills go to [name] now**.
+
+</Steps>
+
+Each fill becomes one item in that board, with every answer inside.
+
+To switch, use **Use another table** or pick again. To stop, click **Turn off** and confirm. Fills stay in Claritia.
+
+## What syncs
+
+| | |
+| - | - |
+| Direction | Claritia to monday.com. Claritia reads your boards so you can pick one. |
+| What's sent | One item for each fill, with every answer. |
+| Repeats | A fill sent twice still makes only one. |
+| When | Right after each fill. If the tool is busy or down, Claritia tries again after about 1, 5 and 30 minutes, then 2 and 6 hours. |
+| While off | Fills are kept. When you turn it on again, what it held is sent, oldest first. |
+
+## What teams use it for
+
+- Every form fill becomes an item on your monday.com board.
+- Project requests land in the right board with all the details.
+- Your team tracks each request through to done.
+
+## Disconnect
+
+In **Settings**, then **Integrations**, click **Disconnect** on the monday.com card, or open the card and click it there. Confirm **Disconnect monday.com?**. Forms stop sending to it. What was already sent stays in monday.com.
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Send leads to your tools" href="/integrations/send-leads/" description="Every Sync setting in one place." />
+  <LinkCard title="All integrations" href="/integrations/" description="Every tool Claritia connects to." />
+</CardGrid>

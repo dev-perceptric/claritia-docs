@@ -1,0 +1,91 @@
+---
+title: "Whereby"
+description: "Connect Whereby to Claritia to give each booked meeting a Whereby link. How to connect, what syncs and when, the access it asks for, and how to disconnect."
+sidebar:
+  label: "Whereby"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+Whereby is a video meeting app that runs in the browser, with nothing to install. Guests click a link and they're in the call.
+
+With Claritia, you can give each booked meeting a Whereby link.
+
+| | |
+| - | - |
+| Category | Meetings |
+| Connects with | A key from your Whereby account |
+| Used in | A meeting type's **Location** |
+| Who can connect | Workspace owners |
+| Plan | Starter and up (listed on the pricing page; check) |
+
+## Connect Whereby
+
+Only workspace owners can connect or disconnect tools. Other members see the card and its state.
+
+<Steps>
+
+1. **Open Integrations**
+
+   Go to **Settings**, then **Integrations**. Type "Whereby" in **Search integrations**, or pick **Meetings** in the category menu.
+
+1. **Click Connect**
+
+   Whereby has no sign-in for apps like Claritia, so the card's sheet opens a short form that asks for:
+
+   | Field | Required | Notes |
+   | - | - | - |
+   | **Embedded API key** | Yes |  Hidden as you type. |
+
+1. **Click Connect in the form**
+
+   The button reads **Checking…** while Claritia tests the details with Whereby. If they work, the card shows **Connected**. If not, the form shows what Whereby said.
+
+</Steps>
+
+## What Claritia can do in Whereby
+
+When you connect, Claritia asks for this access:
+
+- Create Whereby rooms for the calls people book with you.
+
+## Use Whereby for meetings
+
+<Steps>
+
+1. **Open a meeting type**
+
+   Go to **Meeting types** and click the card.
+
+1. **Pick Whereby as the location**
+
+   In **Location**, pick **Whereby**. Click **Save changes**.
+
+</Steps>
+
+Each booking gets its own Whereby room. It's made on your team's own Whereby account, moves with the booking and is taken down when the meeting is canceled (a moved Whereby meeting gets a new room and link). The link goes in the calendar invite and the confirmation email, and in the meeting's webhook as `location.url`.
+
+## What syncs
+
+| | |
+| - | - |
+| Direction | Claritia to Whereby. |
+| What's sent | A new Whereby room for each booking. |
+| When | At each booking. |
+
+## What teams use it for
+
+- Every booked meeting gets its own Whereby link.
+- Guests join from their browser.
+- The link is in the confirmation email.
+
+## Disconnect
+
+In **Settings**, then **Integrations**, click **Disconnect** on the Whereby card, or open the card and click it there. Confirm **Disconnect Whereby?**. Forms stop sending to it. What was already sent stays in Whereby.
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Meeting types" href="/meetings/meeting-types/" description="Every meeting setting." />
+  <LinkCard title="All integrations" href="/integrations/" description="Every tool Claritia connects to." />
+</CardGrid>

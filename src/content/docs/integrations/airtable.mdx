@@ -1,0 +1,98 @@
+---
+title: "Airtable"
+description: "Connect Airtable to Claritia to add a row to Airtable for each form fill. How to connect, what syncs and when, the access it asks for, and how to disconnect."
+sidebar:
+  label: "Airtable"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+Airtable is a spreadsheet and a database in one. Teams use it to build simple apps, trackers and content calendars.
+
+With Claritia, you can add a row to Airtable for each form fill.
+
+| | |
+| - | - |
+| Category | Sheets and databases |
+| Connects with | Sign in with Airtable |
+| Used in | A form's **Sync** tab |
+| Who can connect | Workspace owners |
+| Plan | Starter and up (listed on the pricing page; check) |
+
+## Connect Airtable
+
+Only workspace owners can connect or disconnect tools. Other members see the card and its state.
+
+<Steps>
+
+1. **Open Integrations**
+
+   Go to **Settings**, then **Integrations**. Type "Airtable" in **Search integrations**, or pick **Sheets and databases** in the category menu.
+
+1. **Click Connect**
+
+   The button reads **Opening…** while Airtable's sign-in page loads. Sign in to Airtable and approve Claritia.
+
+1. **Come back to Claritia**
+
+   You land back on **Integrations**. The card shows **Connected**, and the account you signed in with when there is one.
+
+</Steps>
+
+If Airtable's sign-in isn't set up on Claritia's side, Connect tells you and opens a short form for a **Personal access token** instead. You can also open the card and click **Use a key instead**. Keys are only a fallback.
+
+## What Claritia can do in Airtable
+
+When you connect, Claritia asks for this access:
+
+- See the bases and tables you pick.
+- Add a new record for every form fill.
+- Add a field when you add a new question.
+
+## Send a form's fills to Airtable
+
+<Steps>
+
+1. **Open the form's Sync tab**
+
+   Open the form, click **Sync** and pick **Airtable** on the left.
+
+1. **Turn it on**
+
+   Click **Send rows to Airtable**.
+
+1. **Pick the table**
+
+   Choose from **Pick a table**. It reads **Reading…** while Claritia loads them from Airtable. Claritia says **Rows go to [name] now**.
+
+</Steps>
+
+Each fill becomes one row.
+
+To switch, use **Use another table** or pick again. To stop, click **Turn off** and confirm. Fills stay in Claritia.
+
+## What syncs
+
+| | |
+| - | - |
+| Direction | Claritia to Airtable. Claritia reads your tables so you can pick one. |
+| What's sent | One row for each fill, with every answer. |
+| When | Right after each fill. If the tool is busy or down, Claritia tries again after about 1, 5 and 30 minutes, then 2 and 6 hours. |
+| While off | Fills are kept. When you turn it on again, what it held is sent, oldest first. |
+
+## What teams use it for
+
+- Every form fill becomes a record in your Airtable table.
+- Turn form answers into a tracker, like job applications or event sign-ups.
+- Use Airtable views and automations on new records.
+
+## Disconnect
+
+In **Settings**, then **Integrations**, click **Disconnect** on the Airtable card, or open the card and click it there. Confirm **Disconnect Airtable?**. Forms stop sending to it. What was already sent stays in Airtable.
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Send leads to your tools" href="/integrations/send-leads/" description="Every Sync setting in one place." />
+  <LinkCard title="All integrations" href="/integrations/" description="Every tool Claritia connects to." />
+</CardGrid>

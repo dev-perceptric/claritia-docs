@@ -1,0 +1,94 @@
+---
+title: "DocuSign"
+description: "Connect DocuSign to Claritia to make a DocuSign document for each form fill. How to connect, what syncs and when, the access it asks for, and how to disconnect."
+sidebar:
+  label: "DocuSign"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+DocuSign is the most used tool for signing documents online. Businesses use it to send contracts, agreements and forms that people sign from any device.
+
+With Claritia, you can make a DocuSign document for each form fill.
+
+| | |
+| - | - |
+| Category | Documents and files |
+| Connects with | Sign in with DocuSign |
+| Used in | A form's **Sync** tab |
+| Who can connect | Workspace owners |
+| Plan | Starter and up (listed on the pricing page; check) |
+
+## Connect DocuSign
+
+Only workspace owners can connect or disconnect tools. Other members see the card and its state.
+
+<Steps>
+
+1. **Open Integrations**
+
+   Go to **Settings**, then **Integrations**. Type "DocuSign" in **Search integrations**, or pick **Documents and files** in the category menu.
+
+1. **Click Connect**
+
+   The button reads **Opening…** while DocuSign's sign-in page loads. Sign in to DocuSign and approve Claritia.
+
+1. **Come back to Claritia**
+
+   You land back on **Integrations**. The card shows **Connected**, and the account you signed in with when there is one.
+
+</Steps>
+
+## What Claritia can do in DocuSign
+
+When you connect, Claritia asks for this access:
+
+- See your DocuSign templates.
+- Send a document from a template to the person who filled your form.
+- Fill the document with their answers before it's sent.
+
+## Make a document for each fill
+
+<Steps>
+
+1. **Open the form's Sync tab**
+
+   Open the form, click **Sync** and pick **DocuSign** on the left.
+
+1. **Turn on A document for each fill**
+
+   Switch on **A document for each fill**.
+
+1. **Pick the template**
+
+   Choose from **Pick a template**. It reads **Reading…** while Claritia loads your DocuSign templates. Claritia says **Each fill gets [template] now**.
+
+</Steps>
+
+Answers drop into the template in the places you marked. To stop, click **Remove** and confirm **Stop making documents in DocuSign?**.
+
+## What syncs
+
+| | |
+| - | - |
+| Direction | Claritia to DocuSign. Claritia reads the template you pick. |
+| What's sent | A new document for each fill, made from your template, with the answers filled in. |
+| When | Right after each fill. If the tool is busy or down, Claritia tries again after about 1, 5 and 30 minutes, then 2 and 6 hours. |
+| While off | Fills are kept. When you turn it on again, what it held is sent, oldest first. |
+
+## What teams use it for
+
+- After someone fills your form, they get a contract to sign right away.
+- Their name and answers are already filled in.
+- No more sending the same agreement by hand.
+
+## Disconnect
+
+In **Settings**, then **Integrations**, click **Disconnect** on the DocuSign card, or open the card and click it there. Confirm **Disconnect DocuSign?**. Forms stop sending to it. What was already sent stays in DocuSign.
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Send leads to your tools" href="/integrations/send-leads/" description="Every Sync setting in one place." />
+  <LinkCard title="All integrations" href="/integrations/" description="Every tool Claritia connects to." />
+</CardGrid>

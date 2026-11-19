@@ -1,0 +1,111 @@
+---
+title: "MySQL"
+description: "Connect MySQL to Claritia to add a row to MySQL for each form fill. How to connect, what syncs and when, the access it asks for, and how to disconnect."
+sidebar:
+  label: "MySQL"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+MySQL is a popular open-source database. Many websites and apps, including most WordPress sites, store their data in it.
+
+With Claritia, you can add a row to MySQL for each form fill.
+
+| | |
+| - | - |
+| Category | Sheets and databases |
+| Connects with | A key from your MySQL account |
+| Used in | A form's **Sync** tab |
+| Who can connect | Workspace owners |
+| Plan | Starter and up (listed on the pricing page; check) |
+
+## Connect MySQL
+
+Only workspace owners can connect or disconnect tools. Other members see the card and its state.
+
+<Steps>
+
+1. **Open Integrations**
+
+   Go to **Settings**, then **Integrations**. Type "MySQL" in **Search integrations**, or pick **Sheets and databases** in the category menu.
+
+1. **Click Connect**
+
+   MySQL has no sign-in for apps like Claritia, so the card's sheet opens a short form that asks for:
+
+   | Field | Required | Notes |
+   | - | - | - |
+   | **Host** | Yes |  |
+   | **Port** | No | `3306` |
+   | **Database** | Yes |  |
+   | **User** | Yes |  |
+   | **Password** | Yes |  Hidden as you type. |
+
+   The form also shows a **Read-only user** box with the commands to make a user for Claritia:
+
+   ```sql
+   create user 'claritia'@'%' identified by '…' require ssl;
+   grant select, insert, create, alter on yourdb.* to 'claritia'@'%';
+   ```
+
+1. **Click Connect in the form**
+
+   The button reads **Checking…** while Claritia tests the details with MySQL. If they work, the card shows **Connected**. If not, the form shows what MySQL said.
+
+</Steps>
+
+## What Claritia can do in MySQL
+
+When you connect, Claritia asks for this access:
+
+- Connect to your MySQL database with the details you enter.
+- Read the columns of the table you choose.
+- Add a new row to that table for every form fill.
+
+## Send a form's fills to MySQL
+
+<Steps>
+
+1. **Open the form's Sync tab**
+
+   Open the form, click **Sync** and pick **MySQL** on the left.
+
+1. **Turn it on**
+
+   Click **Send rows to MySQL**.
+
+1. **Name the table**
+
+   Type a **Table name**. Claritia suggests one from the form's name, like `book_a_demo_fills`, and makes the table if it isn't there. Claritia says **Rows go to [table] now**.
+
+</Steps>
+
+Each fill becomes one row.
+
+To switch, use **Use another table** or pick again. To stop, click **Turn off** and confirm. Fills stay in Claritia.
+
+## What syncs
+
+| | |
+| - | - |
+| Direction | Claritia to MySQL. |
+| What's sent | One row for each fill, with every answer. |
+| When | Right after each fill. If the tool is busy or down, Claritia tries again after about 1, 5 and 30 minutes, then 2 and 6 hours. |
+| While off | Fills are kept. When you turn it on again, what it held is sent, oldest first. |
+
+## What teams use it for
+
+- Every form fill lands as a row in your own database.
+- Your app or reports can use form answers right away.
+- Keep a full copy of your leads in a database you control.
+
+## Disconnect
+
+In **Settings**, then **Integrations**, click **Disconnect** on the MySQL card, or open the card and click it there. Confirm **Disconnect MySQL?**. Forms stop sending to it. What was already sent stays in MySQL.
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Send leads to your tools" href="/integrations/send-leads/" description="Every Sync setting in one place." />
+  <LinkCard title="All integrations" href="/integrations/" description="Every tool Claritia connects to." />
+</CardGrid>

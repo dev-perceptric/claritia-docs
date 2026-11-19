@@ -1,0 +1,103 @@
+---
+title: "MailerLite"
+description: "Connect MailerLite to Claritia to add form sign-ups to a MailerLite list. How to connect, what syncs and when, the access it asks for, and how to disconnect."
+sidebar:
+  label: "MailerLite"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+MailerLite is a simple email marketing tool. Small businesses and creators use it to send newsletters, build sign-up lists and set up automatic emails.
+
+With Claritia, you can add form sign-ups to a MailerLite list.
+
+| | |
+| - | - |
+| Category | Email lists |
+| Connects with | A key from your MailerLite account |
+| Used in | A form's **Sync** tab |
+| Who can connect | Workspace owners |
+| Plan | Starter and up (listed on the pricing page; check) |
+
+## Connect MailerLite
+
+Only workspace owners can connect or disconnect tools. Other members see the card and its state.
+
+<Steps>
+
+1. **Open Integrations**
+
+   Go to **Settings**, then **Integrations**. Type "MailerLite" in **Search integrations**, or pick **Email lists** in the category menu.
+
+1. **Click Connect**
+
+   MailerLite connects with a key from your MailerLite account. Connect opens a secure connect page that asks for it. If that page isn't set up, the card's sheet opens a short form instead, with:
+
+   | Field | Required | Notes |
+   | - | - | - |
+   | **API token** | Yes |  Hidden as you type. |
+
+1. **Click Connect in the form**
+
+   The button reads **Checking…** while Claritia tests the details with MailerLite. If they work, the card shows **Connected**. If not, the form shows what MailerLite said.
+
+</Steps>
+
+## What Claritia can do in MailerLite
+
+When you connect, Claritia asks for this access:
+
+- See your MailerLite lists.
+- Add new subscribers to the list you choose.
+- Update subscribers who are already on that list.
+
+## Add a form's sign-ups to a MailerLite group
+
+<Steps>
+
+1. **Open the form's Sync tab**
+
+   Open the form, click **Sync** and pick **MailerLite** on the left.
+
+1. **Turn it on**
+
+   Click **Add leads to MailerLite**.
+
+1. **Pick the group**
+
+   Choose from **Pick a group**. The menu reads **Reading…** while Claritia loads your groups from MailerLite. Claritia confirms with **Leads join [name] now**.
+
+1. **Choose who subscribes**
+
+   Set **Subscribe** to **Everyone** or **Who ticked consent**.
+
+</Steps>
+
+To stop, click **Turn off** under **Stop sending to MailerLite** and confirm **Stop adding leads to MailerLite?**. Fills stay in Claritia.
+
+## What syncs
+
+| | |
+| - | - |
+| Direction | Claritia to MailerLite. Claritia reads your groups so you can pick one. |
+| What's sent | The person's email and name, and their consent. |
+| Match | By email. People already on the group are updated. |
+| When | Right after each fill. If the tool is busy or down, Claritia tries again after about 1, 5 and 30 minutes, then 2 and 6 hours. |
+| While off | Fills are kept. When you turn it on again, what it held is sent, oldest first. |
+
+## What teams use it for
+
+- Form sign-ups join your MailerLite group.
+- A returning subscriber is updated, not added twice.
+- New subscribers start your MailerLite welcome emails.
+
+## Disconnect
+
+In **Settings**, then **Integrations**, click **Disconnect** on the MailerLite card, or open the card and click it there. Confirm **Disconnect MailerLite?**. Forms stop sending to it. What was already sent stays in MailerLite.
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Send leads to your tools" href="/integrations/send-leads/" description="Every Sync setting in one place." />
+  <LinkCard title="All integrations" href="/integrations/" description="Every tool Claritia connects to." />
+</CardGrid>

@@ -1,0 +1,96 @@
+---
+title: "Excel Online"
+description: "Connect Excel Online to Claritia to add a row to Excel Online for each form fill. How to connect, what syncs and when, the access it asks for, and how to disconnect."
+sidebar:
+  label: "Excel Online"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+Excel Online is Microsoft's spreadsheet app in the browser. It saves to OneDrive or SharePoint.
+
+With Claritia, you can add a row to Excel Online for each form fill.
+
+| | |
+| - | - |
+| Category | Sheets and databases |
+| Connects with | Sign in with Excel Online |
+| Used in | A form's **Sync** tab |
+| Who can connect | Workspace owners |
+| Plan | Starter and up (listed on the pricing page; check) |
+
+## Connect Excel Online
+
+Only workspace owners can connect or disconnect tools. Other members see the card and its state.
+
+<Steps>
+
+1. **Open Integrations**
+
+   Go to **Settings**, then **Integrations**. Type "Excel Online" in **Search integrations**, or pick **Sheets and databases** in the category menu.
+
+1. **Click Connect**
+
+   The button reads **Opening…** while Excel Online's sign-in page loads. Sign in to Excel Online and approve Claritia.
+
+1. **Come back to Claritia**
+
+   You land back on **Integrations**. The card shows **Connected**, and the account you signed in with when there is one.
+
+</Steps>
+
+## What Claritia can do in Excel Online
+
+When you connect, Claritia asks for this access:
+
+- See the workbook you pick in Claritia.
+- Add a new row for every form fill.
+- Add a column when you add a new question to your form.
+
+## Send a form's fills to Excel Online
+
+<Steps>
+
+1. **Open the form's Sync tab**
+
+   Open the form, click **Sync** and pick **Excel Online** on the left.
+
+1. **Turn it on**
+
+   Click **Send rows to Excel Online**.
+
+1. **Pick the workbook**
+
+   Choose from **Pick a workbook**, or paste one's link under **Or paste its link** and click **Use**.
+
+</Steps>
+
+Each fill becomes one row.
+
+To switch, use **Use another workbook** or pick again. To stop, click **Turn off** and confirm. Fills stay in Claritia.
+
+## What syncs
+
+| | |
+| - | - |
+| Direction | Claritia to Excel Online. Claritia reads your workbooks so you can pick one. |
+| What's sent | One row for each fill, with every answer. |
+| When | Right after each fill. If the tool is busy or down, Claritia tries again after about 1, 5 and 30 minutes, then 2 and 6 hours. |
+| While off | Fills are kept. When you turn it on again, what it held is sent, oldest first. |
+
+## What teams use it for
+
+- Every form fill becomes a new row in your Excel sheet.
+- Teams on Microsoft 365 see answers without a new tool.
+- Build reports and charts in Excel from your form answers.
+
+## Disconnect
+
+In **Settings**, then **Integrations**, click **Disconnect** on the Excel Online card, or open the card and click it there. Confirm **Disconnect Excel Online?**. Forms stop sending to it. What was already sent stays in Excel Online.
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Send leads to your tools" href="/integrations/send-leads/" description="Every Sync setting in one place." />
+  <LinkCard title="All integrations" href="/integrations/" description="Every tool Claritia connects to." />
+</CardGrid>

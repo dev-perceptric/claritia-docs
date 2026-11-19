@@ -1,0 +1,99 @@
+---
+title: "Trello"
+description: "Connect Trello to Claritia to make a Trello card for each form fill. How to connect, what syncs and when, the access it asks for, and how to disconnect."
+sidebar:
+  label: "Trello"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+Trello organizes work on boards. Each task is a card that moves between lists, like To do, Doing and Done. Teams like it because it's visual and simple.
+
+With Claritia, you can make a Trello card for each form fill.
+
+| | |
+| - | - |
+| Category | Tasks and tickets |
+| Connects with | Sign in with Trello |
+| Used in | A form's **Sync** tab |
+| Who can connect | Workspace owners |
+| Plan | Starter and up (listed on the pricing page; check) |
+
+## Connect Trello
+
+Only workspace owners can connect or disconnect tools. Other members see the card and its state.
+
+<Steps>
+
+1. **Open Integrations**
+
+   Go to **Settings**, then **Integrations**. Type "Trello" in **Search integrations**, or pick **Tasks and tickets** in the category menu.
+
+1. **Click Connect**
+
+   The button reads **Opening…** while Trello's sign-in page loads. Sign in to Trello and approve Claritia.
+
+1. **Come back to Claritia**
+
+   You land back on **Integrations**. The card shows **Connected**, and the account you signed in with when there is one.
+
+</Steps>
+
+If Trello's sign-in isn't set up on Claritia's side, Connect tells you and opens a short form for an **API key** instead. You can also open the card and click **Use a key instead**. Keys are only a fallback.
+
+## What Claritia can do in Trello
+
+When you connect, Claritia asks for this access:
+
+- See your Trello boards and lists.
+- Create a new card for every form fill.
+- Find cards it made before, so it never makes the same one twice.
+
+## Make a Trello card for each fill
+
+<Steps>
+
+1. **Open the form's Sync tab**
+
+   Open the form, click **Sync** and pick **Trello** on the left.
+
+1. **Turn it on**
+
+   Click **Send rows to Trello**.
+
+1. **Pick the list**
+
+   Choose from **Pick a list**. It reads **Reading…** while Claritia loads them from Trello. Claritia says **Fills go to [name] now**.
+
+</Steps>
+
+Each fill becomes one card in that list, with every answer inside.
+
+To switch, use **Use another table** or pick again. To stop, click **Turn off** and confirm. Fills stay in Claritia.
+
+## What syncs
+
+| | |
+| - | - |
+| Direction | Claritia to Trello. Claritia reads your lists so you can pick one. |
+| What's sent | One card for each fill, with every answer. |
+| Repeats | A fill sent twice still makes only one. |
+| When | Right after each fill. If the tool is busy or down, Claritia tries again after about 1, 5 and 30 minutes, then 2 and 6 hours. |
+| While off | Fills are kept. When you turn it on again, what it held is sent, oldest first. |
+
+## What teams use it for
+
+- Every request from your form becomes a card on your Trello board.
+- New job applications land in a To review list.
+- Your team works through form answers card by card.
+
+## Disconnect
+
+In **Settings**, then **Integrations**, click **Disconnect** on the Trello card, or open the card and click it there. Confirm **Disconnect Trello?**. Forms stop sending to it. What was already sent stays in Trello.
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Send leads to your tools" href="/integrations/send-leads/" description="Every Sync setting in one place." />
+  <LinkCard title="All integrations" href="/integrations/" description="Every tool Claritia connects to." />
+</CardGrid>

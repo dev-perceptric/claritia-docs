@@ -1,0 +1,103 @@
+---
+title: "Klaviyo"
+description: "Connect Klaviyo to Claritia to add form sign-ups to a Klaviyo list. How to connect, what syncs and when, the access it asks for, and how to disconnect."
+sidebar:
+  label: "Klaviyo"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+Klaviyo is an email and text marketing tool built for online stores. Shops use it to send product emails based on what customers do.
+
+With Claritia, you can add form sign-ups to a Klaviyo list.
+
+| | |
+| - | - |
+| Category | Email lists |
+| Connects with | A key from your Klaviyo account |
+| Used in | A form's **Sync** tab |
+| Who can connect | Workspace owners |
+| Plan | Starter and up (listed on the pricing page; check) |
+
+## Connect Klaviyo
+
+Only workspace owners can connect or disconnect tools. Other members see the card and its state.
+
+<Steps>
+
+1. **Open Integrations**
+
+   Go to **Settings**, then **Integrations**. Type "Klaviyo" in **Search integrations**, or pick **Email lists** in the category menu.
+
+1. **Click Connect**
+
+   Klaviyo connects with a key from your Klaviyo account. Connect opens a secure connect page that asks for it. If that page isn't set up, the card's sheet opens a short form instead, with:
+
+   | Field | Required | Notes |
+   | - | - | - |
+   | **Private API key** | Yes |  Hidden as you type. |
+
+1. **Click Connect in the form**
+
+   The button reads **Checking…** while Claritia tests the details with Klaviyo. If they work, the card shows **Connected**. If not, the form shows what Klaviyo said.
+
+</Steps>
+
+## What Claritia can do in Klaviyo
+
+When you connect, Claritia asks for this access:
+
+- See your Klaviyo lists.
+- Add new subscribers to the list you choose.
+- Update subscribers who are already on that list.
+
+## Add a form's sign-ups to a Klaviyo list
+
+<Steps>
+
+1. **Open the form's Sync tab**
+
+   Open the form, click **Sync** and pick **Klaviyo** on the left.
+
+1. **Turn it on**
+
+   Click **Add leads to Klaviyo**.
+
+1. **Pick the list**
+
+   Choose from **Pick a list**. The menu reads **Reading…** while Claritia loads your lists from Klaviyo. Claritia confirms with **Leads join [name] now**.
+
+1. **Choose who subscribes**
+
+   Set **Subscribe** to **Everyone** or **Who ticked consent**.
+
+</Steps>
+
+To stop, click **Turn off** under **Stop sending to Klaviyo** and confirm **Stop adding leads to Klaviyo?**. Fills stay in Claritia.
+
+## What syncs
+
+| | |
+| - | - |
+| Direction | Claritia to Klaviyo. Claritia reads your lists so you can pick one. |
+| What's sent | The person's email and name, and their consent. |
+| Match | By email. People already on the list are updated. |
+| When | Right after each fill. If the tool is busy or down, Claritia tries again after about 1, 5 and 30 minutes, then 2 and 6 hours. |
+| While off | Fills are kept. When you turn it on again, what it held is sent, oldest first. |
+
+## What teams use it for
+
+- Form sign-ups join the Klaviyo list you pick, so your welcome emails start.
+- Quiz answers go with the subscriber, so you can send the right product emails.
+- A returning subscriber gets updated, not added twice.
+
+## Disconnect
+
+In **Settings**, then **Integrations**, click **Disconnect** on the Klaviyo card, or open the card and click it there. Confirm **Disconnect Klaviyo?**. Forms stop sending to it. What was already sent stays in Klaviyo.
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Send leads to your tools" href="/integrations/send-leads/" description="Every Sync setting in one place." />
+  <LinkCard title="All integrations" href="/integrations/" description="Every tool Claritia connects to." />
+</CardGrid>

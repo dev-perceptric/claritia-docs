@@ -1,0 +1,118 @@
+---
+title: "Freshsales"
+description: "Connect Freshsales to Claritia to send each form lead to Freshsales as a contact. How to connect, what syncs and when, the access it asks for, and how to disconnect."
+sidebar:
+  label: "Freshsales"
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+Freshsales is the CRM from Freshworks. It has phone, email and lead scoring built in, so sales teams can call and email leads without switching tools.
+
+With Claritia, you can send each form lead to Freshsales as a contact.
+
+| | |
+| - | - |
+| Category | CRMs |
+| Connects with | A key from your Freshsales account |
+| Used in | A form's **Sync** tab |
+| Who can connect | Workspace owners |
+| Plan | Starter and up (listed on the pricing page; check) |
+
+## Connect Freshsales
+
+Only workspace owners can connect or disconnect tools. Other members see the card and its state.
+
+<Steps>
+
+1. **Open Integrations**
+
+   Go to **Settings**, then **Integrations**. Type "Freshsales" in **Search integrations**, or pick **CRMs** in the category menu.
+
+1. **Click Connect**
+
+   Freshsales connects with a key from your Freshsales account. Connect opens a secure connect page that asks for it. If that page isn't set up, the card's sheet opens a short form instead, with:
+
+   | Field | Required | Notes |
+   | - | - | - |
+   | **Freshsales address** | Yes | `acme.myfreshworks.com` |
+   | **API key** | Yes |  Hidden as you type. |
+
+1. **Click Connect in the form**
+
+   The button reads **Checking…** while Claritia tests the details with Freshsales. If they work, the card shows **Connected**. If not, the form shows what Freshsales said.
+
+</Steps>
+
+## What Claritia can do in Freshsales
+
+When you connect, Claritia asks for this access:
+
+- Create new contacts in Freshsales.
+- Update contacts that are already in Freshsales, found by their email.
+- See the people on your Freshsales team, so a new lead can get the right owner.
+
+## Send a form's leads to Freshsales
+
+<Steps>
+
+1. **Open the form's Sync tab**
+
+   Open the form and click **Sync**. The left side lists each connected tool with its state, such as **Not sending leads** or **Synced 48 this month**. Pick **Freshsales**.
+
+1. **Turn it on**
+
+   Click **Send leads to Freshsales**. Claritia says **Leads go to Freshsales now**.
+
+1. **Choose what happens to people already there**
+
+   Under **When the email is already in Freshsales**, pick **Update it** or **Leave it**. **Make a new one** is greyed out, because Freshsales keeps one contact per email. Claritia matches people by email.
+
+1. **Set the owner**
+
+   **Owner** is **Routing's pick**, the person your form's routing or meeting assigned, or **Freshsales decides**, so Freshsales's own assignment rules pick. With Routing's pick, records Freshsales already owns keep their owner.
+
+1. **Send consent**
+
+   Turn on **Send email consent** to pass on who ticked your form's consent box, as Freshsales's subscription status.
+
+1. **Check the fields**
+
+   The **Fields** table lists each question and the **Freshsales field** it fills, or **Not sent**. Change the field on each question in **Build**. A problem shows **Fix**, and a choice question whose answers don't match Freshsales's options shows **Check choices**. Fields that match show **OK**.
+
+</Steps>
+
+### Leads that didn't arrive
+
+If a lead didn't reach Freshsales, a red line at the top of the pane says how many didn't arrive this week and why. Click **Send again** to retry them. When Freshsales turned a lead down as a duplicate, **Create anyway** makes it.
+
+### Stop sending
+
+At the bottom of the pane, **Stop sending to Freshsales** has **Turn off**. Leads keep going to Claritia, and you can click **Turn on** any time.
+
+## What syncs
+
+| | |
+| - | - |
+| Direction | Claritia to Freshsales. Claritia also reads your Freshsales users, so a lead can get an owner, and your fields, so questions can fill them. |
+| What's sent | Each fill's contact: name, email, phone, job title, company, and the answers you map to fields. The owner and consent if you turn them on. |
+| Match | By email. One person stays one record. |
+| When | Right after each fill. If the tool is busy or down, Claritia tries again after about 1, 5 and 30 minutes, then 2 and 6 hours. |
+| While off | Fills are kept. When you turn it on again, what it held is sent, oldest first. |
+
+## What teams use it for
+
+- Every form fill becomes a contact in Freshsales.
+- A returning person gets updated, not duplicated.
+- Your reps see new leads in Freshsales right away.
+
+## Disconnect
+
+In **Settings**, then **Integrations**, click **Disconnect** on the Freshsales card, or open the card and click it there. Confirm **Disconnect Freshsales?**. Forms stop sending to it. What was already sent stays in Freshsales.
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Send leads to your tools" href="/integrations/send-leads/" description="Every Sync setting in one place." />
+  <LinkCard title="All integrations" href="/integrations/" description="Every tool Claritia connects to." />
+</CardGrid>
