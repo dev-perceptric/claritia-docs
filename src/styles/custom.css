@@ -240,3 +240,6 @@ starlight-tabs [role='tablist'] { border-bottom: 1px solid var(--cl-line) !impor
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; }
 }
+
+/* Product screenshots: a hairline frame so white screens stand apart from the page */
+.sl-markdown-content img { border-radius: 12px; box-shadow: 0 0 0 1px var(--cl-line); }
