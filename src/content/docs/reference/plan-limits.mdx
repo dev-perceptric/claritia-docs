@@ -7,7 +7,7 @@ sidebar:
 
 import { Aside, CardGrid, LinkCard } from '@astrojs/starlight/components';
 
-This page lists every limit Claritia has, by plan and for everyone. Numbers come from the app itself. Anything listed on the pricing page that the app doesn't enforce yet is marked "check".
+This page lists every limit Claritia has, by plan and for everyone. Numbers and lines come from the app itself.
 
 ## By plan
 
@@ -29,7 +29,7 @@ Yearly billing is 20% off. A year costs 12 times the yearly monthly price, per s
 
 ### Features held to a plan
 
-These are checked by the app when you save:
+The app checks these when you save or publish, and again on the server, so the API holds them too:
 
 | Feature | Lowest plan | What you see on a lower plan |
 | - | - | - |
@@ -45,18 +45,36 @@ These are checked by the app when you save:
 | A second seat on Free | Starter | `Free has 1 seat. Upgrade to add more.` |
 | A second calendar on Free | Starter | `Free has 1 calendar. Upgrade to add more.` |
 | A 7th calendar on a paid plan | | `Each seat can connect 6 calendars.` |
+| Polls | Starter | `Meeting polls are on Starter and up.` |
+| One-off meetings | Starter | `One-off meetings are on Starter and up.` |
+| Single-use links, in the app and with /book in Slack | Starter | `Single-use links are on Starter and up.` |
+| Signatures in forms | Starter | `Signatures are on Starter and up.` when you publish |
+| Payments in forms | Starter | `Payments on forms are on Starter and up.` when you publish |
+| Connecting a tool, and sending a form's leads to a tool or Slack: CRMs, email lists, sheets, tasks, documents, files, Teams and Discord, analytics, ads, Twilio, Webex, Whereby, PayPal, Square, and fills from Typeform, Tally, Webflow, Calendly and Cal.com | Starter | `Integrations are on Starter and up.` |
+| Routing by answer, and by past fills | Pro | `Routing by answer is on Pro and up.` The form still publishes, and every lead books the **Otherwise** meeting |
+| Salesforce | Business | `Salesforce is on Business.` |
 
-### Listed on the pricing page, not held back yet
+Webhooks, CSV export, tracking tags, Google Forms import and Zapier and Make work on every plan.
 
-The pricing page lists these on a plan, but the app doesn't stop other plans using them yet (check):
+Where a feature is held back, the screen shows the line with the plan's tag and **Upgrade**. **Upgrade** opens **Settings**, then **Billing**. Only owners change the plan, so members see the tag without the button.
+
+### Moving to a lower plan
+
+Nothing is deleted when your workspace moves to a lower plan. What you made stays, and you can still delete it. New ones stop, and so does the work they do:
+
+| What you have | What happens |
+| - | - |
+| Links and polls | They stay in **Links and polls**, with their votes. Guests see the link or poll as closed, and can't book or vote. You can't book a poll's winner. |
+| Connected tools | They stay connected, and you can disconnect them. New fills skip them, with the plan's line as the reason. Each fill stays in Claritia. After an upgrade, click **Send again**. |
+| Fills from Typeform, Tally, Webflow, Calendly and Cal.com | They wait in Claritia and come in after an upgrade. |
+| Routing rules | They stay in the form and in Routing. From the next lead on, they don't run, and every lead takes the default meeting or person. |
+| Live forms with a signature or payment | They keep working as they were published. Publishing them again needs Starter. |
+| Booked meetings | They stay booked. Nothing is canceled. |
+
+### Not held back yet
 
 | Feature | Listed on |
 | - | - |
-| Polls, one-off meetings and single-use links | Starter |
-| Signatures and payments in forms | Starter |
-| HubSpot and the other CRMs, email lists, sheets, tasks, documents, files, Teams and Discord, analytics, ads, Twilio, Webex, Whereby, PayPal, Square, and fills from Typeform, Tally, Webflow, Calendly and Cal.com | Starter |
-| Routing by answer | Pro |
-| Salesforce | Business |
 | Extra submissions at $5 per 1,000 | Starter and Pro (counted, not billed yet) |
 
 ## What happens at a limit

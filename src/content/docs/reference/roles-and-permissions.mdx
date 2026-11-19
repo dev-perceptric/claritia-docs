@@ -42,7 +42,7 @@ Roles are separate from seats. A seat is someone people can book. Any owner or m
 | Set the team booking page's handle | ✓ | |
 | Change or delete a single-use link, one-off or poll | ✓ any | Own |
 | Mark held or no-show, reschedule link, cancel a meeting | ✓ | ✓ |
-| Connect Stripe for paid meetings | ✓ | |
+| Connect and disconnect Stripe for paid meetings | ✓ | |
 
 ### Email and workflows
 
@@ -85,6 +85,21 @@ An API key acts as the person who made it, with that person's role:
 | MCP: `publish_form` | ✓ | |
 | MCP: `schedule_campaign` | ✓ | |
 | MCP: `route_suggest` (saves a draft only) | ✓ | ✓ |
+
+## Plans and roles
+
+Your plan sets what the workspace can do. Your role sets who can do it. A feature on a higher plan is held back for owners and members alike, and the server holds it back for API keys too:
+
+| Action | Owner | Member | Plan |
+| - | - | - | - |
+| Make a single-use link, one-off meeting or poll | ✓ | ✓ | Starter and up |
+| Connect a tool in **Settings**, then **Integrations** | ✓ | | Starter and up, Salesforce on Business |
+| Send a form's leads to a connected tool or Slack | ✓ | ✓ | Starter and up, Salesforce on Business |
+| Publish a form with a signature or a payment | ✓ | ✓ | Starter and up |
+| Route leads by answer | ✓ | ✓ | Pro and up |
+| Add a webhook to a form's **Sync**, export CSV | ✓ | ✓ | Every plan |
+
+On a lower plan, the screen shows the plan's line, like **Meeting polls are on Starter and up.**, and its tag. Owners also get **Upgrade**, which opens **Settings**, then **Billing**. Members see the line and the tag only. See [Plan limits](/reference/plan-limits/#features-held-to-a-plan).
 
 ## What members see when they can't
 

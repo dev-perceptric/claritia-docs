@@ -76,6 +76,14 @@ A guest who left checkout can finish from their manage link: it shows **Waiting 
 | **Stripe didn't answer. Try again in a moment.** | Try again. |
 | **Connect Stripe in Settings, Payments before publishing a form that takes payment.** | Connect Stripe, then publish the form. |
 | **Canceled. The refund didn't go through; refund it in Stripe.** | Refund the payment in your Stripe account. |
+| **Couldn't disconnect Stripe.** | Click **Retry** on the Stripe card. |
+| **This meeting can't take payments yet.** | Guests see this when Stripe isn't connected. Connect Stripe, or switch off **Take payment**. |
+
+## Stop taking payments
+
+To stop charging for one meeting, open it and switch off **Take payment**.
+
+To stop all Stripe payments, go to **Settings**, then **Integrations**, and click **Disconnect** on the **Stripe** card. Confirm **Disconnect Stripe?**. Every meeting type paid through Stripe turns off, with its price kept. Types paid with PayPal or Square stay on. Booked meetings stay booked, and paid ones can still be refunded. See [Stripe](/integrations/stripe/#disconnect).
 
 ## Refunds
 

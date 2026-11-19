@@ -82,6 +82,7 @@ import { Aside, CardGrid, LinkCard } from '@astrojs/starlight/components';
 
 | Message | What it means | Fix |
 | - | - | - |
+| **Single-use links are on Starter and up.** / **One-off meetings are on Starter and up.** / **Meeting polls are on Starter and up.** | Your plan is Free. Links and polls need Starter. This also shows for /book in Slack. | Upgrade in **Settings**, then **Billing**. |
 | **Pick a meeting type.** | A single-use link needs a type. | Pick one. |
 | **Pick at least one time.** / **Pick two or more times.** | A one-off needs a time; a poll needs two. | Pick more times. |
 | **No free times in the next two weeks** | Nothing to pick from. | Check your availability. |
@@ -103,6 +104,7 @@ import { Aside, CardGrid, LinkCard } from '@astrojs/starlight/components';
 | **Pick held, no-show or cancel.** | A status change was unclear. | Use **Held**, **No-show** or **Cancel meeting**. |
 | **Only owners can connect payments.** | Connecting Stripe is owner-only. | Ask an owner. |
 | **Stripe didn't answer. Try again in a moment.** | Stripe was slow. | Try again. |
+| **Couldn't disconnect Stripe.** | Disconnecting Stripe didn't go through after a few tries. | Click **Retry** on the Stripe card. |
 | **Webex didn't make the meeting.** / **Whereby didn't make the room.** | The video tool refused. | Reconnect it in **Settings**, then **Integrations**. |
 
 ## What guests see
@@ -116,7 +118,9 @@ import { Aside, CardGrid, LinkCard } from '@astrojs/starlight/components';
 | **Too many tries. Wait a minute and try again.** | Many tries from one place. |
 | **This meeting was canceled.** | The meeting is already canceled. |
 | **This meeting can't be moved.** / **This meeting can't be canceled.** | The meeting type doesn't allow it, or it has started. |
-| **This poll is closed.** | You already booked a time. |
+| **This poll is closed.** | You already booked a time, or the workspace's plan no longer has polls. |
+| **This link is closed** | The host closed the link, or the workspace's plan no longer has links. |
+| **This meeting can't take payments yet.** | The meeting is paid, but the team's payments aren't set up. |
 | **This isn't set up yet.** | Show my calendar isn't on. |
 | **Your calendar couldn't be read.** | Google didn't share the busy times. |
 

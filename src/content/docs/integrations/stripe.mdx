@@ -17,7 +17,7 @@ With Claritia, you can charge guests when they book a paid meeting, and take a p
 | Connects with | Sign in with Stripe (Stripe's own onboarding) |
 | Used in | A meeting type's **Payment**, and a form's **Payment** question |
 | Who can connect | Workspace owners |
-| Plan | Paid meetings: Starter and up |
+| Plan | Paid meetings and payments in forms: Starter and up |
 
 ## Connect Stripe
 
@@ -96,7 +96,35 @@ Add a **Payment** question to a form. It charges a fixed amount, or the result o
 
 ## Disconnect
 
-The Stripe card has no Disconnect button. To stop taking payments, turn off **Take payment** on each paid meeting type, or remove the **Payment** question from your forms. To cut Claritia's access for good, remove Claritia from your connected apps in your Stripe account (check). Past payments stay in your Stripe account.
+Only workspace owners can disconnect Stripe.
+
+<Steps>
+
+1. **Open the Stripe card**
+
+   Go to **Settings**, then **Integrations**. Find the **Stripe** card, or click it to open its details.
+
+1. **Click Disconnect**
+
+   The button shows once your Stripe account is connected, and also while it reads **Finish on Stripe**.
+
+1. **Confirm**
+
+   A box asks **Disconnect Stripe?** and says **Paid meeting types turn off. Booked meetings stay.** Click **Disconnect**. The button reads **Disconnecting…** while it works.
+
+</Steps>
+
+### What happens
+
+- Claritia forgets your Stripe account. The card shows **Connect** again.
+- Each meeting type that takes payment through Stripe turns off, so no one can book it without paying. Its price stays saved. Connect Stripe again and turn the type back on, or switch off **Take payment** to make it free.
+- Meeting types paid with PayPal or Square stay on.
+- Booked meetings stay booked, and paid ones stay paid. When you cancel one, **Cancel and refund** still refunds the guest.
+- A guest who was paying at that moment still gets their meeting once Stripe confirms the payment.
+- Forms with a **Payment** question stop opening checkout. Remove the question, or connect Stripe again. A form that takes payment can't be published while Stripe isn't connected.
+- Your Stripe account and its past payments stay yours. Claritia connected it through Stripe's own onboarding, so there's no sign-in to take back.
+
+If the disconnect doesn't go through, Claritia tries again on its own. If it still can't, the card shows **Couldn't disconnect Stripe.** and the button reads **Retry**.
 
 <Aside type="tip">
 Want PayPal or Square instead? Connect them in **Integrations**, then pick them under **Paid with** on the meeting type. See [PayPal](/integrations/paypal/) and [Square](/integrations/square/).

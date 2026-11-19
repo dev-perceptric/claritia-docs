@@ -14,6 +14,8 @@ import { Aside, CardGrid, LinkCard } from '@astrojs/starlight/components';
 | - | - | - |
 | **Only owners can connect tools.** / **Only owners can connect tools** | Connecting is owner-only. | Ask an owner. |
 | **Unknown tool.** | The tool isn't one Claritia connects to. | Reload **Integrations**. |
+| **Integrations are on Starter and up.** | Your plan is Free. Connecting a tool and sending leads to it need Starter. The webhook and Google Forms import work on Free. | Upgrade in **Settings**, then **Billing**. |
+| **Salesforce is on Business.** | Salesforce needs the Business plan. | Upgrade to Business. |
 | **Access was not allowed.** | You clicked Cancel or Deny on the tool's sign-in page. | Click **Connect** again and approve. |
 | **Connect it again first** / **Connect this tool again.** | The tool's sign-in expired. | Disconnect and connect it again. |
 | **Error** tag on a card | The last call to the tool failed. | Open the card. Reconnect if asked. |
@@ -30,6 +32,7 @@ import { Aside, CardGrid, LinkCard } from '@astrojs/starlight/components';
 | Message | What it means | Fix |
 | - | - | - |
 | **[n] leads didn't reach [tool] this week.** | Sends failed after every retry. | Read the reason, fix it, then click **Send again**. |
+| A send skipped with **Integrations are on Starter and up.** or **Salesforce is on Business.** | The workspace is on a lower plan, so the fill wasn't sent. It's kept in Claritia. | Upgrade, then click **Send again**. |
 | **Create anyway** | The tool said the lead is a duplicate. | Click it to make the record anyway. |
 | **Pick where leads go.** / **Pick where rows go.** / **Pick a list.** | The destination isn't finished. | Pick the list, sheet or table. |
 | **Pick what happens when the record exists.** | The CRM rule isn't set. | Pick **Update it** or **Leave it**. |
@@ -51,6 +54,15 @@ import { Aside, CardGrid, LinkCard } from '@astrojs/starlight/components';
 | - | - | - |
 | **Not allowed.** (answered to the tool) | The signature or the address's token didn't match. | Use the same signing secret in both places. Copy the address again with **Webhook URL**. |
 | **Not found.** (answered to the tool) | The tool was disconnected in Claritia. | Connect it again and paste the new address. |
+
+## Stripe
+
+| Message | What it means | Fix |
+| - | - | - |
+| **Disconnect Stripe?** | The confirm box before you disconnect. Paid meeting types turn off. Booked meetings stay. | Click **Disconnect** to go ahead, or **Cancel**. |
+| **Couldn't disconnect Stripe.** | Claritia tried a few times and couldn't reach its database. Nothing changed. | Click **Retry** on the Stripe card. |
+| **Only owners can connect payments.** | Connecting and disconnecting Stripe is owner-only. | Ask an owner. |
+| **Stripe didn't answer. Try again in a moment.** | Stripe was slow while connecting. | Try again. |
 
 ## Webhooks
 
