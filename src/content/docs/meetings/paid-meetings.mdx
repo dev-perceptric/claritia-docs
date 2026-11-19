@@ -55,6 +55,28 @@ Guests now pay when they book. The meeting shows **Waiting on payment** until th
 
 Paid meetings can also take PayPal or Square. Connect the tool in **Settings**, then **Integrations**. Then open the meeting's **All settings** and pick it under **Paid with**.
 
+## What happens when a guest pays
+
+1. The guest picks a time and fills in their details.
+2. Claritia holds that time for 10 minutes and opens checkout on Stripe, PayPal or Square.
+3. While they pay, the meeting shows **Waiting on payment** in **Upcoming**. Its webhook status is `pending_payment`.
+4. Claritia books the meeting only once it reads the payment back from the payment tool. Then the calendar invite and the confirmation email go out.
+5. If someone else booked the time before the payment came in, the payment is refunded at once.
+6. If checkout can't start, the meeting is canceled and the time opens again.
+
+A guest who left checkout can finish from their manage link: it shows **Waiting for payment** with **Complete payment**.
+
+## Errors you may see
+
+| Message | Fix |
+| - | - |
+| **Paid meetings are on Starter and up.** | Upgrade, or turn off **Take payment**. |
+| **Pick the currency for the price.** | Pick a **Currency**. |
+| **Only owners can connect payments.** | Ask a workspace owner to connect Stripe. |
+| **Stripe didn't answer. Try again in a moment.** | Try again. |
+| **Connect Stripe in Settings, Payments before publishing a form that takes payment.** | Connect Stripe, then publish the form. |
+| **Canceled. The refund didn't go through; refund it in Stripe.** | Refund the payment in your Stripe account. |
+
 ## Refunds
 
 When you cancel a paid meeting from its page, click **Cancel and refund**. The guest gets their money back. If the refund doesn't go through, Claritia tells you, and you can refund it in Stripe.
@@ -72,6 +94,8 @@ Paid meetings and Stripe payments in forms are on Starter and up. Stripe's own f
 ## Next steps
 
 <CardGrid>
+  <LinkCard title="Take paid bookings with Stripe" href="/recipes/paid-bookings-with-stripe/" description="The whole job, step by step." />
+  <LinkCard title="Stripe" href="/integrations/stripe/" description="Connecting and disconnecting." />
   <LinkCard title="Meeting types" href="/meetings/meeting-types/" description="Every other meeting setting." />
   <LinkCard title="Integrations" href="/integrations/" description="Every tool you can connect." />
 </CardGrid>
