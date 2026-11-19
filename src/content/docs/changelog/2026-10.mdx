@@ -1,0 +1,63 @@
+---
+title: "October 2026"
+description: "Claritia release notes for October 2026: the first forms, meetings and booking pages, calendar sync, meeting emails, polls and paid meetings, sending from your own domain, API keys and the restyle."
+sidebar:
+  label: "October 2026"
+  order: 3
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+October laid the ground for today's Claritia: forms that book meetings, and meetings that send their own emails. Parts built this month that have since been removed, like the CRM and website visitors, aren't listed.
+
+## Week of October 27
+
+### New
+
+- **Forms and meetings work together.** A form's **On Submission** picks the meeting, and the meeting picks the person, with If and Then rules. **Dynamic meetings** route by answer.
+- **Spam goes to Spam**, so spam fills never reach your tools.
+- **Form results**: search, filters, columns, pages, bulk actions, export, and numbers for each question.
+- **The forms engine** gains richer conditions, groups, lists that follow another answer, and calculated fields.
+- **Booking pages** at `/booking/<handle>`, in Claritia's look, and **meeting webhooks**.
+- **Workflows** get folders, and meeting reminders become workflows.
+- **Forms**: alerts, auto-reply, spam rules, how long answers are kept, and the AI bar.
+- **A new look** to match the website: Inter, black and white, with one green signal.
+- **Faster screens** that answer on click.
+
+### Fixed
+
+- Leaving Forms no longer crashes the app.
+- A form's page opens again after a reload.
+
+## Week of October 20
+
+### New
+
+- **Meetings.** Meeting types, the slot engine, round robin, and booking that can't double book.
+- **Calendars.** Google Calendar, Outlook and Zoom connect in one click. Busy times stay fresh with pushes and a 10-minute check, and events go out without duplicate invites.
+- **Public booking.** Booking pages, embeds, the guest's manage link, one-off and single-use links, polls, and paid meeting types on Stripe.
+- **Group meetings**: every seat shares one event and video link.
+- **Meeting emails**: confirmations with calendar invites, reminders, updates, cancels, an after-meeting check, no-show follow-up and "book later". Poll voters get every email once. Hard bounces and complaints stop emails to that address.
+- **A host gets an email** when their calendar needs reconnecting.
+- **Book a meeting after a form**, tied back to the fill, with the calendar shown only to the leads that match.
+- **Forms**: the AI chat builder, your brand read from your website, a daily check of every live form, and delivery to CRMs, Slack and webhooks.
+- **Send leads to Pipedrive, Attio and Close.**
+- **The command bar** and a new sign-in.
+
+## Week of October 13
+
+### New
+
+- **Sign-in and workspaces.**
+- **API keys and the REST API.**
+- **Sending email from your own domain**: verified domains, a check at send time, and one-click unsubscribe.
+- **Forms**: the first builder, embed, UTM capture, spam checks and consent.
+- **Settings** as a grouped side list of pages.
+- **Billing** with Stripe.
+
+## Related
+
+<CardGrid>
+  <LinkCard title="November 2026" href="/changelog/2026-11/" description="The month after." />
+  <LinkCard title="Changelog" href="/changelog/" description="Latest changes." />
+</CardGrid>

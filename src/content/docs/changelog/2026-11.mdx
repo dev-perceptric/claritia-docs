@@ -1,0 +1,98 @@
+---
+title: "November 2026"
+description: "Claritia release notes for November 2026: Form Studio, 840 form templates, Forms, Meetings and Workflows only, the email canvas, 60 integrations, the API and Zapier, MCP sign-in, booking page round 2 and the new sign-up."
+sidebar:
+  label: "November 2026"
+  order: 2
+---
+
+import { Aside, CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+November turned Claritia into three tools that work as one: **Forms**, **Meetings** and **Workflows**.
+
+## Week of November 16
+
+### New
+
+- **Getting-started emails.** A new workspace's maker gets up to ten short tips in the first weeks, at most one a day, each skipped once its step is done. Switch them off in **Settings**, then **Profile**.
+- **A new sign-up.** Sign up with a code sent to your email, with a bot check, limits on repeated emails, and a guided setup for your team, calendar, first form and invites. An invite page shows which workspace you're joining.
+- **Settings › Integrations, rebuilt.** Each tool is an app-store card with what it is in one line. Search, filter with one category menu, and click a card to read what the tool does, the access it asks for and its uses. **Connect** goes straight to the tool's sign-in.
+- **Booking pages on Pro and Business** no longer show **Built by Claritia**, the same as forms.
+
+### Fixed
+
+- Work email questions refuse free email on their own page, before **Next**.
+- Dropdowns in live forms float over the form instead of stretching it.
+- Forms on other sites never scroll sideways, and show one focus line.
+- Sign-in no longer offers **Continue with GitHub**.
+- A sign-in link opened in another browser says what to do.
+
+## Week of November 9
+
+### New
+
+- **Booking page round 2.** A host card with **What we'll cover**, one-click **Confirm** when Claritia already knows the guest, a 5-minute hold on the picked time, Month and Week views, both clocks when the host is in another time zone, a confirmed screen with **Before the call** and a countdown, and **Show my calendar** with Google.
+- **The email canvas.** Open a group's emails on one surface you can pan and zoom. Click to pick a part, type in place, drag blocks between emails, resize pictures by their corners, copy and paste, and undo across the canvas. Tia works on the canvas, and emails have versions and comments.
+- **Meeting emails are workflows.** Confirmed, Reminders, Moved, Canceled and No-show follow-up are live workflows in a **Meetings** folder, edited like any other.
+- **One email per workflow step**, edited in the step's panel. There's no Approve step, and the footer is added for you.
+- **The workflow editor is a canvas**, with drag to move, a searchable add menu, **Insert data** and a **Test** tab.
+- **Email in the sidebar.** **Workflows**, **Audiences**, **Templates** and **Brand** are each their own item under **Email**. Meetings' pages work the same way.
+- **100 email templates** in nine folders, previewed in your brand, in **Email**, then **Templates**.
+- **Lists in Audiences**, filled from forms or imported from CSV with column matching and a history.
+- **Campaigns now or later**, with a send panel to pick the sender, edit the subject and preview text, and **Gradual Send**. **Intelligent Send** sends each person a campaign at their own best hour within a day.
+- **Email results**: opens, clicks, and the meetings booked and forms filled after each email.
+- **Warm-up for new sending domains**, a check before each send, and safer imports.
+- **Send limits per plan**, with a usage meter in Billing and a hard-bounce guard.
+- **Workflows from a sentence**, a **Joined a list** trigger, and a brand **Voice** for Tia in **Email**, then **Brand**.
+- **AI apps can write and send campaigns** with new MCP tools: write, test, send and read results.
+- **Collective team meetings**, and making a team from Form Studio.
+- **100 calculator form templates**, and `pow` in formulas.
+- **Import a form from Typeform or Tally** by pasting its link.
+- **On Submission**: Individual or Routing, with named rules, and/or conditions, who takes it, **Preview as**, and a warning when a rule can never run.
+- **Form Studio rebuilt**: pages on the left, **Add field**, **Design** and **Logic** over the form, Tia under it. Pages slide, and the thank-you has confetti.
+- **Sign-in from ChatGPT, Claude and other AI apps** in one click, with no key to paste.
+- **Make a form from chat before you sign up.** An AI app can make a live form with a claim link.
+- **The Claritia badge** under live forms on Free (full) and Starter (small).
+
+### Removed
+
+- **Meeting settings.** Stripe is now a card in **Integrations**, and meeting webhooks are in **Settings › Webhooks**.
+- The find-a-time text box on booking pages.
+
+## Week of November 2
+
+### New
+
+- **Forms, Meetings and Workflows only.** The CRM, Enrichment, Scoring and Visitors were removed. People who fill your forms or book stay in the database and show in **Email**, then **Audiences**.
+- **Form Studio** is where every form is made: describe it to Tia, start from a template, or build by hand. One chat per form, a live preview, the form check, languages and right-to-left text, and access rules.
+- **740, then 840 form templates**, with menus for category, industry, team, what it does next, features, layout and length. Templates come wired with the meeting and a draft follow-up, and many have welcome photos.
+- **78 field types**, including ranking, address, grid, time, date range, signature and a 0 to 10 scale, plus payments, PDF copies and **save and finish later**.
+- **18 form styles**, and a **Theme** tab with field looks: filled, outlined or underlined.
+- **One question at a time** forms, welcome screens and photos.
+- **Folders for forms**, **Pause the form**, and **Embed HTML** on Share.
+- **Sharing**: link endings, link previews, QR codes, emailing the link, personal links, where each fill came from, website sizes, Shopify, and setup steps for each site builder.
+- **Your own address** for forms and booking pages: a workspace subdomain, or a custom domain on Business.
+- **Plans**: Free, Starter, Pro and Business, priced per seat. A seat is someone guests can book.
+- **Integrations, step by step**: email lists (Mailchimp, Klaviyo, ActiveCampaign, Brevo, Kit, MailerLite), sheets and databases (Google Sheets, Airtable, Notion, Excel Online, PostgreSQL, MySQL), more CRMs (Zoho CRM, Dynamics 365, GoHighLevel, Freshsales, Copper, Keap, monday CRM), work tools (Linear, Trello, ClickUp, monday.com, SmartSuite, Zendesk, Freshdesk, Intercom), documents (Google Docs, DocuSign, PandaDoc), file copies (Google Drive, OneDrive, Dropbox, Box, Amazon S3), Teams and Discord alerts, product analytics (Segment, PostHog, Mixpanel, Amplitude), Webex, Whereby, PayPal and Square.
+- **Tracking**: Google Analytics 4, Tag Manager, Meta Pixel and Conversions API, and the Google Ads tag with offline conversions.
+- **Text messages**: **Text message** and **WhatsApp** workflow steps on your own Twilio, with text consent, STOP and an email fallback.
+- **The Forms API** with app sign-in and hooks for Zapier and Make.
+- **Import from Google Forms.**
+- **Send as the host**: workflow and meeting emails from your own Gmail or Outlook.
+- **A Description for each meeting**, a better meeting email with one named invite, and a warning when meeting emails don't go out.
+- **Break before and after each meeting.**
+- **Branded booking pages** on paid plans.
+- **The Slot**, Claritia's new mark, and a calmer look across the app.
+
+### Fixed
+
+- Starting hours save themselves when none are saved yet.
+- The thank-you screen hides the form's heading on every form.
+- Next.js updated for a published security advisory.
+
+## Related
+
+<CardGrid>
+  <LinkCard title="October 2026" href="/changelog/2026-10/" description="The month before." />
+  <LinkCard title="Form Studio and Tia" href="/forms/form-studio/" description="Where every form is made." />
+</CardGrid>
