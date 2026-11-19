@@ -1,0 +1,78 @@
+---
+title: "Take paid bookings with Stripe"
+description: "A Claritia recipe: connect Stripe, make a paid meeting type, share it, and handle payments, holds and refunds for paid consultations or workshops."
+sidebar:
+  label: "Paid bookings with Stripe"
+  order: 4
+---
+
+import { Aside, CardGrid, LinkCard, Steps } from '@astrojs/starlight/components';
+
+Charge for a strategy session, a coaching call or a workshop seat when people book. Money goes straight to your own Stripe account.
+
+**Goal:** guests pay when they book, and you never chase an invoice.
+
+**You need:** to be a workspace owner. **Time:** about 15 minutes, plus Stripe's own sign-up if you're new to it. **Plan:** paid meetings are on Starter and up.
+
+<Steps>
+
+1. **Connect Stripe**
+
+   Go to **Settings**, then **Integrations**, and click **Connect** on the **Stripe** card. Sign in to Stripe and approve Claritia.
+
+   ![The Stripe sheet in Integrations, connected, with what it is, permissions and use cases](../../../assets/shots/recipes/stripe-sheet.webp)
+
+1. **Finish on Stripe if asked**
+
+   If the card says **Finish on Stripe**, click **Continue on Stripe** and add what Stripe asks for. When it's done, the card says **Connected**.
+
+   ![Settings, Integrations with Stripe, HubSpot and Google Sheets connected](../../../assets/shots/integrations/integrations.webp)
+
+1. **Turn on payment**
+
+   Open **Meeting types**, click the meeting, and open **Payment**. Switch on **Take payment**, then set the **Amount** and **Currency**.
+
+   ![A meeting type's Payment section with Take payment on, the amount and the currency](../../../assets/shots/meetings/type-paid.webp)
+
+1. **Check the rest of the settings**
+
+   Open the meeting's menu, then **All settings**. Under **Payment**, **Paid with** is **Stripe**. Set a longer **notice** if you need time to prepare. Click **Save changes**.
+
+   ![All settings for a meeting type, with a live booking page beside the fields](../../../assets/shots/meetings/type-all.webp)
+
+1. **Share the meeting**
+
+   Show the meeting on your booking page, share its link, or book it from a form's Ending. Guests pick a time and then pay on Stripe's checkout.
+
+   ![A guest picking a time on the booking page](../../../assets/shots/meetings/guest-booking.webp)
+
+1. **Watch payments come in**
+
+   In **Upcoming**, a meeting waiting for its payment shows **Waiting on payment**. Claritia holds the time for 10 minutes while the guest pays. Once Stripe confirms, it's booked and the invite goes out.
+
+   ![Upcoming with the numbers at the top and the meetings grouped by day](../../../assets/shots/meetings/upcoming.webp)
+
+1. **Refund when you cancel**
+
+   Open the meeting and click **Cancel and refund**. If Stripe can't refund, Claritia says **Canceled. The refund didn't go through; refund it in Stripe.**
+
+   ![One meeting with its time, guest, host, place and history](../../../assets/shots/meetings/meeting.webp)
+
+</Steps>
+
+## What good looks like
+
+- No booking without a payment.
+- If two people go for the same time, the second never pays for a time they can't have: a late payment is refunded at once.
+- Guests can move a paid meeting themselves from their confirmation email, without paying again.
+
+<Aside type="tip">
+Prefer PayPal or Square? Connect them in **Integrations** and pick them under **Paid with**. See [PayPal](/integrations/paypal/) and [Square](/integrations/square/).
+</Aside>
+
+## Related
+
+<CardGrid>
+  <LinkCard title="Stripe" href="/integrations/stripe/" description="Connecting, holds and refunds." />
+  <LinkCard title="Paid meetings" href="/meetings/paid-meetings/" description="Every paid meeting setting." />
+</CardGrid>
