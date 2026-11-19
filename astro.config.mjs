@@ -32,7 +32,7 @@ export default defineConfig({
         group('Workspace', 'workspace', ['general', 'members-and-seats', 'plans-and-billing', 'brand-and-domains', 'link-domain', 'profile', 'security-and-privacy']),
         group('Developers', 'developers', ['api', 'mcp']),
         { label: 'API reference', collapsed: true, items: ['api-reference', ...['authentication', 'me', 'forms', 'events', 'hooks', 'workflows', 'mcp-tools', 'webhook-events'].map((p) => `api-reference/${p}`)] },
-        group('Reference', 'reference', ['glossary', 'faq', 'troubleshooting'], { collapsed: true }),
+        group('Reference', 'reference', ['roles-and-permissions', 'plan-limits', 'glossary', 'faq', 'troubleshooting'], { collapsed: true }),
       ],
     }),
   ],

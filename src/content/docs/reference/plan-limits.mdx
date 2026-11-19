@@ -1,0 +1,154 @@
+---
+title: "Plan limits"
+description: "Every Claritia plan limit in one place: price per seat, seats, submissions, AI credits, workflow emails, calendars, meeting types, meeting kinds, branding, and the fixed limits on forms, links, workflows, emails, API keys and webhooks."
+sidebar:
+  label: "Plan limits"
+---
+
+import { Aside, CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+This page lists every limit Claritia has, by plan and for everyone. Numbers come from the app itself. Anything listed on the pricing page that the app doesn't enforce yet is marked "check".
+
+## By plan
+
+| | Free | Starter | Pro | Business |
+| - | - | - | - | - |
+| **Price per seat a month, billed monthly** | $0 | $15 | $39 | $79 |
+| **Price per seat a month, billed yearly** | $0 | $12 | $31 | $63 |
+| **Seats** (people guests can book) | 1 | Unlimited | Unlimited | Unlimited |
+| **Members** (people who build and read) | Unlimited | Unlimited | Unlimited | Unlimited |
+| **Forms** | Unlimited | Unlimited | Unlimited | Unlimited |
+| **Submissions a month** | 250 | 2,000 | 5,000 | Unlimited |
+| **AI credits a month** | 100 | 500 | 2,000 | 5,000 |
+| **Workflow and campaign emails a month** | 1,000 | 10,000 | 50,000 | 200,000 |
+| **Calendar accounts per seat** | 1 | 6 | 6 | 6 |
+| **Active meeting types** | 1 | Unlimited | Unlimited | Unlimited |
+| **Claritia badge on live forms** | Full badge | Small badge | None | None |
+
+Yearly billing is 20% off. A year costs 12 times the yearly monthly price, per seat.
+
+### Features held to a plan
+
+These are checked by the app when you save:
+
+| Feature | Lowest plan | What you see on a lower plan |
+| - | - | - |
+| Group meetings | Starter | `Group meetings are on Starter and up.` |
+| Paid meetings | Starter | `Paid meetings are on Starter and up.` |
+| Your brand on booking pages | Starter | Claritia's own look |
+| Round robin and collective (team) meetings | Pro | `Team meetings are on Pro and up.` |
+| No Claritia badge on forms and booking pages | Pro | The badge shows |
+| Account owner first and paired round robin | Business | `This kind of meeting is on Business.` |
+| Partial fills (**Left early**) | Business | Hidden in Submissions |
+| Your own link domain | Business | `Your own domain is on Business.` |
+| A second meeting type on Free | Starter | `Free has 1 meeting type. Upgrade to add more.` |
+| A second seat on Free | Starter | `Free has 1 seat. Upgrade to add more.` |
+| A second calendar on Free | Starter | `Free has 1 calendar. Upgrade to add more.` |
+| A 7th calendar on a paid plan | | `Each seat can connect 6 calendars.` |
+
+### Listed on the pricing page, not held back yet
+
+The pricing page lists these on a plan, but the app doesn't stop other plans using them yet (check):
+
+| Feature | Listed on |
+| - | - |
+| Polls, one-off meetings and single-use links | Starter |
+| Signatures and payments in forms | Starter |
+| HubSpot and the other CRMs, email lists, sheets, tasks, documents, files, Teams and Discord, analytics, ads, Twilio, Webex, Whereby, PayPal, Square, and fills from Typeform, Tally, Webflow, Calendly and Cal.com | Starter |
+| Routing by answer | Pro |
+| Salesforce | Business |
+| Extra submissions at $5 per 1,000 | Starter and Pro (counted, not billed yet) |
+
+## What happens at a limit
+
+| Limit | What happens |
+| - | - |
+| **Submissions** | The form keeps working and every fill is saved. Its syncs and workflows run. On Free, fills past 250 stay hidden on screen and in the CSV until you upgrade or the month turns. Fills past the limit aren't sent to hooks, Zapier or Make. |
+| **AI credits** | Tia stops until the month resets. Forms, booking and workflows keep running. |
+| **Workflow and campaign emails** | Emails past the limit wait in line, and go when the month turns or you upgrade. They're never dropped. Meeting emails, alerts and form auto-replies don't count. |
+
+Counts reset on the 1st of each month. See this month's use in **Settings**, then **Billing**.
+
+### AI credits per step
+
+| Tia step | Credits |
+| - | - |
+| Build a whole new form (brief 1, plan 1, build 8) | 10 |
+| A change in Form Studio chat | 1 |
+| Translate a form | 1 |
+| A change in an email chat | 1 |
+| Build a workflow from words | 2 |
+| A routing chat turn | 1 |
+
+A step replayed from Claritia's cache is free, and so is work no one asked for in the moment, like reading your brand.
+
+## Fixed limits on every plan
+
+### Forms and fills
+
+| Limit | Value |
+| - | - |
+| Form folders | 100 |
+| Fills marked as spam, deleted or sent again at once | 500 |
+| Addresses you can email a form's link to at once | 50 |
+| Images in a workspace's design library | 2,000 |
+
+### Meetings and links
+
+| Limit | Value |
+| - | - |
+| Meeting length | 5 minutes to 8 hours |
+| Times on one link or poll | 40 |
+| Times you can pick for a one-off meeting | 10 |
+| Times you can pick for a poll | 2 to 20 |
+| How far ahead a link's times can be | 1 year |
+| Guest's hold on a picked time | 5 minutes |
+| Time held while a guest pays | 10 minutes |
+| Meeting description | 2,000 characters |
+| **What we'll cover** and **Before the call** lines | 8 each |
+| Round robin weight | 1 to 10 |
+
+### Email and workflows
+
+| Limit | Value |
+| - | - |
+| Workflows | 100 |
+| Workflow folders | 50 |
+| Steps in a workflow | 50 |
+| Branches inside branches | 3 deep |
+| Runs per person | 20 |
+| Saved email templates | 200 |
+| Draft emails | 500 |
+| Lists | 200 |
+| People added to a list at once | 5,000 |
+| Topics | 50 |
+| Sending domains | 20 |
+| Marketing emails per person | 3 in 7 days by default, up to 50 in 60 days |
+| Campaign sent by an AI app without a person confirming | 500 people |
+| Sending pauses itself at | 0.2% spam complaints or 5% hard bounces in a week |
+
+### API, webhooks and apps
+
+| Limit | Value |
+| - | - |
+| API keys per workspace | 20 |
+| API calls per key | 120 a minute |
+| Hooks from the API, Zapier and Make | 200 per workspace |
+| Forms one hook can listen to | 50 |
+| Endpoints in Settings › Webhooks | 10 |
+| Webhook answer time | 15 seconds |
+| Webhook tries | 8, over about 9 hours |
+| Webhook sends kept | 30 days |
+| Guest forms one AI app connection can make before sign-up | 20 a day |
+| Unclaimed guest form stays open | 14 days |
+
+<Aside type="tip">
+Need more of a fixed limit? Write to support and say which one and why (check).
+</Aside>
+
+## Next steps
+
+<CardGrid>
+  <LinkCard title="Plans and billing" href="/workspace/plans-and-billing/" description="Change plan, seats and invoices." />
+  <LinkCard title="Roles and permissions" href="/reference/roles-and-permissions/" description="What owners and members can do." />
+</CardGrid>

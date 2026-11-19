@@ -1,0 +1,106 @@
+---
+title: "Roles and permissions"
+description: "What a Claritia workspace owner and a member can each do: forms, meetings, availability, emails, workflows, integrations, webhooks, domains, billing, API keys and team, in one grid."
+sidebar:
+  label: "Roles and permissions"
+---
+
+import { Aside, CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+A Claritia workspace has two roles: **owner** and **member**. The person who makes the workspace is its owner. Everyone you invite joins as a member. You see your role as a tag on **Settings**, then **General**.
+
+Roles are separate from seats. A seat is someone people can book. Any owner or member can be a seat. See [Members and seats](/workspace/members-and-seats/).
+
+## The grid
+
+✓ means the role can do it. "Own" means only for things that are theirs, like their own calendar.
+
+### Forms
+
+| Action | Owner | Member |
+| - | - | - |
+| See every form and its answers | ✓ | ✓ |
+| Make, edit and duplicate forms | ✓ | ✓ |
+| Publish, pause, resume and delete forms | ✓ | ✓ |
+| Mark fills as spam, delete fills, export CSV | ✓ | ✓ |
+| Make, rename and delete form folders | ✓ | ✓ |
+| Set a form's Sync, using tools already connected | ✓ | ✓ |
+| Give a form link your own domain (the **Your own domain** item in Share) | ✓ | |
+
+### Meetings
+
+| Action | Owner | Member |
+| - | - | - |
+| See every meeting type and meeting | ✓ | ✓ |
+| Make a meeting type | ✓ | ✓, as one of its hosts |
+| Change a meeting type | ✓ any | Own: one they made, host, or that was given to them |
+| Set which settings a shared (managed) type locks, and give types to people | ✓ | |
+| Delete a copy of a type an owner gave them | ✓ | |
+| Change working hours and days off | ✓ anyone's | Own |
+| Connect, read and disconnect calendars | ✓, and disconnect anyone's | Own |
+| Set your own booking page | ✓ | ✓ |
+| Set the team booking page's handle | ✓ | |
+| Change or delete a single-use link, one-off or poll | ✓ any | Own |
+| Mark held or no-show, reschedule link, cancel a meeting | ✓ | ✓ |
+| Connect Stripe for paid meetings | ✓ | |
+
+### Email and workflows
+
+| Action | Owner | Member |
+| - | - | - |
+| Build, edit and publish workflows | ✓ | ✓ |
+| Make an HTML block live in an email | ✓ | |
+| Write, test and send campaign emails | ✓ | ✓ |
+| Make and edit email templates | ✓ | ✓ |
+| Change the brand voice | ✓ | ✓ |
+| Add people to Audiences with consent ticked | ✓ | ✓ |
+| Add people who didn't agree to email, or approve imports waiting for an owner | ✓ | |
+| Add, check, move and remove sending domains | ✓ | |
+| Change sender, limits, quiet hours and topics | ✓ | |
+| Resume paused sending | ✓ | |
+
+### Settings
+
+| Action | Owner | Member |
+| - | - | - |
+| Connect and disconnect integrations | ✓ | |
+| Disconnect Zapier and Make | ✓ | |
+| See, add, test, pause and delete webhooks | ✓ | |
+| Read the brand from your website, switch or delete brands | ✓ | ✓ |
+| Add and remove a custom link domain | ✓ | |
+| Make and revoke API keys | ✓ | ✓ |
+| Rename the workspace | ✓ | |
+| Invite people, cancel invites, remove members | ✓ | |
+| Change the plan and manage billing | ✓ | |
+| Approve an app's sign-in (Zapier, Make, Claude) | ✓ | ✓ |
+
+### With an API key
+
+An API key acts as the person who made it, with that person's role:
+
+| Action | Owner's key | Member's key |
+| - | - | - |
+| Every REST endpoint | ✓ | ✓ |
+| MCP: read and draft forms, answers, routing and emails | ✓ | ✓ |
+| MCP: `publish_form` | ✓ | |
+| MCP: `schedule_campaign` | ✓ | |
+| MCP: `route_suggest` (saves a draft only) | ✓ | ✓ |
+
+## What members see when they can't
+
+- **Settings › Webhooks** shows **No access** with **A workspace owner can set up webhooks.**
+- **Settings › Integrations** shows each card and its state, with no Connect or Disconnect buttons.
+- **Settings › Sender** and **Domains** show the settings, with the fields turned off.
+- **Settings › Link domain** says **An owner adds the domain.**
+- Server checks answer with lines like **Only owners can connect tools.**, **Only the workspace owner can change the plan.**, **Only owners can change someone else's hours.** or **Add yourself as a host, or ask an owner.** See [Error messages](/reference/errors/).
+
+<Aside type="note">
+Invites always join as members, and the app has no screen to change a role. An owner can remove members, but not another owner. To hand a workspace to someone else, contact support (check).
+</Aside>
+
+## Next steps
+
+<CardGrid>
+  <LinkCard title="Members and seats" href="/workspace/members-and-seats/" description="Invite people and see who's a seat." />
+  <LinkCard title="Plan limits" href="/reference/plan-limits/" description="Every limit on each plan." />
+</CardGrid>
